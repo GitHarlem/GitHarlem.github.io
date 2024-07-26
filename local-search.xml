@@ -11,10 +11,16 @@
     <content type="html"><![CDATA[<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="原始版"><a href="#原始版" class="headerlink" title="原始版"></a>原始版</h2><p>利用<strong>分治思想</strong>，新建两个数组，分别储存原数组中小于 X 或大于 X 的元素，并分别对其进行快速排序，最后重组原数组即可。（X可为任意值，推荐使用中值）</p><h2 id="进化版"><a href="#进化版" class="headerlink" title="进化版"></a>进化版</h2><p>利用<strong>分治思想</strong>以及部分<strong>双指针思想</strong>，左右各两个指针，记为 i, j。左指针一直向右，直到数组中第 i 个元素大于 x；右指针一直向左，直到数组中第 j 个元素小于x；接着左右指针<strong>对应元素</strong>互换，重复执行直到左右指针相遇。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="hljs">#include&lt;bits/stdc++.h&gt;using namespace std;const int N=1e5+5;int n;int q[N];void quick_sort(int q[],int l,int r)&#123;    if(l&gt;=r)return;    int x=q[l+r&gt;&gt;1],i=l-1,j=r+1;    while(i&lt;j)&#123;        do i++;while(q[i]&lt;x);        do j--;while(q[j]&gt;x);        if(i&lt;j)swap(q[i],q[j]);    &#125;    quick_sort(q,l,j);    quick_sort(q,j+1,r);&#125;int main()&#123;    scanf(&quot;%d&quot;,&amp;n);    for(int i=0;i&lt;n;i++)scanf(&quot;%d&quot;,&amp;q[i]);    quick_sort(q,0,n-1);    for(int i=0;i&lt;n;i++)printf(&quot;%d &quot;,q[i]);    return 0;&#125;</code></pre><p>#完结撒花o(<em>￣︶￣</em>)o</p>]]></content>
     
     
+    <categories>
+      
+      <category>算法笔记</category>
+      
+    </categories>
+    
     
     <tags>
       
-      <tag>-算法笔记</tag>
+      <tag>-原创 -算法 -笔记</tag>
       
     </tags>
     
