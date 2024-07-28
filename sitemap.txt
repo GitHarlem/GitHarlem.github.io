@@ -1,5 +1,5 @@
-http://githarlem.github.io/2024/07/28/Binary-Search/
 http://githarlem.github.io/2024/07/26/Quick-Sort/
+http://githarlem.github.io/2024/07/28/Binary-Search/
 http://githarlem.github.io/2024/07/27/Merge-Sort/
 http://githarlem.github.io/2024/07/28/High-Precision-AddSub/
 http://githarlem.github.io/about/index.html
