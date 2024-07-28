@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://githarlem.github.io/2024/07/28/Binary-Search/</loc>
+    
+    <lastmod>2024-07-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/2024/07/26/Quick-Sort/</loc>
     
     <lastmod>2024-07-28</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>http://githarlem.github.io/2024/07/27/Merge-Sort/</loc>
-    
-    <lastmod>2024-07-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://githarlem.github.io/2024/07/28/Binary-Search/</loc>
     
     <lastmod>2024-07-28</lastmod>
     
