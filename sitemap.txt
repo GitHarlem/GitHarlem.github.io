@@ -7,7 +7,7 @@ http://githarlem.github.io/tags/orgn/
 http://githarlem.github.io/tags/agrt/
 http://githarlem.github.io/tags/note/
 http://githarlem.github.io/tags/bscs/
-http://githarlem.github.io/tags/%E4%BA%8C%E5%88%86/
-http://githarlem.github.io/tags/%E6%90%9C%E7%B4%A2/
-http://githarlem.github.io/tags/%E6%8E%92%E5%BA%8F/
+http://githarlem.github.io/tags/bnry/
+http://githarlem.github.io/tags/srch/
+http://githarlem.github.io/tags/sort/
 http://githarlem.github.io/categories/Algorithm-Notes/
