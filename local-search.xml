@@ -4,7 +4,40 @@
   
   
   <entry>
-    <title>算法笔记-Binary_Search二分查找</title>
+    <title>[算法笔记]-High_Precision(Add&amp;Sub)高精度加减法</title>
+    <link href="/2024/07/28/High-Precision-AddSub/"/>
+    <url>/2024/07/28/High-Precision-AddSub/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>算法笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>算法</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>基础</tag>
+      
+      <tag>高精度</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[算法笔记]-Binary_Search二分查找</title>
     <link href="/2024/07/28/Binary-Search/"/>
     <url>/2024/07/28/Binary-Search/</url>
     
@@ -39,7 +72,7 @@
   
   
   <entry>
-    <title>算法笔记-Merge_Sort归并排序</title>
+    <title>[算法笔记]-Merge_Sort归并排序</title>
     <link href="/2024/07/27/Merge-Sort/"/>
     <url>/2024/07/27/Merge-Sort/</url>
     
@@ -72,7 +105,7 @@
   
   
   <entry>
-    <title>算法笔记-Quick_Sort快速排序</title>
+    <title>[算法笔记]-Quick_Sort快速排序</title>
     <link href="/2024/07/26/Quick-Sort/"/>
     <url>/2024/07/26/Quick-Sort/</url>
     

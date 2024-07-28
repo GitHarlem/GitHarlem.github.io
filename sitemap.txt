@@ -1,6 +1,7 @@
-http://githarlem.github.io/2024/07/28/Binary-Search/
 http://githarlem.github.io/2024/07/26/Quick-Sort/
 http://githarlem.github.io/2024/07/27/Merge-Sort/
+http://githarlem.github.io/2024/07/28/Binary-Search/
+http://githarlem.github.io/2024/07/28/High-Precision-AddSub/
 http://githarlem.github.io/about/index.html
 http://githarlem.github.io/
 http://githarlem.github.io/tags/orgn/
@@ -10,4 +11,5 @@ http://githarlem.github.io/tags/bscs/
 http://githarlem.github.io/tags/bnry/
 http://githarlem.github.io/tags/srch/
 http://githarlem.github.io/tags/sort/
+http://githarlem.github.io/tags/hprc/
 http://githarlem.github.io/categories/Algorithm-Notes/
