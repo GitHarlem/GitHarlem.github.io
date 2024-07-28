@@ -19,15 +19,15 @@
   <meta name="author" content="GitHarlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="编程、笔记、日常、吐槽">
+    <meta name="description" content="前言这篇博客并不打算多细致地讲解高精度，但是！但是！我会给出代码模板，并且在注释中讲解大多数内容。 就这样吧。（￣︶￣） 思路emmm小学数学会吧？不会您先别看了 就用小学数学的思路做就完事了。 代码加法12345678910111213&#x2F;&#x2F;这里使用vector储存大数，因为它自带size函数，当然直接用数组也没有问题。vector&lt;int&gt; add(vector&lt;int&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[算法笔记]-High_Precision(AddandSub)高精度加减法">
+<meta property="og:title" content="[算法笔记]-High_Precision(Add and Sub)高精度加减法">
 <meta property="og:url" content="http://githarlem.github.io/2024/07/28/High-Precision-AddSub/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="编程、笔记、日常、吐槽">
+<meta property="og:description" content="前言这篇博客并不打算多细致地讲解高精度，但是！但是！我会给出代码模板，并且在注释中讲解大多数内容。 就这样吧。（￣︶￣） 思路emmm小学数学会吧？不会您先别看了 就用小学数学的思路做就完事了。 代码加法12345678910111213&#x2F;&#x2F;这里使用vector储存大数，因为它自带size函数，当然直接用数组也没有问题。vector&lt;int&gt; add(vector&lt;int&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-28T14:07:45.000Z">
-<meta property="article:modified_time" content="2024-07-28T14:21:14.753Z">
+<meta property="article:modified_time" content="2024-07-28T14:36:54.730Z">
 <meta property="article:author" content="GitHarlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="算法">
@@ -38,7 +38,7 @@
   
   
   
-  <title>[算法笔记]-High_Precision(AddandSub)高精度加减法 - HarlemBlog</title>
+  <title>[算法笔记]-High_Precision(Add and Sub)高精度加减法 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[算法笔记]-High_Precision(AddandSub)高精度加减法"></span>
+            <span id="subtitle" data-typed-text="[算法笔记]-High_Precision(Add and Sub)高精度加减法"></span>
           
         </div>
 
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          406 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -297,12 +297,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[算法笔记]-High_Precision(AddandSub)高精度加减法</h1>
+            <h1 id="seo-header">[算法笔记]-High_Precision(Add and Sub)高精度加减法</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇博客并不打算多细致地讲解高精度，但是！但是！我会给出代码模板，并且在注释中讲解大多数内容。</p>
+<p>就这样吧。（￣︶￣）</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>emmm<strong>小学数学</strong>会吧？<del>不会您先别看了</del> 就用小学数学的思路做就完事了。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h2><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-comment">//这里使用vector储存大数，因为它自带size函数，当然直接用数组也没有问题。</span><br><span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; add(<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;a,<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;b)&#123;<br>    <span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; c;<br>    <span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-keyword">size</span>()||i&lt;b.<span class="hljs-keyword">size</span>();i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-keyword">size</span>())t+=a[i];<br>        <span class="hljs-keyword">if</span>(i&lt;b.<span class="hljs-keyword">size</span>())t+=b[i];<br>        c.push_back(t%10);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(t)c.push_back(t);<span class="hljs-comment">//最后可能还剩一个进位，不要忘了加回去。</span><br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h2><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs mel"><span class="hljs-comment">//同上</span><br><span class="hljs-comment">//此函数用于判断两个大数大小，下方的减法函数只支持大减小。</span><br>bool cmp(<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;a,<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;b)&#123;<br>    <span class="hljs-keyword">if</span>(a.<span class="hljs-keyword">size</span>()!=b.<span class="hljs-keyword">size</span>())<span class="hljs-keyword">return</span> a.<span class="hljs-keyword">size</span>()&gt;b.<span class="hljs-keyword">size</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=a.<span class="hljs-keyword">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        <span class="hljs-keyword">if</span>(a[i]!=b[i])<span class="hljs-keyword">return</span> a[i]&gt;b[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> true;<br>&#125;<br><br><span class="hljs-comment">//此函数用于大减小，搭配上方函数使用即可。</span><br><span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; sub(<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;a,<span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;b)&#123;<br>    <span class="hljs-keyword">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; c;<br>    <span class="hljs-keyword">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-keyword">size</span>();i++)&#123;<br>        t+=a[i];<br>        <span class="hljs-keyword">if</span>(i&lt;b.<span class="hljs-keyword">size</span>())t-=b[i];<br>        c.push_back((t+<span class="hljs-number">10</span>)%10);<span class="hljs-comment">//此处浓缩了两种可能：t&lt;0，返回t+10；t≥0，返回t。</span><br>        <span class="hljs-keyword">if</span>(t&lt;<span class="hljs-number">0</span>)t=<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">else</span> t=<span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-keyword">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.back()==<span class="hljs-number">0</span>)c.pop_back();<span class="hljs-comment">//删除前置0。当只剩一位时不删（不然0就没了）。</span><br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -355,7 +359,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[算法笔记]-High_Precision(AddandSub)高精度加减法</div>
+      <div>[算法笔记]-High_Precision(Add and Sub)高精度加减法</div>
       <div>http://githarlem.github.io/2024/07/28/High-Precision-AddSub/</div>
     </div>
     <div class="license-meta">
