@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>[算法笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</title>
+    <title>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</title>
     <link href="/2024/07/29/High-Precision-MulDiv-Simple/"/>
     <url>/2024/07/29/High-Precision-MulDiv-Simple/</url>
     
@@ -24,13 +24,13 @@
       
       <tag>原创</tag>
       
-      <tag>算法</tag>
-      
       <tag>笔记</tag>
       
-      <tag>基础</tag>
-      
       <tag>高精度</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -39,7 +39,7 @@
   
   
   <entry>
-    <title>[算法笔记]-High_Precision(Add and Sub)高精度加减法</title>
+    <title>[编程笔记]-High_Precision(Add and Sub)高精度加减法</title>
     <link href="/2024/07/28/High-Precision-AddSub/"/>
     <url>/2024/07/28/High-Precision-AddSub/</url>
     
@@ -59,13 +59,13 @@
       
       <tag>原创</tag>
       
-      <tag>算法</tag>
-      
       <tag>笔记</tag>
       
-      <tag>基础</tag>
-      
       <tag>高精度</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -74,7 +74,7 @@
   
   
   <entry>
-    <title>[算法笔记]-Binary_Search二分查找</title>
+    <title>[编程笔记]-Binary_Search二分查找</title>
     <link href="/2024/07/28/Binary-Search/"/>
     <url>/2024/07/28/Binary-Search/</url>
     
@@ -94,15 +94,15 @@
       
       <tag>原创</tag>
       
-      <tag>算法</tag>
-      
       <tag>笔记</tag>
-      
-      <tag>基础</tag>
       
       <tag>二分</tag>
       
       <tag>搜索</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -111,7 +111,7 @@
   
   
   <entry>
-    <title>[算法笔记]-Merge_Sort归并排序</title>
+    <title>[编程笔记]-Merge_Sort归并排序</title>
     <link href="/2024/07/27/Merge-Sort/"/>
     <url>/2024/07/27/Merge-Sort/</url>
     
@@ -131,13 +131,13 @@
       
       <tag>原创</tag>
       
-      <tag>算法</tag>
-      
       <tag>笔记</tag>
       
-      <tag>基础</tag>
-      
       <tag>排序</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
@@ -146,7 +146,7 @@
   
   
   <entry>
-    <title>[算法笔记]-Quick_Sort快速排序</title>
+    <title>[编程笔记]-Quick_Sort快速排序</title>
     <link href="/2024/07/26/Quick-Sort/"/>
     <url>/2024/07/26/Quick-Sort/</url>
     
@@ -166,13 +166,13 @@
       
       <tag>原创</tag>
       
-      <tag>算法</tag>
-      
       <tag>笔记</tag>
       
-      <tag>基础</tag>
-      
       <tag>排序</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
       
     </tags>
     
