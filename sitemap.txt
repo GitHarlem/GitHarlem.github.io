@@ -13,5 +13,5 @@ http://githarlem.github.io/tags/sort/
 http://githarlem.github.io/tags/hprc/
 http://githarlem.github.io/tags/code/
 http://githarlem.github.io/tags/c/
-http://githarlem.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/
-http://githarlem.github.io/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/
+http://githarlem.github.io/categories/CodeNotes/
+http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/
