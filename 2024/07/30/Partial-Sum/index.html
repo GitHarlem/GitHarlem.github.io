@@ -31,9 +31,9 @@
 <meta property="article:modified_time" content="2024-07-30T02:44:06.207Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
-<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
+<meta property="article:tag" content="笔记">
 <meta property="article:tag" content="前缀和与差分">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
@@ -471,17 +471,17 @@
 <p>鉴于二位前缀和的复杂性（当然其实也没多复杂），我这边会搭配图片进行讲解。</p>
 <h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>二位前缀和呢，若将数组视作一个矩形（左上角为原点），则前缀和储存的就是以原点为左上角、终点为右下角的矩形内包括的所有元素的和。</p>
 <p>因此，若要求一个点的前缀和，只需求出它对应矩形缺了它这个角形成的“L”型图形内的前缀和，再加上这个点本身的数值即可。具体怎么求“L”，我将会在实现部分中写。</p>
-<p><img src="/2024/07/26/Quick-Sort/init.png" srcset="/img/loading.gif" lazyload alt="&quot;初始化&quot;"></p>
+<p><img src="/2024/07/30/Partial-Sum/init.png" srcset="/img/loading.gif" lazyload alt="&quot;初始化&quot;"></p>
 <p>接下来就是查询的时候了：</p>
 <p>在二维前缀和问题中，所求问题多半是一段二维区间内的元素和。循序渐进，我们从查询单个元素开始说起：</p>
 <p>（下图中每个方格表示一个元素，实心格子表示待求元素）</p>
-<p><img src="/2024/07/26/Quick-Sort/p0.png" srcset="/img/loading.gif" lazyload alt="&quot;问题1&quot;"></p>
+<p><img src="/2024/07/30/Partial-Sum/p0.png" srcset="/img/loading.gif" lazyload alt="&quot;问题1&quot;"></p>
 <p>其实也很简单，我们只需要把求前缀和的过程反过来就行了：用当前元素前缀和减去那个“L”型元素和即可。</p>
 <p>延伸到一段元素，与单个元素的思路一模一样——用右下角元素的前缀和，减去包裹着整个区间的“L”型即可。</p>
-<p><img src="/2024/07/26/Quick-Sort/p1.png" srcset="/img/loading.gif" lazyload alt="&quot;问题2&quot;"></p>
+<p><img src="/2024/07/30/Partial-Sum/p1.png" srcset="/img/loading.gif" lazyload alt="&quot;问题2&quot;"></p>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>不管是求前缀还是计算区间，重点就是求L型。既然我们已知当前点左侧上侧的全部前缀和，为什么不把这个复杂图形切割成我们已知的图形去做呢？</p>
 <p>很简单，把它分成如图所示的两个前缀和，再减去它们重叠的那部分即可。</p>
-<p><img src="/2024/07/26/Quick-Sort/s0.png" srcset="/img/loading.gif" lazyload alt="&quot;解决&quot;"></p>
+<p><img src="/2024/07/30/Partial-Sum/s0.png" srcset="/img/loading.gif" lazyload alt="&quot;解决&quot;"></p>
 <p>已经有了思路，下面就直接上公式了:</p>
 <p>求前缀和：<br>$$<br>s_{i,j}&#x3D;s_{i,j-1}+s_{i-1,j}-s_{i-1,j-1}<br>$$</p>
 <p>求[x1][y1]到[x2][y2]的元素之和:<br>$$<br>s_{x2,y2}-s_{x2,y1-1}-s_{x1-1,y2}+s_{x1-1,y1-1}<br>$$</p>
@@ -530,11 +530,11 @@
       
         <a href="/tags/orgn/" class="print-no-link">#原创</a>
       
-        <a href="/tags/note/" class="print-no-link">#笔记</a>
-      
         <a href="/tags/code/" class="print-no-link">#编程</a>
       
         <a href="/tags/c/" class="print-no-link">#c++</a>
+      
+        <a href="/tags/note/" class="print-no-link">#笔记</a>
       
         <a href="/tags/psad/" class="print-no-link">#前缀和与差分</a>
       
