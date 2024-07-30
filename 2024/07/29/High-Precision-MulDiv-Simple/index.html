@@ -19,12 +19,12 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”教学。 emmm就这样吧(。·ω·。) 思路乘法其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂">
+    <meta name="description" content="前言 鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;教学。 emmm就这样吧(。·ω·。) 思路 乘法 其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法 就是用机器去模拟手写嘛。鉴于除">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）">
 <meta property="og:url" content="http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”教学。 emmm就这样吧(。·ω·。) 思路乘法其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂">
+<meta property="og:description" content="前言 鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;教学。 emmm就这样吧(。·ω·。) 思路 乘法 其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法 就是用机器去模拟手写嘛。鉴于除">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-07-29T01:55:46.000Z">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          427 字
+          429 字
         
       </span>
     
@@ -460,11 +460,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与<code>int</code>类型的小数的乘除计算，大数乘大数将会在<a href="https://githarlem.github.io/High-Precison-MulDiv-Complex">“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”</a>教学。</p>
+                <h1>前言</h1>
+<p>鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与<code>int</code>类型的小数的乘除计算，大数乘大数将会在<a href="https://githarlem.github.io/High-Precison-MulDiv-Complex">&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;</a>教学。</p>
 <p>emmm就这样吧(。·ω·。)</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p>其实就跟<strong>列竖式</strong>差不多，把大数列在下面、小数列在上面，直接乘。</p>
+<h1>思路</h1>
+<h2 id="乘法">乘法</h2>
+<p>其实就跟<strong>列竖式</strong>差不多，把大数列在下面、小数列在上面，直接乘。</p>
 <p><em>别忘了去前导0~</em></p>
-<h2 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h2><p>就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂，这里给出详细步骤：</p>
+<h2 id="除法">除法</h2>
+<p>就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂，这里给出详细步骤：</p>
 <ol>
 <li>准备好记录结果与记录余数的变量。</li>
 <li>从最高位开始往最低位遍历大数。</li>
@@ -473,9 +477,13 @@
 <li>去掉前导零。</li>
 </ol>
 <p><em>tips: 如果你用的是<code>vector</code>储存，请在第5步前反转队列。（详见代码）</em></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="乘法-1"><a href="#乘法-1" class="headerlink" title="乘法"></a>乘法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mul</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i]*b;<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="除法-1"><a href="#除法-1" class="headerlink" title="除法"></a>除法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;,<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">div</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,<span class="hljs-type">int</span> &amp;b)&#123;<span class="hljs-comment">//同时返回结果和余数</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        t=t*<span class="hljs-number">10</span>+a[i];<br>        c.<span class="hljs-built_in">push_back</span>(t/b);<span class="hljs-comment">//注意，这里是从最高位开始往最低位储存，所以最后要先反转过来。</span><br>        t%=b;<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(c.<span class="hljs-built_in">begin</span>(),c.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//记得#include&lt;algorithm&gt;</span><br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> &#123;c,t&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
+<h1>代码</h1>
+<h2 id="乘法-2">乘法</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mul</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i]*b;<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="除法-2">除法</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;,<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">div</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,<span class="hljs-type">int</span> &amp;b)&#123;<span class="hljs-comment">//同时返回结果和余数</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        t=t*<span class="hljs-number">10</span>+a[i];<br>        c.<span class="hljs-built_in">push_back</span>(t/b);<span class="hljs-comment">//注意，这里是从最高位开始往最低位储存，所以最后要先反转过来。</span><br>        t%=b;<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(c.<span class="hljs-built_in">begin</span>(),c.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//记得#include&lt;algorithm&gt;</span><br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> &#123;c,t&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1>完结撒花o(<em>￣︶￣</em>)o</h1>
+
                 
               </div>
             
