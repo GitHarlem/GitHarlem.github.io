@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>[编程笔记]-Two_Pointers双指针</title>
+    <link href="/2024/07/31/Two-Pointers/"/>
+    <url>/2024/07/31/Two-Pointers/</url>
+    
+    <content type="html"><![CDATA[<h1>前言</h1><p>最近时间紧迫，从这篇文章开始，就着重记笔记了，不再提供详细教程。</p><h1>简介</h1><p>双指针算法，名义上说就是使用两个指针循环（一个或多个）数组，但实际上通常用不到指针。</p><p>一般情况下，双指针算法用于特定情境，将O(n<sup>2</sup>)的时间复杂度简化成O(n)。</p><h1>模板</h1><p>一般情况下，形如下方所示的代码，在满足特定需求的情况下，都可以转化成双指针来做。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)&#123;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br><span class="hljs-comment">//功能代码</span><br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>转化成：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br><span class="hljs-keyword">while</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br>j++;<br>&#125;<br><span class="hljs-comment">//功能代码</span><br>&#125;<br></code></pre></td></tr></table></figure><h1>例题</h1><p><a href="https://www.acwing.com/problem/content/801/">AcWing799-最长连续不重复子序列</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,ans;<br><span class="hljs-type">int</span> a[N],s[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,j=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[a[i]]++;<br>        <span class="hljs-keyword">while</span>(s[a[i]]&gt;<span class="hljs-number">0</span>)&#123;<br>            s[a[j++]]--;<br>        &#125;<br>        ans=<span class="hljs-built_in">max</span>(ans,i-j<span class="hljs-number">+1</span>);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Adjacent_Difference差分</title>
     <link href="/2024/07/30/Adjacent-Difference/"/>
     <url>/2024/07/30/Adjacent-Difference/</url>
