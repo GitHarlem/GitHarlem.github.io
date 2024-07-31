@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>[编程笔记]-Lowbit取最小1</title>
+    <link href="/2024/07/31/Lowbit/"/>
+    <url>/2024/07/31/Lowbit/</url>
+    
+    <content type="html"><![CDATA[<h1>前言</h1><p>lowbit是树状数组的基础啊，其重要性可想而知。</p><h1>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br><span class="hljs-keyword">return</span> a&amp;-a;<br>&#125;<br></code></pre></td></tr></table></figure><h1>演算</h1><p>众所周知，在二进制中，<code>-a</code>等同于<code>~a+1</code>（a的值取反再加一）</p><p>a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。</p><p>故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它后面的数字照样是原数取反的结果。</p><p>这时候进行与运算，那么a中第一个1前面的全都是0，-a中第一个1前面的也全都是0，新数就全是0；</p><p>第一个1后面的全都和原数取反，所以在新数中也是0。故而，就得到了第一个1组成的新数。</p><p>举例：</p><blockquote><p>a=1010011000<br>~a=0101100111<br>-a=~a+1=0101101000<br>a&amp;-a=1010011000&amp;0101101000=0000001000</p></blockquote><h1>例题</h1><p><a href="https://www.acwing.com/problem/content/803/">AcWing801-二进制中1的个数</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> num&amp;-num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(a)&#123;<br>            a-=<span class="hljs-built_in">lowbit</span>(a);<br>            ans++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>位运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Two_Pointers双指针</title>
     <link href="/2024/07/31/Two-Pointers/"/>
     <url>/2024/07/31/Two-Pointers/</url>

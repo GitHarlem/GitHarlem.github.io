@@ -19,28 +19,28 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;教学。 emmm就这样吧(。·ω·。) 思路 乘法 其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法 就是用机器去模拟手写嘛。鉴于除">
+    <meta name="description" content="前言 lowbit是树状数组的基础啊，其重要性可想而知。 模板 123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算 众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/index.html">
+<meta property="og:title" content="[编程笔记]-Lowbit取最小1">
+<meta property="og:url" content="http://githarlem.github.io/2024/07/31/Lowbit/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言 鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;教学。 emmm就这样吧(。·ω·。) 思路 乘法 其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法 就是用机器去模拟手写嘛。鉴于除">
+<meta property="og:description" content="前言 lowbit是树状数组的基础啊，其重要性可想而知。 模板 123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算 众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-29T01:55:46.000Z">
-<meta property="article:modified_time" content="2024-07-30T01:03:41.309Z">
+<meta property="article:published_time" content="2024-07-31T06:35:39.000Z">
+<meta property="article:modified_time" content="2024-07-31T06:49:11.078Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="高精度">
+<meta property="article:tag" content="位运算">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版） - HarlemBlog</title>
+  <title>[编程笔记]-Lowbit取最小1 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Lowbit取最小1"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-29 09:55" pubdate>
-          2024年7月29日 上午
+        <time datetime="2024-07-31 14:35" pubdate>
+          2024年7月31日 下午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          429 字
+          304 字
         
       </span>
     
@@ -410,7 +410,7 @@
       
         <a href="/2024/07/29/High-Precision-MulDiv-Simple/" title="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</span>
         </a>
       
@@ -446,7 +446,7 @@
       
         <a href="/2024/07/31/Lowbit/" title="[编程笔记]-Lowbit取最小1"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Lowbit取最小1</span>
         </a>
       
@@ -473,33 +473,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</h1>
+            <h1 id="seo-header">[编程笔记]-Lowbit取最小1</h1>
             
             
               <div class="markdown-body">
                 
                 <h1>前言</h1>
-<p>鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与<code>int</code>类型的小数的乘除计算，大数乘大数将会在<a href="https://githarlem.github.io/High-Precison-MulDiv-Complex">&quot;[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）&quot;</a>教学。</p>
-<p>emmm就这样吧(。·ω·。)</p>
-<h1>思路</h1>
-<h2 id="乘法">乘法</h2>
-<p>其实就跟<strong>列竖式</strong>差不多，把大数列在下面、小数列在上面，直接乘。</p>
-<p><em>别忘了去前导0~</em></p>
-<h2 id="除法">除法</h2>
-<p>就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂，这里给出详细步骤：</p>
-<ol>
-<li>准备好记录结果与记录余数的变量。</li>
-<li>从最高位开始往最低位遍历大数。</li>
-<li>将余数乘十并加上大数的这一位，作为新的被除数。</li>
-<li>记录新的被除数除以小数的商与新余数。</li>
-<li>去掉前导零。</li>
-</ol>
-<p><em>tips: 如果你用的是<code>vector</code>储存，请在第5步前反转队列。（详见代码）</em></p>
-<h1>代码</h1>
-<h2 id="乘法-2">乘法</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mul</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i]*b;<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="除法-2">除法</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;,<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">div</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,<span class="hljs-type">int</span> &amp;b)&#123;<span class="hljs-comment">//同时返回结果和余数</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        t=t*<span class="hljs-number">10</span>+a[i];<br>        c.<span class="hljs-built_in">push_back</span>(t/b);<span class="hljs-comment">//注意，这里是从最高位开始往最低位储存，所以最后要先反转过来。</span><br>        t%=b;<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(c.<span class="hljs-built_in">begin</span>(),c.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//记得#include&lt;algorithm&gt;</span><br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> &#123;c,t&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>lowbit是树状数组的基础啊，其重要性可想而知。</p>
+<h1>模板</h1>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&amp;-a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1>演算</h1>
+<p>众所周知，在二进制中，<code>-a</code>等同于<code>~a+1</code>（a的值取反再加一）</p>
+<p>a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。</p>
+<p>故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它后面的数字照样是原数取反的结果。</p>
+<p>这时候进行与运算，那么a中第一个1前面的全都是0，-a中第一个1前面的也全都是0，新数就全是0；</p>
+<p>第一个1后面的全都和原数取反，所以在新数中也是0。故而，就得到了第一个1组成的新数。</p>
+<p>举例：</p>
+<blockquote>
+<p>a=1010011000<br>
+~a=0101100111<br>
+-a=~a+1=0101101000<br>
+a&amp;-a=1010011000&amp;0101101000=0000001000</p>
+</blockquote>
+<h1>例题</h1>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/803/">AcWing801-二进制中1的个数</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> num&amp;-num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(a)&#123;<br>            a-=<span class="hljs-built_in">lowbit</span>(a);<br>            ans++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h1>完结撒花o(<em>￣︶￣</em>)o</h1>
 
                 
@@ -549,7 +547,7 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/hprc/" class="print-no-link">#高精度</a>
+        <a href="/tags/btam/" class="print-no-link">#位运算</a>
       
     </div>
   
@@ -561,8 +559,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</div>
-      <div>http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/</div>
+      <div>[编程笔记]-Lowbit取最小1</div>
+      <div>http://githarlem.github.io/2024/07/31/Lowbit/</div>
     </div>
     <div class="license-meta">
       
@@ -574,13 +572,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月29日</div>
+          <div>2024年7月31日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月30日</div>
+          <div>2024年7月31日</div>
         </div>
       
       
