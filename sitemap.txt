@@ -1,9 +1,10 @@
+http://githarlem.github.io/2024/07/31/Discretization/
+http://githarlem.github.io/2024/07/28/Binary-Search/
 http://githarlem.github.io/2024/07/31/Lowbit/
 http://githarlem.github.io/2024/07/31/Two-Pointers/
 http://githarlem.github.io/2024/07/30/Adjacent-Difference/
 http://githarlem.github.io/2024/07/30/Partial-Sum/
 http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/
-http://githarlem.github.io/2024/07/28/Binary-Search/
 http://githarlem.github.io/2024/07/28/High-Precision-AddSub/
 http://githarlem.github.io/2024/07/27/Merge-Sort/
 http://githarlem.github.io/2024/07/26/Quick-Sort/
@@ -20,5 +21,6 @@ http://githarlem.github.io/tags/srch/
 http://githarlem.github.io/tags/btam/
 http://githarlem.github.io/tags/sort/
 http://githarlem.github.io/tags/tpts/
+http://githarlem.github.io/tags/dctz/
 http://githarlem.github.io/categories/CodeNotes/
 http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/

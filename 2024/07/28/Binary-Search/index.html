@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-07-28T08:17:37.000Z">
-<meta property="article:modified_time" content="2024-07-29T06:29:35.107Z">
+<meta property="article:modified_time" content="2024-07-31T12:01:46.123Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -262,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -332,7 +332,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(9)</span>
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -359,7 +359,7 @@
         aria-expanded="true"
       >
         基础算法
-        <span class="list-group-count">(9)</span>
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -452,6 +452,15 @@
         </a>
       
     
+      
+      
+        <a href="/2024/07/31/Discretization/" title="[编程笔记]-Discretization离散化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Discretization离散化</span>
+        </a>
+      
+    
   </div>
 
         
@@ -516,6 +525,15 @@
 <p><strong>循环条件要写成边界之差大于一个较小值！（通常为1e-6以下，具体要求随题目而定）</strong></p>
 <p><em>tips: 若题目有要求，则差值至少比保留小数位数多两位。</em></p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">double</span> l=<span class="hljs-number">0</span>,r=x;<br><span class="hljs-keyword">while</span>(r-l&gt;<span class="hljs-number">1e-6</span>)&#123;<br>	<span class="hljs-type">double</span> m=(l+r)/<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(m))r=m;<br>	<span class="hljs-keyword">else</span> l=m;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p><em>update: 2024&#x2F;7&#x2F;31</em><br>STL库中有两个快速实现二分查找的函数。</p>
+<h2 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound()"></a>upper_bound()</h2><p>查询第一个<strong>大于</strong>要求值的数，返回其<strong>迭代器</strong>。</p>
+<p>故而，如果要获得其坐标，记得减去第一个元素的迭代器。</p>
+<p>模板以<code>vector</code>为例。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bfind</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">upper_bound</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>(),num)-vec.<span class="hljs-built_in">begin</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound()"></a>lower_bound()</h2><p>和上一个差不多，查询第一个<strong>大于等于</strong>要求值的数，返回其<strong>迭代器</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bfind</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> <span class="hljs-built_in">lower_bound</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>(),num)-vec.<span class="hljs-built_in">begin</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
@@ -597,7 +615,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月29日</div>
+          <div>2024年7月31日</div>
         </div>
       
       
