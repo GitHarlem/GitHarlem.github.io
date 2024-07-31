@@ -17,6 +17,6 @@ http://githarlem.github.io/tags/bnry/
 http://githarlem.github.io/tags/srch/
 http://githarlem.github.io/tags/hprc/
 http://githarlem.github.io/tags/sort/
-http://githarlem.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/
+http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/categories/CodeNotes/
 http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/
