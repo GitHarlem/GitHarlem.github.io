@@ -136,6 +136,13 @@
   </url>
   
   <url>
+    <loc>http://githarlem.github.io/tags/hprc/</loc>
+    <lastmod>2024-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/tags/bnry/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,7 +157,7 @@
   </url>
   
   <url>
-    <loc>http://githarlem.github.io/tags/hprc/</loc>
+    <loc>http://githarlem.github.io/tags/btam/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -165,13 +172,6 @@
   
   <url>
     <loc>http://githarlem.github.io/tags/tpts/</loc>
-    <lastmod>2024-07-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://githarlem.github.io/tags/btam/</loc>
     <lastmod>2024-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
