@@ -1,6 +1,7 @@
-http://githarlem.github.io/2024/08/01/Stack/
+http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/01/Monotonic-Stack/
 http://githarlem.github.io/2024/08/01/Queue/
+http://githarlem.github.io/2024/08/01/Stack/
 http://githarlem.github.io/2024/08/01/Double-Linked-Lists/
 http://githarlem.github.io/2024/08/01/Single-Linked-Lists/
 http://githarlem.github.io/2024/07/31/Discretization/
@@ -31,6 +32,7 @@ http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/stck/
 http://githarlem.github.io/tags/quue/
 http://githarlem.github.io/tags/hstl/
+http://githarlem.github.io/tags/mvwd/
 http://githarlem.github.io/categories/CodeNotes/
 http://githarlem.github.io/categories/CodeNotes/DataStructure/
 http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/

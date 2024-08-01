@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://githarlem.github.io/2024/08/01/Stack/</loc>
+    <loc>http://githarlem.github.io/2024/08/01/Monotonic-Queue/</loc>
     
     <lastmod>2024-08-01</lastmod>
     
@@ -21,6 +21,15 @@
   
   <url>
     <loc>http://githarlem.github.io/2024/08/01/Queue/</loc>
+    
+    <lastmod>2024-08-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/2024/08/01/Stack/</loc>
     
     <lastmod>2024-08-01</lastmod>
     
@@ -261,6 +270,13 @@
   
   <url>
     <loc>http://githarlem.github.io/tags/hstl/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/tags/mvwd/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
