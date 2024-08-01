@@ -3,6 +3,430 @@
   
   
   
+  <entry>
+    <title>[编程笔记]-Double-Linked_Lists双链表</title>
+    <link href="/2024/08/01/Double-Linked-Lists/"/>
+    <url>/2024/08/01/Double-Linked-Lists/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于双链表和单链表基本上一毛一样，所以不会重新再写一遍链表基本操作，详见<a href="https://githarlem.github.io/2024/08/01/Single-Linked-Lists/">“[编程笔记]-Single-Linked_Lists单链表”</a>。</p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>就是双向链表，每个节点既指向后一个元素，又指向前一个元素。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><em>对没错就是这么懒( •̀ ω •́ )✧</em></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Double_linked_lists</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> head,tail,cnt;<br>        <span class="hljs-type">int</span> e[N],ne[N],la[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> n,<span class="hljs-type">int</span> h=<span class="hljs-number">0</span>)</span></span>&#123;<br>            head=h;tail=n<span class="hljs-number">+1</span>;<br>            ne[head]=tail;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_next</span><span class="hljs-params">(<span class="hljs-type">int</span> k,<span class="hljs-type">int</span> x)</span></span>&#123;<br>            ++cnt;<br>            e[cnt]=x;<br>            ne[cnt]=ne[k];<br>            ne[k]=cnt;<br>            la[cnt]=k;<br>            la[ne[cnt]]=cnt;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_last</span><span class="hljs-params">(<span class="hljs-type">int</span> k,<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-comment">//其实这里可以直接转成add_next()，但为了方便学习还是手打了一遍。</span><br>            ++cnt;<br>            e[cnt]=x;<br>            la[cnt]=la[k];<br>            la[k]=cnt;<br>            ne[la[cnt]]=cnt;<br>            ne[cnt]=k;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span></span>&#123;<span class="hljs-comment">//删除编号为k的节点。</span><br>            ne[la[k]]=ne[k];<br>            la[ne[k]]=la[k];<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">get</span><span class="hljs-params">()</span></span>&#123;<br>            vector&lt;<span class="hljs-type">int</span>&gt; vec;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=ne[head];i!=tail;i=ne[i])&#123;<br>                vec.<span class="hljs-built_in">push_back</span>(e[i]);<br>            &#125;<br>            <span class="hljs-keyword">return</span> vec;<br>        &#125;<br>&#125;dll;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Single-Linked_Lists单链表</title>
+    <link href="/2024/08/01/Single-Linked-Lists/"/>
+    <url>/2024/08/01/Single-Linked-Lists/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开新章啦。</p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>链表中，每一个元素都有一个指向下一个元素的指针，这样一个链接一个，就形成了一个链式结构。</p><h1 id="动态链表"><a href="#动态链表" class="headerlink" title="动态链表"></a>动态链表</h1><p>动态链表通常就是真正意义上的链表，可以动态增加、修改、减少，但事实上用处并不大，这里就只给出模板，用以借鉴。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>&#123;<span class="hljs-comment">//组成链表的结点</span><br><span class="hljs-type">int</span> data;<br>node* next;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h1><p>在竞赛中，静态链表才是大头。同时，在之后，我们会学到<strong>链式前向星</strong>，与链表的关系不能说微乎其微，也只能说是一模一样。</p><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>拿数组去模拟链表。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>同时开两个数组，储存对应<strong>编号</strong>的节点的数据和下一个节点的<strong>编号</strong>（编号不是元素在链表中的位置序号！）</p><p>这样就能通过修改对应数组的方式实现链表操作。</p><p>具体功能在代码中给出</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Static_linked_list</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> head,tail,cnt;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">注意，头指针并不是第一个元素，而是指向第一个元素的指针，可以视作第零号元素。</span><br><span class="hljs-comment">尾指针同理，并不是最后一个元素，而是最后一个元素指向的元素，作为结束的标志。</span><br><span class="hljs-comment">*/</span><br>        <span class="hljs-type">int</span> ne[N],e[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> n,<span class="hljs-type">int</span> h=<span class="hljs-number">0</span>,<span class="hljs-type">int</span> t=<span class="hljs-number">-1</span>)</span></span>&#123;<br>            head=h;tail=t;<br>            ne[head]=tail;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> k,<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-comment">//在**编号为k**的元素**后**增加一个新元素。</span><br>            ++cnt;<span class="hljs-comment">//这就是编号，所以和位置没有任何关系。</span><br>            e[cnt]=x;<br>            ne[cnt]=ne[k];<br>            ne[k]=cnt;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span></span>&#123;<span class="hljs-comment">//删除**编号为k**的元素**后**一位元素。</span><br>            ne[k]=ne[ne[k]];<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">get</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//获取当前链表</span><br>            vector&lt;<span class="hljs-type">int</span>&gt; lis;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=ne[head];i!=tail;i=ne[i])&#123;<br>                lis.<span class="hljs-built_in">push_back</span>(e[i]);<br>            &#125;<br>            <span class="hljs-keyword">return</span> lis;<br>        &#125;<br>&#125;sll;<br></code></pre></td></tr></table></figure><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/828/">AcWing826-单链表</a></p><p>一道模板题。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Discretization离散化</title>
+    <link href="/2024/07/31/Discretization/"/>
+    <url>/2024/07/31/Discretization/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>离散化和哈希差不多，但是还是有点区别。</p><ul><li>离散化中元素按顺序获取地址，与元素值没有直接关联；而哈希中元素地址就是元素数值通过哈希函数获得的。</li><li>离散化需要二分预处理出所有地址，哈希是查询时在线计算地址。</li></ul><p>如果有需要，可以看看哈希：</p><p><a href="https://githarlem.github.io/Hash">“[编程笔记]-Hash哈希”</a></p><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>当遇到数值地址范围很大、数值量很少的问题时，可以使用离散化（或哈希）。</p><p>对原数组中所有地址进行排序、去重，然后记录每个地址对应的新地址，再用新地址储存元素，需要旧地址时以新地址为下标查询完成排序去重的数组即可。</p><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">sort</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//排序</span><br>vec.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>()),vec.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//去重</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> item:orgn)&#123;<span class="hljs-comment">//用pair储存加值操作，这里执行</span><br><span class="hljs-type">int</span> x=<span class="hljs-built_in">bfind</span>(item.first)<span class="hljs-comment">//二分查询新地址</span><br><span class="hljs-type">int</span> c=item.second;<span class="hljs-comment">//加值</span><br>a[x]+=c;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/804/">AcWing802-区间和</a></p><p>这是一道融合了前缀和、二分查找、离散化的<del>毒瘤</del>好题，值得一刷。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; pii;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">3e5</span><span class="hljs-number">+5</span>;<span class="hljs-comment">//增值操作一次一个地址，查询操作一次两个地址，一共三倍的大小。</span><br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> x,c;<br><span class="hljs-type">int</span> l,r;<br><span class="hljs-type">int</span> a[N],s[N];<br><br>vector&lt;<span class="hljs-type">int</span>&gt; locs;<span class="hljs-comment">//储存所有地址</span><br>vector&lt;pii&gt; add,ask;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bfind</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<span class="hljs-comment">//这里本来应该有个二分，但是我懒（￣︶￣）不会的可以去二分那一篇笔记看最后的拓展</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">lower_bound</span>(locs.<span class="hljs-built_in">begin</span>(),locs.<span class="hljs-built_in">end</span>(),num)-locs.<span class="hljs-built_in">begin</span>()<span class="hljs-number">+1</span>;<span class="hljs-comment">//之所以加一是为了方便前缀和</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dis</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">sort</span>(locs.<span class="hljs-built_in">begin</span>(),locs.<span class="hljs-built_in">end</span>());<br>    locs.<span class="hljs-built_in">erase</span>(<span class="hljs-built_in">unique</span>(locs.<span class="hljs-built_in">begin</span>(),locs.<span class="hljs-built_in">end</span>()),locs.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> item:add)&#123;<br>        x=<span class="hljs-built_in">bfind</span>(item.first);<br>        c=item.second;<br>        a[x]+=c;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;x,&amp;c);<br>        add.<span class="hljs-built_in">push_back</span>(&#123;x,c&#125;);<br>        locs.<span class="hljs-built_in">push_back</span>(x);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;l,&amp;r);<br>        ask.<span class="hljs-built_in">push_back</span>(&#123;l,r&#125;);<br>        locs.<span class="hljs-built_in">push_back</span>(l);<br>        locs.<span class="hljs-built_in">push_back</span>(r);<br>    &#125;<br>    <span class="hljs-built_in">dis</span>();<span class="hljs-comment">//离散化</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;locs.<span class="hljs-built_in">size</span>()<span class="hljs-number">+1</span>;i++)&#123;<span class="hljs-comment">//因为所有地址手动加了1，所以最大值也要加1。</span><br>        s[i]=s[i<span class="hljs-number">-1</span>]+a[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> item:ask)&#123;<br>        l=<span class="hljs-built_in">bfind</span>(item.first);<br>        r=<span class="hljs-built_in">bfind</span>(item.second);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[r]-s[l<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>离散化</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Lowbit取最小1</title>
+    <link href="/2024/07/31/Lowbit/"/>
+    <url>/2024/07/31/Lowbit/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>lowbit是树状数组的基础啊，其重要性可想而知。</p><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br><span class="hljs-keyword">return</span> a&amp;-a;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="演算"><a href="#演算" class="headerlink" title="演算"></a>演算</h1><p>众所周知，在二进制中，<code>-a</code>等同于<code>~a+1</code>（a的值取反再加一）</p><p>a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。</p><p>故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它后面的数字照样是原数取反的结果。</p><p>这时候进行与运算，那么a中第一个1前面的全都是0，-a中第一个1前面的也全都是0，新数就全是0；</p><p>第一个1后面的全都和原数取反，所以在新数中也是0。故而，就得到了第一个1组成的新数。</p><p>举例：</p><blockquote><p>a&#x3D;1010011000<br><del>a&#x3D;0101100111<br>-a&#x3D;</del>a+1&#x3D;0101101000<br>a&amp;-a&#x3D;1010011000&amp;0101101000&#x3D;0000001000</p></blockquote><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/803/">AcWing801-二进制中1的个数</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> num&amp;-num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(a)&#123;<br>            a-=<span class="hljs-built_in">lowbit</span>(a);<br>            ans++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>位运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Two_Pointers双指针</title>
+    <link href="/2024/07/31/Two-Pointers/"/>
+    <url>/2024/07/31/Two-Pointers/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近时间紧迫，从这篇文章开始，就着重记笔记了，不再提供详细教程。</p><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>双指针算法，名义上说就是使用两个指针循环（一个或多个）数组，但实际上通常用不到指针。</p><p>一般情况下，双指针算法用于特定情境，将O(n<sup>2</sup>)的时间复杂度简化成O(n)。</p><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>一般情况下，形如下方所示的代码，在满足特定需求的情况下，都可以转化成双指针来做。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)&#123;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br><span class="hljs-comment">//功能代码</span><br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>转化成：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br><span class="hljs-keyword">while</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br>j++;<br>&#125;<br><span class="hljs-comment">//功能代码</span><br>&#125;<br></code></pre></td></tr></table></figure><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/801/">AcWing799-最长连续不重复子序列</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,ans;<br><span class="hljs-type">int</span> a[N],s[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,j=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[a[i]]++;<br>        <span class="hljs-keyword">while</span>(s[a[i]]&gt;<span class="hljs-number">0</span>)&#123;<br>            s[a[j++]]--;<br>        &#125;<br>        ans=<span class="hljs-built_in">max</span>(ans,i-j<span class="hljs-number">+1</span>);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Adjacent_Difference差分</title>
+    <link href="/2024/07/30/Adjacent-Difference/"/>
+    <url>/2024/07/30/Adjacent-Difference/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>差分是前缀和的逆运算，因此思想与之差不多。所以，为了更好地理解，如果有需要，请事先阅读<a href="https://githarlem.github.io/2024/07/30/Partial-Sum/">“[编程笔记]-Partial_Sum前缀和”</a>。</p><h1 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h1><h2 id="思想及实现"><a href="#思想及实现" class="headerlink" title="思想及实现"></a>思想及实现</h2><p>同理，一维差分也可视为对差分的引入。</p><p>差分作为前缀和的逆运算，定义也与之相反。具体地说，对于数组<code>a[]</code>，**它的差分数组前i项之和等于a[i]**，即为<code>a[i]=b[0]+b[1]+...+b[i]</code>。</p><p>差分的主要作用是快速实现<strong>区间修改</strong>，若要使从<em>l</em>到<em>r</em>的区间内元素同时增加<em>c</em>，令<code>b[i]=a[i]-a[i-1]</code>，则可以<strong>使b数组第l位+c、第r+1位-c，那么从l开始，往后所有元素+c，直到第r+1位恢复原状</strong>。</p><p>上述思想十分重要，将会对后面的二维差分部分有很大帮助。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> l,r,c;<br><span class="hljs-type">int</span> a[N],b[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r,<span class="hljs-type">int</span> v)</span></span>&#123;<br>    b[l]+=v;<br>    b[r<span class="hljs-number">+1</span>]-=v;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        <span class="hljs-built_in">insert</span>(i,i,a[i]);<span class="hljs-comment">//初始化b数组，视作在第i位增加a[i]大小。</span><br>    &#125;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;l,&amp;r,&amp;c);<br>        <span class="hljs-built_in">insert</span>(l,r,c);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        a[i]=a[i<span class="hljs-number">-1</span>]+b[i];<span class="hljs-comment">//递推实现差分</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,a[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h1><p><strong>难点！难点！难点！</strong></p><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>首先是初始化。为了方便，我这边就直接定义我的算法中差分数组的作用了：</p><p>以原点为左上角、当前点为右下角形成矩阵，当前点的数值，就是差分数组在矩阵内的所有元素之和。</p><p>因此，当前点的数值也就是除去当前点形成的“L”型加上当前点位置上的差分数组。</p><p>鉴于该过程与前缀和中的过程基本上完全一致，只需要调转名称即可，故而就不额外配图，如有需要，前言部分中链接自取。</p><h3 id="区间修改"><a href="#区间修改" class="headerlink" title="区间修改"></a>区间修改</h3><p>然后就是区间修改部分了：</p><h4 id="修改单点的效果"><a href="#修改单点的效果" class="headerlink" title="修改单点的效果"></a>修改单点的效果</h4><p>为了理解算法，我们要先理解如果修改一个点的差分值会发生什么。</p><p>已知每个点的数值与其对应的“L”型有关，又可直接视作它与原点形成的矩阵，因而一旦其矩阵中包含被修改的元素，其数值也会收到影响：</p><p><img src="/t0.png" alt="红色为修改元素，图中只有棕色点受影响"></p><p>故而会受到影响的元素图如下：</p><p><img src="/t1.png" alt="如图"></p><p>那么现在再去理解区间修改就简单多了。</p><h4 id="步入正轨"><a href="#步入正轨" class="headerlink" title="步入正轨"></a>步入正轨</h4><p>已知受影响区间在当前点的右下角，也就是和前缀和刚好相反的，那么在此就不重复推算思路了，也就是矩阵减去“L”型。</p><p>而差分中无论是矩阵还是“L”型都在右下方，其他与前缀和基本完全一致。</p><p>如果需要详细推演过程麻烦上前言链接自取。</p><h3 id="更新原数组"><a href="#更新原数组" class="headerlink" title="更新原数组"></a>更新原数组</h3><p>根据初始化部分中对于差分数组的定义，我们可以将原数组视作前缀和、差分数组视作前缀和中的原数组，直接代公式即可。</p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="区间修改-1"><a href="#区间修改-1" class="headerlink" title="区间修改"></a>区间修改</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x1,<span class="hljs-type">int</span> y1,<span class="hljs-type">int</span> x2,<span class="hljs-type">int</span> y2,<span class="hljs-type">int</span> c)</span></span>&#123;<br>    b[x1][y1]+=c;<br>    b[x1][y2<span class="hljs-number">+1</span>]-=c;<br>    b[x2<span class="hljs-number">+1</span>][y1]-=c;<br>    b[x2<span class="hljs-number">+1</span>][y2<span class="hljs-number">+1</span>]+=c;<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="更新原数组-1"><a href="#更新原数组-1" class="headerlink" title="更新原数组"></a>更新原数组</h3><p><code>a[i][j]=a[i-1][j]+a[i][j-1]-a[i-1][j-1]+b[i][j];</code></p><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><span class="hljs-type">int</span> n,m,q;<br><span class="hljs-type">int</span> a[N][N],b[N][N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x1,<span class="hljs-type">int</span> y1,<span class="hljs-type">int</span> x2,<span class="hljs-type">int</span> y2,<span class="hljs-type">int</span> c)</span></span>&#123;<br>    b[x1][y1]+=c;<br>    b[x1][y2<span class="hljs-number">+1</span>]-=c;<br>    b[x2<span class="hljs-number">+1</span>][y1]-=c;<br>    b[x2<span class="hljs-number">+1</span>][y2<span class="hljs-number">+1</span>]+=c;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;q);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i][j]);<br>            <span class="hljs-built_in">insert</span>(i,j,i,j,a[i][j]);<span class="hljs-comment">//初始化b数组</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> x1,y1,x2,y2,c;<br>    <span class="hljs-keyword">while</span>(q--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d%d%d&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2,&amp;c);<br>        <span class="hljs-built_in">insert</span>(x1,y1,x2,y2,c);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;<br>            a[i][j]=a[i<span class="hljs-number">-1</span>][j]+a[i][j<span class="hljs-number">-1</span>]-a[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+b[i][j];<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,a[i][j]);<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>前缀和与差分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Partial_Sum前缀和</title>
+    <link href="/2024/07/30/Partial-Sum/"/>
+    <url>/2024/07/30/Partial-Sum/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一维前缀和"><a href="#一维前缀和" class="headerlink" title="一维前缀和"></a>一维前缀和</h1><h2 id="思想及实现"><a href="#思想及实现" class="headerlink" title="思想及实现"></a>思想及实现</h2><p>这里主要还是引入<strong>前缀和</strong>的思想，这个算法在后面还是挺常用的，可以搭配各种算法，减少时间复杂度。</p><p>前缀和呢，就是一个数组的某段前缀内的所有元素之和。举个栗子，<code>&#123;0,1,2,3,4,5,6&#125;</code>，对于这个数组，前四位的前缀和是<code>0+1+2+3==6</code>，前三位的前缀和是<code>0+1+2==3</code>。</p><p>前缀和的主要作用就是查询一段区间的元素之和。令<code>s[i]</code>表示<code>a[]</code>前i位的和，则<code>a[i]</code>就等于<code>s[i]-s[i-1]</code>。同理可推，<code>a[l]+a[l+1]+a[l+2]+...+a[r-2]+a[r-1]+a[r]</code>就等于<code>s[r]-s[l-1]</code>。</p><p><em>减去<code>s[l-1]</code>的原因：a[l]也在所需要的区间内，因此不能减去a[l]而只需减去a[l]左侧的全部元素。</em></p><p>通常情况下，我们会采取<strong>递推</strong>的方式预处理初前缀和，处理的复杂度是<code>O(n)</code>，而之后单次查询的复杂度则降到了<code>O(1)</code>。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N =<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> a[N],s[N];<br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> l,r;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[i]=s[i<span class="hljs-number">-1</span>]+a[i];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;l,&amp;r);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[r]-s[l<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从这里开始，我们接触的算法就开始烧脑了。</p><p>鉴于二位前缀和的复杂性（当然其实也没多复杂），我这边会搭配图片进行讲解。</p><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>二位前缀和呢，若将数组视作一个矩形（左上角为原点），则前缀和储存的就是以原点为左上角、终点为右下角的矩形内包括的所有元素的和。</p><p>因此，若要求一个点的前缀和，只需求出它对应矩形缺了它这个角形成的“L”型图形内的前缀和，再加上这个点本身的数值即可。具体怎么求“L”，我将会在实现部分中写。</p><p><img src="/init.png" alt="&quot;初始化&quot;"></p><p>接下来就是查询的时候了：</p><p>在二维前缀和问题中，所求问题多半是一段二维区间内的元素和。循序渐进，我们从查询单个元素开始说起：</p><p>（下图中每个方格表示一个元素，实心格子表示待求元素）</p><p><img src="/p0.png" alt="&quot;问题1&quot;"></p><p>其实也很简单，我们只需要把求前缀和的过程反过来就行了：用当前元素前缀和减去那个“L”型元素和即可。</p><p>延伸到一段元素，与单个元素的思路一模一样——用右下角元素的前缀和，减去包裹着整个区间的“L”型即可。</p><p><img src="/p1.png" alt="&quot;问题2&quot;"></p><h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>不管是求前缀还是计算区间，重点就是求L型。既然我们已知当前点左侧上侧的全部前缀和，为什么不把这个复杂图形切割成我们已知的图形去做呢？</p><p>很简单，把它分成如图所示的两个前缀和，再减去它们重叠的那部分即可。</p><p><img src="/s0.png" alt="&quot;解决&quot;"></p><p>已经有了思路，下面就直接上公式了:</p><p>求前缀和：<br>s[i][j]&#x3D;s[i][j-1]+s[i-1][j]-s[i-1][j-1]+a[i][j]</p><p>求[x1][y1]到[x2][y2]的元素之和:<br>s[x2][y2]-s[x2][y1-1]-s[x1-1][y2]+s[x1-1][y1-1]</p><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,m,q;<br><span class="hljs-type">int</span> a[N][N],s[N][N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;q);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i][j]);<br>            s[i][j]=s[i][j<span class="hljs-number">-1</span>]+s[i<span class="hljs-number">-1</span>][j]-s[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+a[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> x1,y1,x2,y2;<br>    <span class="hljs-keyword">while</span>(q--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d%d&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[x2][y2]-s[x2][y1<span class="hljs-number">-1</span>]-s[x1<span class="hljs-number">-1</span>][y2]+s[x1<span class="hljs-number">-1</span>][y1<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>前缀和与差分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</title>
+    <link href="/2024/07/29/High-Precision-MulDiv-Simple/"/>
+    <url>/2024/07/29/High-Precision-MulDiv-Simple/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与<code>int</code>类型的小数的乘除计算，大数乘大数将会在<a href="https://githarlem.github.io/High-Precison-MulDiv-Complex">“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”</a>教学。</p><p>emmm就这样吧(。·ω·。)</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p>其实就跟<strong>列竖式</strong>差不多，把大数列在下面、小数列在上面，直接乘。</p><p><em>别忘了去前导0~</em></p><h2 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h2><p>就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂，这里给出详细步骤：</p><ol><li>准备好记录结果与记录余数的变量。</li><li>从最高位开始往最低位遍历大数。</li><li>将余数乘十并加上大数的这一位，作为新的被除数。</li><li>记录新的被除数除以小数的商与新余数。</li><li>去掉前导零。</li></ol><p><em>tips: 如果你用的是<code>vector</code>储存，请在第5步前反转队列。（详见代码）</em></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="乘法-1"><a href="#乘法-1" class="headerlink" title="乘法"></a>乘法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mul</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i]*b;<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="除法-1"><a href="#除法-1" class="headerlink" title="除法"></a>除法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;,<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">div</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,<span class="hljs-type">int</span> &amp;b)&#123;<span class="hljs-comment">//同时返回结果和余数</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        t=t*<span class="hljs-number">10</span>+a[i];<br>        c.<span class="hljs-built_in">push_back</span>(t/b);<span class="hljs-comment">//注意，这里是从最高位开始往最低位储存，所以最后要先反转过来。</span><br>        t%=b;<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(c.<span class="hljs-built_in">begin</span>(),c.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//记得#include&lt;algorithm&gt;</span><br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> &#123;c,t&#125;;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>高精度</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-High_Precision(Add and Sub)高精度加减法</title>
+    <link href="/2024/07/28/High-Precision-AddSub/"/>
+    <url>/2024/07/28/High-Precision-AddSub/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这篇博客并不打算多细致地讲解高精度，但是！但是！我会给出代码模板，并且在注释中讲解大多数内容。</p><p>就这样吧。（￣︶￣）</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>emmm<strong>小学数学</strong>会吧？<del>不会您先别看了</del> 就用小学数学的思路做就完事了。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//这里使用vector储存大数，因为它自带size函数，当然直接用数组也没有问题。</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">add</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,vector&lt;<span class="hljs-type">int</span>&gt; &amp;b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<br>    <span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||i&lt;b.<span class="hljs-built_in">size</span>();i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i];<br>        <span class="hljs-keyword">if</span>(i&lt;b.<span class="hljs-built_in">size</span>())t+=b[i];<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(t)c.<span class="hljs-built_in">push_back</span>(t);<span class="hljs-comment">//最后可能还剩一个进位，不要忘了加回去。</span><br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure><p><em>update 2024&#x2F;7&#x2F;29: 一种更简洁的写法</em></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">add</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,vector&lt;<span class="hljs-type">int</span>&gt; &amp;b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<br>    <span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||i&lt;b.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i];<br>        <span class="hljs-keyword">if</span>(i&lt;b.<span class="hljs-built_in">size</span>())t+=b[i];<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="减法"><a href="#减法" class="headerlink" title="减法"></a>减法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//同上</span><br><span class="hljs-comment">//此函数用于判断两个大数大小，下方的减法函数只支持大减小。</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,vector&lt;<span class="hljs-type">int</span>&gt; &amp;b)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(a.<span class="hljs-built_in">size</span>()!=b.<span class="hljs-built_in">size</span>())<span class="hljs-keyword">return</span> a.<span class="hljs-built_in">size</span>()&gt;b.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        <span class="hljs-keyword">if</span>(a[i]!=b[i])<span class="hljs-keyword">return</span> a[i]&gt;b[i];<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-comment">//此函数用于大减小，搭配上方函数使用即可。</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sub</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,vector&lt;<span class="hljs-type">int</span>&gt; &amp;b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<br>    <span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>();i++)&#123;<br>        t+=a[i];<br>        <span class="hljs-keyword">if</span>(i&lt;b.<span class="hljs-built_in">size</span>())t-=b[i];<br>        c.<span class="hljs-built_in">push_back</span>((t<span class="hljs-number">+10</span>)%<span class="hljs-number">10</span>);<span class="hljs-comment">//此处浓缩了两种可能：t&lt;0，返回t+10；t≥0，返回t。</span><br>        <span class="hljs-keyword">if</span>(t&lt;<span class="hljs-number">0</span>)t=<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">else</span> t=<span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<span class="hljs-comment">//删除前置0。当只剩一位时不删（不然0就没了）。</span><br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>高精度</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Binary_Search二分查找</title>
+    <link href="/2024/07/28/Binary-Search/"/>
+    <url>/2024/07/28/Binary-Search/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>二分也算是比较普遍且常用的一个算法了，并且在前期还是个小难点，其相对复杂的类型以及边界问题通常让<em>蒟蒻</em>们很是头疼。</p><p>这一篇博客主要讲解<strong>二分查找</strong>的原理、模板等（不是<strong>二分答案</strong>），并不着重深入讲解其各种变式。</p><p>就这样吧(～￣▽￣)～</p><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>二分查找就是把一段元素分成两半，用中间值进行对比，判断查找元素在其左侧或右侧，并在那一半进行查找，以到达O(logn)的复杂度。</p><p>因此，理论上来说，所有<strong>单调性</strong>问题都可以用二分解决。当然，<strong>并非只有单调性问题才可以用二分解决</strong>。</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>二分的实现其实并不难，搞清楚原理后，基本上就没什么问题了。</p><p>这里还是大概贴下思路：</p><ol><li>确定搜索范围。</li><li>获取中间值。<strong>！注意，不同二分方式在这一步的具体实现会有所不同，详见下方！</strong></li><li>判断答案在左侧还是右侧。</li><li>在答案所在一侧重新二分，循环直到范围缩为1。</li><li>判断获得元素是否为所求，若否，则搜索范围中无需要元素。</li></ol><h2 id="整数二分"><a href="#整数二分" class="headerlink" title="整数二分"></a>整数二分</h2><p><em>整数二分有<strong>两种</strong>形式，我个人将其命名为<strong>左倾二分</strong>以及<strong>右倾二分</strong>（非！官！方！命！名！）</em></p><h3 id="左倾二分"><a href="#左倾二分" class="headerlink" title="左倾二分"></a>左倾二分</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>所谓_左倾_，就是说搜索到的答案<strong>倾向于向左侧靠近</strong>。举例地说，当一段元素中有连续的一段相同元素时，搜索此元素，得到的将会是这一段中最左侧的坐标。</p><h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><ul><li>在计算中间坐标时，<strong>向下取整</strong>。原因会在第二点给出。</li><li>若中间值<strong>大于或等于</strong>答案，则将右边界重设为中间坐标。<strong>因此，中间坐标需向下取整，否则会陷入死循环</strong>。</li><li>否则，将左边界重设为中间坐标**+1**，原因是中间坐标已经确定不是答案，因此不在搜索范围内。</li></ul><h4 id="左倾原因"><a href="#左倾原因" class="headerlink" title="左倾原因"></a>左倾原因</h4><p>若当前搜索范围内值都一致，则都满足<strong>大于或等于</strong>答案，那么会一直重设右边界。同时，中间坐标向下取整，故而范围会一直向左缩小，直到缩小至一个元素，那么就是最左侧的元素了。</p><h3 id="右倾二分"><a href="#右倾二分" class="headerlink" title="右倾二分"></a>右倾二分</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>_右倾_定义可借鉴_左倾_，就是说搜索到的答案<strong>倾向于向右侧靠近</strong>，这里就不做具体阐释。</p><h4 id="实现方式-1"><a href="#实现方式-1" class="headerlink" title="实现方式"></a>实现方式</h4><ul><li>在计算中间坐标时，<strong>向上取整</strong>。原因会在第三点给出。</li><li>若中间值<strong>大于</strong>答案，则将右边界重设为中间坐标**-1**，原因是中间坐标已经确定不是答案，因此不在搜索范围内。</li><li>否则，将左边界重设为中间坐标。<strong>因此，中间坐标需向上取整，否则会陷入死循环</strong>。</li></ul><h4 id="右倾原因"><a href="#右倾原因" class="headerlink" title="右倾原因"></a>右倾原因</h4><p>若当前搜索范围内值都一致，则都满足<strong>小于或等于</strong>答案，那么会一直重设左边界。同时，中间坐标向上取整，故而范围会一直向右缩小，直到缩小至一个元素，那么就是最右侧的元素了。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><em>代码中check函数不固定，视需求而定</em></p><h4 id="左倾二分-1"><a href="#左倾二分-1" class="headerlink" title="左倾二分"></a>左倾二分</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> l=<span class="hljs-number">0</span>,r=n<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">while</span>(l&lt;r)&#123;<br>    <span class="hljs-type">int</span> m=l+r&gt;&gt;<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(m))r=m;<br>    <span class="hljs-keyword">else</span> l=m<span class="hljs-number">+1</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="右倾二分-1"><a href="#右倾二分-1" class="headerlink" title="右倾二分"></a>右倾二分</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> l=<span class="hljs-number">0</span>,r=n<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">while</span>(l&lt;r)&#123;<br>    <span class="hljs-type">int</span> m=l+r<span class="hljs-number">+1</span>&gt;&gt;<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(m))r=m<span class="hljs-number">-1</span>;<br>    <span class="hljs-keyword">else</span> l=m;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="浮点数二分"><a href="#浮点数二分" class="headerlink" title="浮点数二分"></a>浮点数二分</h2><h3 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h3><p>浮点数二分相对于整数二分来说简单了很多，但需要注意的是，通常情况下是不能真正搜索到答案的，因此，当当前值与答案之间的差距足够小时，<strong>我们就视之为答案即可</strong>。</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>和整数二分差不多，取中间值时不存在取整问题，边界开闭随个人喜好。</p><p><strong>循环条件要写成边界之差大于一个较小值！（通常为1e-6以下，具体要求随题目而定）</strong></p><p><em>tips: 若题目有要求，则差值至少比保留小数位数多两位。</em></p><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">double</span> l=<span class="hljs-number">0</span>,r=x;<br><span class="hljs-keyword">while</span>(r-l&gt;<span class="hljs-number">1e-6</span>)&#123;<br><span class="hljs-type">double</span> m=(l+r)/<span class="hljs-number">2</span>;<br><span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(m))r=m;<br><span class="hljs-keyword">else</span> l=m;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h1><p><em>update: 2024&#x2F;7&#x2F;31</em><br>STL库中有两个快速实现二分查找的函数。</p><h2 id="upper-bound"><a href="#upper-bound" class="headerlink" title="upper_bound()"></a>upper_bound()</h2><p>查询第一个<strong>大于</strong>要求值的数，返回其<strong>迭代器</strong>。</p><p>故而，如果要获得其坐标，记得减去第一个元素的迭代器。</p><p>模板以<code>vector</code>为例。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bfind</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">upper_bound</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>(),num)-vec.<span class="hljs-built_in">begin</span>();<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="lower-bound"><a href="#lower-bound" class="headerlink" title="lower_bound()"></a>lower_bound()</h2><p>和上一个差不多，查询第一个<strong>大于等于</strong>要求值的数，返回其<strong>迭代器</strong>。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">bfind</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br><span class="hljs-keyword">return</span> <span class="hljs-built_in">lower_bound</span>(vec.<span class="hljs-built_in">begin</span>(),vec.<span class="hljs-built_in">end</span>(),num)-vec.<span class="hljs-built_in">begin</span>();<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>二分</tag>
+      
+      <tag>搜索</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Merge_Sort归并排序</title>
+    <link href="/2024/07/27/Merge-Sort/"/>
+    <url>/2024/07/27/Merge-Sort/</url>
+    
+    <content type="html"><![CDATA[<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>利用<strong>分治思想</strong>，把数组对半分成两份，各自排好序，再将两个排好序的数组合并成一个数组即可。</p><p>（或许有点废话？Σ(っ °Д °;)っ）</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>这里着重讲以下合并数组的过程：</p><ol><li><p>建立两个指针，指向两边各排好序的数组的首个元素。</p></li><li><p>对指针指向的元素进行对比，更小的（从小到大排序）插入临时数组，直到其中一个指针走到结尾。</p></li><li><p>把两个数组中剩下的元素插入临时数组（其实只会有一个有余，这里不做解释）</p></li><li><p>用临时数组替换原数组中对应元素段。</p></li></ol><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a[N],t[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ms</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(l&gt;=r)<span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> m=l+r&gt;&gt;<span class="hljs-number">1</span>;<br>    <span class="hljs-built_in">ms</span>(l,m);<span class="hljs-built_in">ms</span>(m<span class="hljs-number">+1</span>,r);<br>    <span class="hljs-type">int</span> k=<span class="hljs-number">0</span>,i=l,j=m<span class="hljs-number">+1</span>;<br>    <span class="hljs-keyword">while</span>(i&lt;=m&amp;&amp;j&lt;=r)&#123;<br>        <span class="hljs-keyword">if</span>(a[i]&lt;=a[j])t[k++]=a[i++];<br><span class="hljs-keyword">else</span> t[k++]=a[j++];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(i&lt;=m)t[k++]=a[i++];<br>    <span class="hljs-keyword">while</span>(j&lt;=r)t[k++]=a[j++];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=l,j=<span class="hljs-number">0</span>;i&lt;=r;i++,j++)a[i]=t[j];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>    <span class="hljs-built_in">ms</span>(<span class="hljs-number">0</span>,n<span class="hljs-number">-1</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,a[i]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>排序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Quick_Sort快速排序</title>
+    <link href="/2024/07/26/Quick-Sort/"/>
+    <url>/2024/07/26/Quick-Sort/</url>
+    
+    <content type="html"><![CDATA[<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="原始版"><a href="#原始版" class="headerlink" title="原始版"></a>原始版</h2><p>利用<strong>分治思想</strong>，新建两个数组，分别储存原数组中小于 X 或大于 X 的元素，并分别对其进行快速排序，最后重组原数组即可。（X可为任意值，推荐使用中值）</p><h2 id="进化版"><a href="#进化版" class="headerlink" title="进化版"></a>进化版</h2><p>利用<strong>分治思想</strong>以及部分<strong>双指针思想</strong>，左右各两个指针，记为 i, j。左指针一直向右，直到数组中第 i 个元素大于 x；右指针一直向左，直到数组中第 j 个元素小于x；接着左右指针<strong>对应元素</strong>互换，重复执行直到左右指针相遇。</p><h1 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h1><p>平均O(nlogn)，最大O(n<sup>2</sup>)</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> q[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">quick_sort</span><span class="hljs-params">(<span class="hljs-type">int</span> q[],<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(l&gt;=r)<span class="hljs-keyword">return</span>;<br>    <span class="hljs-type">int</span> x=q[l+r&gt;&gt;<span class="hljs-number">1</span>],i=l<span class="hljs-number">-1</span>,j=r<span class="hljs-number">+1</span>;<br>    <span class="hljs-keyword">while</span>(i&lt;j)&#123;<br>        <span class="hljs-keyword">do</span> i++;<span class="hljs-keyword">while</span>(q[i]&lt;x);<br>        <span class="hljs-keyword">do</span> j--;<span class="hljs-keyword">while</span>(q[j]&gt;x);<br>        <span class="hljs-keyword">if</span>(i&lt;j)<span class="hljs-built_in">swap</span>(q[i],q[j]);<br>    &#125;<br>    <span class="hljs-built_in">quick_sort</span>(q,l,j);<br>    <span class="hljs-built_in">quick_sort</span>(q,j<span class="hljs-number">+1</span>,r);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;q[i]);<br>    <span class="hljs-built_in">quick_sort</span>(q,<span class="hljs-number">0</span>,n<span class="hljs-number">-1</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,q[i]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>基础算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>排序</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+  
   
   <entry>
     <title>about</title>
