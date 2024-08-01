@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://githarlem.github.io/2024/08/01/Double-Linked-Lists/</loc>
+    
+    <lastmod>2024-08-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/2024/08/01/Single-Linked-Lists/</loc>
     
     <lastmod>2024-08-01</lastmod>
@@ -175,6 +184,13 @@
   </url>
   
   <url>
+    <loc>http://githarlem.github.io/tags/lkls/</loc>
+    <lastmod>2024-08-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/tags/hprc/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -190,13 +206,6 @@
   
   <url>
     <loc>http://githarlem.github.io/tags/sort/</loc>
-    <lastmod>2024-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://githarlem.github.io/tags/lkls/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -219,14 +228,14 @@
   </url>
   
   <url>
-    <loc>http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/</loc>
+    <loc>http://githarlem.github.io/categories/CodeNotes/DataStructure/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://githarlem.github.io/categories/CodeNotes/DataStructure/</loc>
+    <loc>http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/</loc>
     <lastmod>2024-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
