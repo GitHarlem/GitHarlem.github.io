@@ -19,28 +19,28 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一维前缀和思想及实现这里主要还是引入前缀和的思想，这个算法在后面还是挺常用的，可以搭配各种算法，减少时间复杂度。 前缀和呢，就是一个数组的某段前缀内的所有元素之和。举个栗子，&#123;0,1,2,3,4,5,6&#125;，对于这个数组，前四位的前缀和是0+1+2+3&#x3D;&#x3D;6，前三位的前缀和是0+1+2&#x3D;&#x3D;3。 前缀和的主要作用就是查询一段区间的元素之和。令s[i]表示a[]前i位的和，则a[i]">
+    <meta name="description" content="前言开新章啦。 概念链表中，每一个元素都有一个指向下一个元素的指针，这样一个链接一个，就形成了一个链式结构。 动态链表动态链表通常就是真正意义上的链表，可以动态增加、修改、减少，但事实上用处并不大，这里就只给出模板，用以借鉴。 1234struct node&#123;&#x2F;&#x2F;组成链表的结点	int data;	node* next;&#125;  静态链表在竞赛中，静态链表才是大头。同时，在之后，我">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Partial_Sum前缀和">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/30/Partial-Sum/index.html">
+<meta property="og:title" content="[编程笔记]-Single-Linked_Lists单链表">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/01/Single-Linked-Lists/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="一维前缀和思想及实现这里主要还是引入前缀和的思想，这个算法在后面还是挺常用的，可以搭配各种算法，减少时间复杂度。 前缀和呢，就是一个数组的某段前缀内的所有元素之和。举个栗子，&#123;0,1,2,3,4,5,6&#125;，对于这个数组，前四位的前缀和是0+1+2+3&#x3D;&#x3D;6，前三位的前缀和是0+1+2&#x3D;&#x3D;3。 前缀和的主要作用就是查询一段区间的元素之和。令s[i]表示a[]前i位的和，则a[i]">
+<meta property="og:description" content="前言开新章啦。 概念链表中，每一个元素都有一个指向下一个元素的指针，这样一个链接一个，就形成了一个链式结构。 动态链表动态链表通常就是真正意义上的链表，可以动态增加、修改、减少，但事实上用处并不大，这里就只给出模板，用以借鉴。 1234struct node&#123;&#x2F;&#x2F;组成链表的结点	int data;	node* next;&#125;  静态链表在竞赛中，静态链表才是大头。同时，在之后，我">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-30T01:09:55.000Z">
-<meta property="article:modified_time" content="2024-07-30T04:47:25.902Z">
+<meta property="article:published_time" content="2024-08-01T02:12:30.000Z">
+<meta property="article:modified_time" content="2024-08-01T02:24:02.328Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="前缀和与差分">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Partial_Sum前缀和 - HarlemBlog</title>
+  <title>[编程笔记]-Single-Linked_Lists单链表 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Partial_Sum前缀和"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Single-Linked_Lists单链表"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-30 09:09" pubdate>
-          2024年7月30日 上午
+        <time datetime="2024-08-01 10:12" pubdate>
+          2024年8月1日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          479 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -352,17 +352,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
         id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         基础算法
         <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-cca34e9f468bf2208ec04514e694f17a"
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
            role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
         
         
@@ -419,7 +419,7 @@
       
         <a href="/2024/07/30/Partial-Sum/" title="[编程笔记]-Partial_Sum前缀和"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Partial_Sum前缀和</span>
         </a>
       
@@ -470,17 +470,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
         id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         数据结构
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-0fea7c47d93da5689f31820ee525b367"
+      <div class="category-collapse collapse show" id="collapse-0fea7c47d93da5689f31820ee525b367"
            role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
         
         
@@ -492,7 +492,7 @@
       
         <a href="/2024/08/01/Single-Linked-Lists/" title="[编程笔记]-Single-Linked_Lists单链表"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Single-Linked_Lists单链表</span>
         </a>
       
@@ -519,38 +519,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Partial_Sum前缀和</h1>
+            <h1 id="seo-header">[编程笔记]-Single-Linked_Lists单链表</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="一维前缀和"><a href="#一维前缀和" class="headerlink" title="一维前缀和"></a>一维前缀和</h1><h2 id="思想及实现"><a href="#思想及实现" class="headerlink" title="思想及实现"></a>思想及实现</h2><p>这里主要还是引入<strong>前缀和</strong>的思想，这个算法在后面还是挺常用的，可以搭配各种算法，减少时间复杂度。</p>
-<p>前缀和呢，就是一个数组的某段前缀内的所有元素之和。举个栗子，<code>&#123;0,1,2,3,4,5,6&#125;</code>，对于这个数组，前四位的前缀和是<code>0+1+2+3==6</code>，前三位的前缀和是<code>0+1+2==3</code>。</p>
-<p>前缀和的主要作用就是查询一段区间的元素之和。令<code>s[i]</code>表示<code>a[]</code>前i位的和，则<code>a[i]</code>就等于<code>s[i]-s[i-1]</code>。同理可推，<code>a[l]+a[l+1]+a[l+2]+...+a[r-2]+a[r-1]+a[r]</code>就等于<code>s[r]-s[l-1]</code>。</p>
-<p><em>减去<code>s[l-1]</code>的原因：a[l]也在所需要的区间内，因此不能减去a[l]而只需减去a[l]左侧的全部元素。</em></p>
-<p>通常情况下，我们会采取<strong>递推</strong>的方式预处理初前缀和，处理的复杂度是<code>O(n)</code>，而之后单次查询的复杂度则降到了<code>O(1)</code>。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N =<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> a[N],s[N];<br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> l,r;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;n,&amp;m);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[i]=s[i<span class="hljs-number">-1</span>]+a[i];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;l,&amp;r);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[r]-s[l<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开新章啦。</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>链表中，每一个元素都有一个指向下一个元素的指针，这样一个链接一个，就形成了一个链式结构。</p>
+<h1 id="动态链表"><a href="#动态链表" class="headerlink" title="动态链表"></a>动态链表</h1><p>动态链表通常就是真正意义上的链表，可以动态增加、修改、减少，但事实上用处并不大，这里就只给出模板，用以借鉴。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>&#123;<span class="hljs-comment">//组成链表的结点</span><br>	<span class="hljs-type">int</span> data;<br>	node* next;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从这里开始，我们接触的算法就开始烧脑了。</p>
-<p>鉴于二位前缀和的复杂性（当然其实也没多复杂），我这边会搭配图片进行讲解。</p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>二位前缀和呢，若将数组视作一个矩形（左上角为原点），则前缀和储存的就是以原点为左上角、终点为右下角的矩形内包括的所有元素的和。</p>
-<p>因此，若要求一个点的前缀和，只需求出它对应矩形缺了它这个角形成的“L”型图形内的前缀和，再加上这个点本身的数值即可。具体怎么求“L”，我将会在实现部分中写。</p>
-<p><img src="/init.png" srcset="/img/loading.gif" lazyload alt="&quot;初始化&quot;"></p>
-<p>接下来就是查询的时候了：</p>
-<p>在二维前缀和问题中，所求问题多半是一段二维区间内的元素和。循序渐进，我们从查询单个元素开始说起：</p>
-<p>（下图中每个方格表示一个元素，实心格子表示待求元素）</p>
-<p><img src="/p0.png" srcset="/img/loading.gif" lazyload alt="&quot;问题1&quot;"></p>
-<p>其实也很简单，我们只需要把求前缀和的过程反过来就行了：用当前元素前缀和减去那个“L”型元素和即可。</p>
-<p>延伸到一段元素，与单个元素的思路一模一样——用右下角元素的前缀和，减去包裹着整个区间的“L”型即可。</p>
-<p><img src="/p1.png" srcset="/img/loading.gif" lazyload alt="&quot;问题2&quot;"></p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>不管是求前缀还是计算区间，重点就是求L型。既然我们已知当前点左侧上侧的全部前缀和，为什么不把这个复杂图形切割成我们已知的图形去做呢？</p>
-<p>很简单，把它分成如图所示的两个前缀和，再减去它们重叠的那部分即可。</p>
-<p><img src="/s0.png" srcset="/img/loading.gif" lazyload alt="&quot;解决&quot;"></p>
-<p>已经有了思路，下面就直接上公式了:</p>
-<p>求前缀和：<br>s[i][j]&#x3D;s[i][j-1]+s[i-1][j]-s[i-1][j-1]+a[i][j]</p>
-<p>求[x1][y1]到[x2][y2]的元素之和:<br>s[x2][y2]-s[x2][y1-1]-s[x1-1][y2]+s[x1-1][y1-1]</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,m,q;<br><span class="hljs-type">int</span> a[N][N],s[N][N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;q);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=m;j++)&#123;<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i][j]);<br>            s[i][j]=s[i][j<span class="hljs-number">-1</span>]+s[i<span class="hljs-number">-1</span>][j]-s[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+a[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> x1,y1,x2,y2;<br>    <span class="hljs-keyword">while</span>(q--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d%d&quot;</span>,&amp;x1,&amp;y1,&amp;x2,&amp;y2);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s[x2][y2]-s[x2][y1<span class="hljs-number">-1</span>]-s[x1<span class="hljs-number">-1</span>][y2]+s[x1<span class="hljs-number">-1</span>][y1<span class="hljs-number">-1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h1 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h1><p>在竞赛中，静态链表才是大头。同时，在之后，我们会学到<strong>链式前向星</strong>，与链表的关系不能说微乎其微，也只能说是一模一样。</p>
+<h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>拿数组去模拟链表。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>同时开两个数组，储存对应<strong>编号</strong>的节点的数据和下一个节点的<strong>编号</strong>（编号不是元素在链表中的位置序号！）</p>
+<p>这样就能通过修改对应数组的方式实现链表操作。</p>
+<p>具体功能在代码中给出</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Static_linked_list</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> head,tail,cnt;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">注意，头指针并不是第一个元素，而是指向第一个元素的指针，可以视作第零号元素。</span><br><span class="hljs-comment">尾指针同理，并不是最后一个元素，而是最后一个元素指向的元素，作为结束的标志。</span><br><span class="hljs-comment">*/</span><br>        <span class="hljs-type">int</span> ne[N],e[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> n,<span class="hljs-type">int</span> h=<span class="hljs-number">0</span>,<span class="hljs-type">int</span> t=<span class="hljs-number">-1</span>)</span></span>&#123;<br>            head=h;tail=t;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)&#123;<br>                ne[i]=tail;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-type">int</span> k,<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-comment">//在**编号为k**的元素**后**增加一个新元素。</span><br>            ++cnt;<span class="hljs-comment">//这就是编号，所以和位置没有任何关系。</span><br>            e[cnt]=x;<br>            ne[cnt]=ne[k];<br>            ne[k]=cnt;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">del</span><span class="hljs-params">(<span class="hljs-type">int</span> k)</span></span>&#123;<span class="hljs-comment">//删除**编号为k**的元素**后**一位元素。</span><br>            ne[k]=ne[ne[k]];<br>        &#125;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">get</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">//获取当前链表</span><br>            vector&lt;<span class="hljs-type">int</span>&gt; lis;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=ne[head];i!=tail;i=ne[i])&#123;<br>                lis.<span class="hljs-built_in">push_back</span>(e[i]);<br>            &#125;<br>            <span class="hljs-keyword">return</span> lis;<br>        &#125;<br>&#125;sll;<br></code></pre></td></tr></table></figure>
 
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/828/">AcWing826-单链表</a></p>
+<p>一道模板题。</p>
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
@@ -574,7 +561,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNotes/BasicAlgorithms/" class="category-chain-item">基础算法</a>
+  <a href="/categories/CodeNotes/DataStructure/" class="category-chain-item">数据结构</a>
   
   
 
@@ -599,7 +586,7 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/psad/" class="print-no-link">#前缀和与差分</a>
+        <a href="/tags/lkls/" class="print-no-link">#链表</a>
       
     </div>
   
@@ -611,8 +598,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Partial_Sum前缀和</div>
-      <div>http://githarlem.github.io/2024/07/30/Partial-Sum/</div>
+      <div>[编程笔记]-Single-Linked_Lists单链表</div>
+      <div>http://githarlem.github.io/2024/08/01/Single-Linked-Lists/</div>
     </div>
     <div class="license-meta">
       
@@ -624,13 +611,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月30日</div>
+          <div>2024年8月1日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月30日</div>
+          <div>2024年8月1日</div>
         </div>
       
       

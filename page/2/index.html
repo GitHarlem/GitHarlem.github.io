@@ -21,8 +21,8 @@
   
     <meta name="description" content="编程、笔记、日常、吐槽">
 <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://githarlem.github.io/archives/index.html">
+<meta property="og:title" content="HarlemBlog">
+<meta property="og:url" content="http://githarlem.github.io/page/2/index.html">
 <meta property="og:site_name" content="HarlemBlog">
 <meta property="og:description" content="编程、笔记、日常、吐槽">
 <meta property="og:locale" content="zh_CN">
@@ -31,7 +31,7 @@
   
   
   
-  <title>归档 - HarlemBlog</title>
+  <title>HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -98,7 +98,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -210,19 +210,23 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/gray.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="Harlem 的 个人BLOG"></span>
           
         </div>
 
         
       </div>
 
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
       
     </div>
   </div>
@@ -236,90 +240,103 @@
     
       <div class="container nopadding-x-md">
         <div id="board"
-          >
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 11 篇文章</p>
-  <hr>
-  
-  
+
+  <div class="row mx-auto index-card">
     
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/07/26/Quick-Sort/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Quick_Sort快速排序">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/07/26/Quick-Sort/" target="_self">
+          [编程笔记]-Quick_Sort快速排序
+        </a>
+      </h2>
+
       
-      <p class="h5">2024</p>
-    
-    <a href="/2024/08/01/Single-Linked-Lists/" class="list-group-item list-group-item-action">
-      <time>08-01</time>
-      <div class="list-group-item-title">[编程笔记]-Single-Linked_Lists单链表</div>
-    </a>
+      <a class="index-excerpt " href="/2024/07/26/Quick-Sort/" target="_self">
+        <div>
+          原理原始版利用分治思想，新建两个数组，分别储存原数组中小于 X 或大于 X 的元素，并分别对其进行快速排序，最后重组原数组即可。（X可为任意值，推荐使用中值） 进化版利用分治思想以及部分双指针思想，左右各两个指针，记为 i, j。左指针一直向右，直到数组中第 i 个元素大于 x；右指针一直向左，直到数组中第 j 个元素小于x；接着左右指针对应元素互换，重复执行直到左右指针相遇。 复杂度平均O(nl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-07-26 22:00" pubdate>
+              2024-07-26
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
   
     
-    <a href="/2024/07/31/Discretization/" class="list-group-item list-group-item-action">
-      <time>07-31</time>
-      <div class="list-group-item-title">[编程笔记]-Discretization离散化</div>
-    </a>
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNotes/" class="category-chain-item">编程笔记</a>
   
+  
+    <span>></span>
     
-    <a href="/2024/07/31/Lowbit/" class="list-group-item list-group-item-action">
-      <time>07-31</time>
-      <div class="list-group-item-title">[编程笔记]-Lowbit取最小1</div>
-    </a>
+  <a href="/categories/CodeNotes/BasicAlgorithms/" class="category-chain-item">基础算法</a>
   
+  
+
+  
+
+      </span>
     
-    <a href="/2024/07/31/Two-Pointers/" class="list-group-item list-group-item-action">
-      <time>07-31</time>
-      <div class="list-group-item-title">[编程笔记]-Two_Pointers双指针</div>
-    </a>
   
-    
-    <a href="/2024/07/30/Adjacent-Difference/" class="list-group-item list-group-item-action">
-      <time>07-30</time>
-      <div class="list-group-item-title">[编程笔记]-Adjacent_Difference差分</div>
-    </a>
-  
-    
-    <a href="/2024/07/30/Partial-Sum/" class="list-group-item list-group-item-action">
-      <time>07-30</time>
-      <div class="list-group-item-title">[编程笔记]-Partial_Sum前缀和</div>
-    </a>
-  
-    
-    <a href="/2024/07/29/High-Precision-MulDiv-Simple/" class="list-group-item list-group-item-action">
-      <time>07-29</time>
-      <div class="list-group-item-title">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</div>
-    </a>
-  
-    
-    <a href="/2024/07/28/High-Precision-AddSub/" class="list-group-item list-group-item-action">
-      <time>07-28</time>
-      <div class="list-group-item-title">[编程笔记]-High_Precision(Add and Sub)高精度加减法</div>
-    </a>
-  
-    
-    <a href="/2024/07/28/Binary-Search/" class="list-group-item list-group-item-action">
-      <time>07-28</time>
-      <div class="list-group-item-title">[编程笔记]-Binary_Search二分查找</div>
-    </a>
-  
-    
-    <a href="/2024/07/27/Merge-Sort/" class="list-group-item list-group-item-action">
-      <time>07-27</time>
-      <div class="list-group-item-title">[编程笔记]-Merge_Sort归并排序</div>
-    </a>
-  
-</div>
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/c/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/sort/">#排序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/#board">2</a><a class="extend next" rel="next" href="/archives/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </span>
   </nav>
-
 
 
 
