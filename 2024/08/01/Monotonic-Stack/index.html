@@ -19,28 +19,29 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言lowbit是树状数组的基础啊，其重要性可想而知。 模板123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它">
+    <meta name="description" content="简介具有单调性的栈（站内元素单调递增或单调递减） 常见题型问数组中每一个元素左侧&#x2F;右侧离它最近的比它大&#x2F;小的元素是什么。 代码123456789101112131415161718192021class Monotonic_Stack&#123;&#x2F;&#x2F;这里是单调递减，要改的话改fix()就行了。    public:        int a[N];        int siz">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Lowbit取最小1">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/31/Lowbit/index.html">
+<meta property="og:title" content="[编程笔记]-Monotonic_Stack单调栈">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/01/Monotonic-Stack/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言lowbit是树状数组的基础啊，其重要性可想而知。 模板123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它">
+<meta property="og:description" content="简介具有单调性的栈（站内元素单调递增或单调递减） 常见题型问数组中每一个元素左侧&#x2F;右侧离它最近的比它大&#x2F;小的元素是什么。 代码123456789101112131415161718192021class Monotonic_Stack&#123;&#x2F;&#x2F;这里是单调递减，要改的话改fix()就行了。    public:        int a[N];        int siz">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-31T06:35:39.000Z">
-<meta property="article:modified_time" content="2024-07-31T06:49:11.078Z">
+<meta property="article:published_time" content="2024-08-01T12:12:23.000Z">
+<meta property="article:modified_time" content="2024-08-01T12:17:20.510Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="位运算">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="手打STL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Lowbit取最小1 - HarlemBlog</title>
+  <title>[编程笔记]-Monotonic_Stack单调栈 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Lowbit取最小1"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Monotonic_Stack单调栈"></span>
           
         </div>
 
@@ -249,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-31 14:35" pubdate>
-          2024年7月31日 下午
+        <time datetime="2024-08-01 20:12" pubdate>
+          2024年8月1日 晚上
         </time>
       </span>
     
@@ -261,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          309 字
+          252 字
         
       </span>
     
@@ -352,17 +353,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
         id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         基础算法
         <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-cca34e9f468bf2208ec04514e694f17a"
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
            role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
         
         
@@ -446,7 +447,7 @@
       
         <a href="/2024/07/31/Lowbit/" title="[编程笔记]-Lowbit取最小1"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Lowbit取最小1</span>
         </a>
       
@@ -470,17 +471,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
         id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         数据结构
         <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-0fea7c47d93da5689f31820ee525b367"
+      <div class="category-collapse collapse show" id="collapse-0fea7c47d93da5689f31820ee525b367"
            role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
         
         
@@ -528,7 +529,7 @@
       
         <a href="/2024/08/01/Monotonic-Stack/" title="[编程笔记]-Monotonic_Stack单调栈"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Monotonic_Stack单调栈</span>
         </a>
       
@@ -555,24 +556,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Lowbit取最小1</h1>
+            <h1 id="seo-header">[编程笔记]-Monotonic_Stack单调栈</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>lowbit是树状数组的基础啊，其重要性可想而知。</p>
-<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&amp;-a;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="演算"><a href="#演算" class="headerlink" title="演算"></a>演算</h1><p>众所周知，在二进制中，<code>-a</code>等同于<code>~a+1</code>（a的值取反再加一）</p>
-<p>a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。</p>
-<p>故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它后面的数字照样是原数取反的结果。</p>
-<p>这时候进行与运算，那么a中第一个1前面的全都是0，-a中第一个1前面的也全都是0，新数就全是0；</p>
-<p>第一个1后面的全都和原数取反，所以在新数中也是0。故而，就得到了第一个1组成的新数。</p>
-<p>举例：</p>
-<blockquote>
-<p>a&#x3D;1010011000<br><del>a&#x3D;0101100111<br>-a&#x3D;</del>a+1&#x3D;0101101000<br>a&amp;-a&#x3D;1010011000&amp;0101101000&#x3D;0000001000</p>
-</blockquote>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/803/">AcWing801-二进制中1的个数</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> num&amp;-num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(a)&#123;<br>            a-=<span class="hljs-built_in">lowbit</span>(a);<br>            ans++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>具有单调性的栈（站内元素单调递增或单调递减）</p>
+<h1 id="常见题型"><a href="#常见题型" class="headerlink" title="常见题型"></a>常见题型</h1><p>问数组中每一个元素左侧&#x2F;右侧离它最近的比它大&#x2F;小的元素是什么。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Monotonic_Stack</span>&#123;<span class="hljs-comment">//这里是单调递减，要改的话改fix()就行了。</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> a[N];<br>        <span class="hljs-type">int</span> size;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> size==<span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> a[size];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>&#123;<br>            size--;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fix</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-comment">//维护单调性</span><br>            <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">empty</span>()&amp;&amp;<span class="hljs-built_in">top</span>()&gt;=x)<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<span class="hljs-comment">//单调插入</span><br>            <span class="hljs-built_in">fix</span>(x);<br>            a[++size]=x;<br>        &#125;<br>&#125;ms;<br></code></pre></td></tr></table></figure>
+
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>就是上面说的经典题型。</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/832/">AcWing830-单调栈</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Monotonic_Stack</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> a[N];<br>        <span class="hljs-type">int</span> size;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> size==<span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> a[size];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>&#123;<br>            size--;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">fix</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">empty</span>()&amp;&amp;<span class="hljs-built_in">top</span>()&gt;=x)<span class="hljs-built_in">pop</span>();<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-built_in">fix</span>(x);<br>            a[++size]=x;<br>        &#125;<br>&#125;ms;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        ms.<span class="hljs-built_in">fix</span>(a[i]);<br>        <span class="hljs-keyword">if</span>(!ms.<span class="hljs-built_in">empty</span>()) cout&lt;&lt;ms.<span class="hljs-built_in">top</span>();<br>        <span class="hljs-keyword">else</span> cout&lt;&lt;<span class="hljs-number">-1</span>;<br>        cout&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        ms.<span class="hljs-built_in">push</span>(a[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
@@ -597,7 +592,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNotes/BasicAlgorithms/" class="category-chain-item">基础算法</a>
+  <a href="/categories/CodeNotes/DataStructure/" class="category-chain-item">数据结构</a>
   
   
 
@@ -622,7 +617,9 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/btam/" class="print-no-link">#位运算</a>
+        <a href="/tags/stck/" class="print-no-link">#栈</a>
+      
+        <a href="/tags/hstl/" class="print-no-link">#手打STL</a>
       
     </div>
   
@@ -634,8 +631,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Lowbit取最小1</div>
-      <div>http://githarlem.github.io/2024/07/31/Lowbit/</div>
+      <div>[编程笔记]-Monotonic_Stack单调栈</div>
+      <div>http://githarlem.github.io/2024/08/01/Monotonic-Stack/</div>
     </div>
     <div class="license-meta">
       
@@ -647,13 +644,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月1日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月1日</div>
         </div>
       
       
