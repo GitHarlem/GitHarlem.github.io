@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>[编程笔记]-Hash哈希</title>
+    <link href="/2024/08/02/Hash/"/>
+    <url>/2024/08/02/Hash/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。</p><p>听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h2><p>这点就讲讲哈希函数，为了减少哈希冲突，我们一般都会选择模一个质数。</p><h2 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h2><p>有两种方式：拉链法（或者挂链法之类的）和开放寻址法。</p><h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>就是在哈希表上每一个节点后都拉一条链表，遇到冲突的直接插到链表后面，或者用类似链式前向星的方法插到表头。</p><h3 id="开放寻址法"><a href="#开放寻址法" class="headerlink" title="开放寻址法"></a>开放寻址法</h3><p>遇到冲突想办法找别的空位子坐下。经验表明，一般要开题目要求范围内的两到三倍。</p><p>需要注意的是，开放寻址法中，因为查询也是照着插入的方式一个一个找的，所以如果真的删除了元素的话，那么就会使查找过程异常，所以一般都是打个标记。（删除过程和查询过程一模一样hh）</p><p><em>y总の奇妙比喻belike: 就像澈硕找坑位一样，这个有人，欸<del>下一个，找到空的，欸</del>就你了！</em></p><h2 id="寻找"><a href="#寻找" class="headerlink" title="寻找"></a>寻找</h2><p>靠哈希函数找出当前值应该在的位置，然后挂链法就顺着链表找一遍，开放寻址法麻烦一点，一般暴力做法就是绕着找一圈。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="拉链法-1"><a href="#拉链法-1" class="headerlink" title="拉链法"></a>拉链法</h2><p>鉴于尾插法过于简单，这里使用头插法。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Hash</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> hd[N],ne[N],vl[N],idk;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>                hd[i]=<span class="hljs-number">-1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">hash</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> (x%N+N)%N;<span class="hljs-comment">//防负数</span><br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            vl[++idk]=x;<br>            <span class="hljs-type">int</span> key=<span class="hljs-built_in">hash</span>(x);<br>            ne[idk]=hd[key];<br>            hd[key]=idk;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-type">int</span> key=<span class="hljs-built_in">hash</span>(x);<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=hd[key];i!=<span class="hljs-number">-1</span>;i=ne[i])&#123;<br>                <span class="hljs-keyword">if</span>(vl[i]==x)<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>&#125;hs;<br></code></pre></td></tr></table></figure><h2 id="开放寻址法-1"><a href="#开放寻址法-1" class="headerlink" title="开放寻址法"></a>开放寻址法</h2><p>本模板中无删除功能，如有需要请自行添加，因为和查找功能基本上没有区别，只需要再单开一个判断是否删除的数组就行了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Hash</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> h[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-built_in">memset</span>(h,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(h));<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">hash</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> (x%N+N)%N;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-type">int</span> k=<span class="hljs-built_in">hash</span>(x);<br>            <span class="hljs-keyword">while</span>(h[k]!=nb&amp;&amp;h[k]!=x)&#123;<br>                <span class="hljs-keyword">if</span>(++k==N)k=<span class="hljs-number">0</span>;<br>            &#125;<br>            <span class="hljs-keyword">return</span> k;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-type">int</span> k=<span class="hljs-built_in">find</span>(x);<br>            h[k]=x;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-type">int</span> k=<span class="hljs-built_in">find</span>(x);<br>            <span class="hljs-keyword">return</span> h[k]==x;<br>        &#125;<br>&#125;hs;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>哈希</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Heap堆</title>
     <link href="/2024/08/02/Heap/"/>
     <url>/2024/08/02/Heap/</url>

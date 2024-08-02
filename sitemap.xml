@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://githarlem.github.io/2024/08/02/Hash/</loc>
+    
+    <lastmod>2024-08-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/2024/08/02/Heap/</loc>
     
     <lastmod>2024-08-02</lastmod>
@@ -355,6 +364,13 @@
   
   <url>
     <loc>http://githarlem.github.io/tags/heap/</loc>
+    <lastmod>2024-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/tags/hash/</loc>
     <lastmod>2024-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
