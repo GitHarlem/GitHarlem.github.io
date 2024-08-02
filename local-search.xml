@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>[编程笔记]-Trie_Tree字典树</title>
+    <link href="/2024/08/02/Trie-Tree/"/>
+    <url>/2024/08/02/Trie-Tree/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>听起来很高大上，事实上很简单（￣︶￣）</p><h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>快速存储和查询字符串。</p><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>首先建立一颗树，根节点为空节点。</p><ul><li>插入时，一个字符一个字符地插入，每一个字符都作为上一个字符的子节点存在。如果上一个字符有对应的子节点，就直接进行下一个字符的操作；如果没有，就先新建一个，然后再进行下一步操作。最后一个字符打一个标记，表示这里有一个单词。（如果需要还可以储存下个数）</li><li>查询时，也是一个字符一个字符查询。如果某个节点没有下一个字符的子节点，或者最后一个节点处没有打标记，就说明没有这个单词，否则就有这个单词。</li></ul><h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">trie_tree</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> son[N][<span class="hljs-number">26</span>],cnt[N],idk;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(string str)</span></span>&#123;<br>            <span class="hljs-type">int</span> now=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;str.<span class="hljs-built_in">size</span>();i++)&#123;<br>                <span class="hljs-type">int</span> t=str[i]-<span class="hljs-string">&#x27;a&#x27;</span>;<br>                <span class="hljs-keyword">if</span>(!son[now][t])son[now][t]=++idk;<br>                now=son[now][t];<br>            &#125;<br>            cnt[now]++;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(string str)</span></span>&#123;<br>            <span class="hljs-type">int</span> now=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;str.<span class="hljs-built_in">size</span>();i++)&#123;<br>                <span class="hljs-type">int</span> t=str[i]-<span class="hljs-string">&#x27;a&#x27;</span>;<br>                <span class="hljs-keyword">if</span>(!son[now][t])<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>                now=son[now][t];<br>            &#125;<br>            <span class="hljs-keyword">return</span> cnt[now];<br>        &#125;<br>&#125;tt;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p><em>写了几篇费脑博客，再写这篇，真的热泪盈眶(≧∇≦)</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>字典树</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-KMP</title>
     <link href="/2024/08/02/KMP/"/>
     <url>/2024/08/02/KMP/</url>
