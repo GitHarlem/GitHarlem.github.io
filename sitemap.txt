@@ -23,7 +23,7 @@ http://githarlem.github.io/about/index.html
 http://githarlem.github.io/
 http://githarlem.github.io/tags/orgn/
 http://githarlem.github.io/tags/code/
-http://githarlem.github.io/tags/c/
+http://githarlem.github.io/tags/cppl/
 http://githarlem.github.io/tags/note/
 http://githarlem.github.io/tags/psad/
 http://githarlem.github.io/tags/bnry/
