@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>[编程笔记]-Union_Find_Set并查集</title>
+    <link href="/2024/08/02/Union-Find-Set/"/>
+    <url>/2024/08/02/Union-Find-Set/</url>
+    
+    <content type="html"><![CDATA[<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以接近O(1)的复杂度合并集合并查询两个元素是否在同一个集合中的简介好用数据结构。</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>将每个集合视作一棵树，每个节点储存它的父节点。特别地，根节点储存它本身。</p><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>将每个点的父节点都设为它本身。</p><h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>将其中一个集合的根节点的父节点设为另一个集合的根节点。</p><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>看两个点在不在同一个集合中，也就是看两个点的根节点一样不一样。</p><h2 id="优化（路径压缩）"><a href="#优化（路径压缩）" class="headerlink" title="优化（路径压缩）"></a>优化（路径压缩）</h2><p>其实还可以按秩合并，但那个优化代码量相对较大，并且基本上没有毛用，所以就不讲了。</p><p>路径压缩，就是在查询根节点的过程中，把当前节点的父节点直接设为祖先节点，以大大减少合并、查询的时间复杂度。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Union_Find_Set</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> n,p[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            n=x;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>                p[i]=i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">if</span>(p[x]!=x)p[x]=<span class="hljs-built_in">find</span>(p[x]);<br>            <span class="hljs-keyword">return</span> p[x];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            a=<span class="hljs-built_in">find</span>(a);b=<span class="hljs-built_in">find</span>(b);<br>            p[a]=b;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a)==<span class="hljs-built_in">find</span>(b);<br>        &#125;<br>&#125;ufs;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数据结构</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数论</tag>
+      
+      <tag>并查集</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Trie_Tree字典树</title>
     <link href="/2024/08/02/Trie-Tree/"/>
     <url>/2024/08/02/Trie-Tree/</url>
