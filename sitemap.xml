@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>http://githarlem.github.io/2024/07/31/Discretization/</loc>
+    
+    <lastmod>2024-08-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/2024/08/02/Heap/</loc>
     
     <lastmod>2024-08-02</lastmod>
@@ -95,15 +104,6 @@
     <loc>http://githarlem.github.io/2024/08/01/Single-Linked-Lists/</loc>
     
     <lastmod>2024-08-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://githarlem.github.io/2024/07/31/Discretization/</loc>
-    
-    <lastmod>2024-07-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
