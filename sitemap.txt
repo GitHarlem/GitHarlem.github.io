@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/02/KMP/
 http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/01/Monotonic-Stack/
 http://githarlem.github.io/2024/08/01/Queue/
@@ -33,6 +34,8 @@ http://githarlem.github.io/tags/stck/
 http://githarlem.github.io/tags/quue/
 http://githarlem.github.io/tags/hstl/
 http://githarlem.github.io/tags/mvwd/
+http://githarlem.github.io/tags/strn/
+http://githarlem.github.io/tags/kmpa/
 http://githarlem.github.io/categories/CodeNotes/
 http://githarlem.github.io/categories/CodeNotes/DataStructure/
 http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/
