@@ -252,23 +252,107 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/Hash/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Hash哈希">
+        <a href="/2024/08/03/String-Hash/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-String_Hash字符串哈希">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/08/02/Hash/" target="_self">
-          [编程笔记]-Hash哈希
+        <a href="/2024/08/03/String-Hash/" target="_self">
+          [编程笔记]-String_Hash字符串哈希
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/08/02/Hash/" target="_self">
+      <a class="index-excerpt " href="/2024/08/03/String-Hash/" target="_self">
         <div>
-          概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一般都会选择模一个质数。 处理冲突有两种方式：拉链法（或者挂链法之类的）和开放寻址法。 拉链法
+          前言这边首先推荐有需要滴去先瞅眼哈希表。“[编程笔记]-Hash_Table哈希表” （半夜写的，可能有点癫嘿嘿嘿） 简介字符串哈希，就是对字符串进行哈希，达到快速储存和查询的目的。 实现求HASH这里要用到一种特殊的哈希方法：将字符串视作一个p进制数（p不一定，按题目要求来，一般就是所有可能出现的字符的个数，反正能让每个字符串独一无二就行），然后再对这个p进制数进行哈希操作。别的就一模一样了。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 00:04" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNotes/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNotes/DataStructure/" class="category-chain-item">数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/strn/">#字符串</a>
+            
+              <a href="/tags/hash/">#哈希</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/02/Hash-Table/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Hash_Table哈希表">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/02/Hash-Table/" target="_self">
+          [编程笔记]-Hash_Table哈希表
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/02/Hash-Table/" target="_self">
+        <div>
+          概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 顺便也挂一个字符串哈希吧，毕竟同根同源~“[编程笔记]-String_Hash字符串哈希” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一
         </div>
       </a>
 
@@ -604,7 +688,7 @@
       
       <a class="index-excerpt " href="/2024/08/02/KMP/" target="_self">
         <div>
-          前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） 流程整个KMP算法其实分为两步：  找next数组
+          前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存
         </div>
       </a>
 
@@ -999,88 +1083,6 @@
               <a href="/tags/stck/">#栈</a>
             
               <a href="/tags/hstl/">#手打STL</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/01/Double-Linked-Lists/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Double-Linked_Lists双链表">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/01/Double-Linked-Lists/" target="_self">
-          [编程笔记]-Double-Linked_Lists双链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/01/Double-Linked-Lists/" target="_self">
-        <div>
-          前言鉴于双链表和单链表基本上一毛一样，所以不会重新再写一遍链表基本操作，详见“[编程笔记]-Single-Linked_Lists单链表”。 概念就是双向链表，每个节点既指向后一个元素，又指向前一个元素。 代码对没错就是这么懒( •̀ ω •́ )✧ 123456789101112131415161718192021222324252627282930313233343536class Doubl
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-01 11:20" pubdate>
-              2024-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNotes/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNotes/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/lkls/">#链表</a>
             
           </div>
         

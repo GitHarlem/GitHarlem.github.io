@@ -19,16 +19,16 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） 流程整个KMP算法其实分为两步：  找next数组">
+    <meta name="description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编程笔记]-KMP">
 <meta property="og:url" content="http://githarlem.github.io/2024/08/02/KMP/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） 流程整个KMP算法其实分为两步：  找next数组">
+<meta property="og:description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-02T00:07:35.000Z">
-<meta property="article:modified_time" content="2024-08-02T04:54:45.429Z">
+<meta property="article:modified_time" content="2024-08-02T16:02:44.164Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -332,7 +332,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(21)</span>
+        <span class="list-group-count">(22)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -477,7 +477,7 @@
         aria-expanded="true"
       >
         数据结构
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(12)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -581,10 +581,19 @@
     
       
       
-        <a href="/2024/08/02/Hash/" title="[编程笔记]-Hash哈希"
+        <a href="/2024/08/02/Hash-Table/" title="[编程笔记]-Hash_Table哈希表"
            class="list-group-item list-group-item-action
            ">
-          <span class="category-post">[编程笔记]-Hash哈希</span>
+          <span class="category-post">[编程笔记]-Hash_Table哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/String-Hash/" title="[编程笔记]-String_Hash字符串哈希"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-String_Hash字符串哈希</span>
         </a>
       
     
@@ -623,6 +632,7 @@
 <li>KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。</li>
 </ul>
 <p>（这句话可能有点绕，但学完整个算法就理解了。）</p>
+<p>（至于为什么把它分在数据结构……<del>你就说next数组存没存数据吧</del>）</p>
 <h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>整个KMP算法其实分为两步：</p>
 <ol>
 <li>找next数组</li>
@@ -745,7 +755,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月3日</div>
         </div>
       
       

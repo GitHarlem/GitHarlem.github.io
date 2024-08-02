@@ -19,29 +19,29 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="作用以接近O(1)的复杂度合并集合并查询两个元素是否在同一个集合中的简介好用数据结构。 实现概览将每个集合视作一棵树，每个节点储存它的父节点。特别地，根节点储存它本身。 初始化将每个点的父节点都设为它本身。 合并将其中一个集合的根节点的父节点设为另一个集合的根节点。 查询看两个点在不在同一个集合中，也就是看两个点的根节点一样不一样。 优化（路径压缩）其实还可以按秩合并，但那个优化代码量相对较大，并">
+    <meta name="description" content="前言这边首先推荐有需要滴去先瞅眼哈希表。“[编程笔记]-Hash_Table哈希表” （半夜写的，可能有点癫嘿嘿嘿） 简介字符串哈希，就是对字符串进行哈希，达到快速储存和查询的目的。 实现求HASH这里要用到一种特殊的哈希方法：将字符串视作一个p进制数（p不一定，按题目要求来，一般就是所有可能出现的字符的个数，反正能让每个字符串独一无二就行），然后再对这个p进制数进行哈希操作。别的就一模一样了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Union_Find_Set并查集">
-<meta property="og:url" content="http://githarlem.github.io/2024/08/02/Union-Find-Set/index.html">
+<meta property="og:title" content="[编程笔记]-String_Hash字符串哈希">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/03/String-Hash/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="作用以接近O(1)的复杂度合并集合并查询两个元素是否在同一个集合中的简介好用数据结构。 实现概览将每个集合视作一棵树，每个节点储存它的父节点。特别地，根节点储存它本身。 初始化将每个点的父节点都设为它本身。 合并将其中一个集合的根节点的父节点设为另一个集合的根节点。 查询看两个点在不在同一个集合中，也就是看两个点的根节点一样不一样。 优化（路径压缩）其实还可以按秩合并，但那个优化代码量相对较大，并">
+<meta property="og:description" content="前言这边首先推荐有需要滴去先瞅眼哈希表。“[编程笔记]-Hash_Table哈希表” （半夜写的，可能有点癫嘿嘿嘿） 简介字符串哈希，就是对字符串进行哈希，达到快速储存和查询的目的。 实现求HASH这里要用到一种特殊的哈希方法：将字符串视作一个p进制数（p不一定，按题目要求来，一般就是所有可能出现的字符的个数，反正能让每个字符串独一无二就行），然后再对这个p进制数进行哈希操作。别的就一模一样了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-08-02T09:11:09.000Z">
-<meta property="article:modified_time" content="2024-08-02T11:51:37.293Z">
+<meta property="article:published_time" content="2024-08-02T16:04:05.000Z">
+<meta property="article:modified_time" content="2024-08-02T16:45:28.230Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="树论">
-<meta property="article:tag" content="并查集">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="哈希">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Union_Find_Set并查集 - HarlemBlog</title>
+  <title>[编程笔记]-String_Hash字符串哈希 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Union_Find_Set并查集"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-String_Hash字符串哈希"></span>
           
         </div>
 
@@ -250,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-02 17:11" pubdate>
-          2024年8月2日 下午
+        <time datetime="2024-08-03 00:04" pubdate>
+          2024年8月3日 凌晨
         </time>
       </span>
     
@@ -262,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          660 字
+          693 字
         
       </span>
     
@@ -565,7 +565,7 @@
       
         <a href="/2024/08/02/Union-Find-Set/" title="[编程笔记]-Union_Find_Set并查集"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Union_Find_Set并查集</span>
         </a>
       
@@ -592,7 +592,7 @@
       
         <a href="/2024/08/03/String-Hash/" title="[编程笔记]-String_Hash字符串哈希"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-String_Hash字符串哈希</span>
         </a>
       
@@ -619,30 +619,33 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Union_Find_Set并查集</h1>
+            <h1 id="seo-header">[编程笔记]-String_Hash字符串哈希</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>以接近O(1)的复杂度合并集合并查询两个元素是否在同一个集合中的简介好用数据结构。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>将每个集合视作一棵树，每个节点储存它的父节点。特别地，根节点储存它本身。</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>将每个点的父节点都设为它本身。</p>
-<h2 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h2><p>将其中一个集合的根节点的父节点设为另一个集合的根节点。</p>
-<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>看两个点在不在同一个集合中，也就是看两个点的根节点一样不一样。</p>
-<h2 id="优化（路径压缩）"><a href="#优化（路径压缩）" class="headerlink" title="优化（路径压缩）"></a>优化（路径压缩）</h2><p>其实还可以按秩合并，但那个优化代码量相对较大，并且基本上没有毛用，所以就不讲了。</p>
-<p>路径压缩，就是在查询根节点的过程中，把当前节点的父节点直接设为祖先节点，以大大减少合并、查询的时间复杂度。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="基础版"><a href="#基础版" class="headerlink" title="基础版"></a>基础版</h2><p>只有最基础的初始化、查询、合并功能。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Union_Find_Set</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> n,p[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            n=x;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>                p[i]=i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">if</span>(p[x]!=x)p[x]=<span class="hljs-built_in">find</span>(p[x]);<br>            <span class="hljs-keyword">return</span> p[x];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            a=<span class="hljs-built_in">find</span>(a);b=<span class="hljs-built_in">find</span>(b);<br>            p[a]=b;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a)==<span class="hljs-built_in">find</span>(b);<br>        &#125;<br>&#125;ufs;<br></code></pre></td></tr></table></figure>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这边首先推荐有需要滴去先瞅眼哈希表。<br><a href="https://githarlem.github.io/2024/08/02/Hash-Table/">“[编程笔记]-Hash_Table哈希表”</a></p>
+<p>（半夜写的，可能有点癫嘿嘿嘿）</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>字符串哈希，就是对字符串进行哈希，达到快速储存和查询的目的。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="求HASH"><a href="#求HASH" class="headerlink" title="求HASH"></a>求HASH</h2><p>这里要用到一种特殊的哈希方法：将字符串视作一个p进制数（p不一定，按题目要求来，一般就是所有可能出现的字符的个数，反正能让每个字符串独一无二就行），然后再对这个p进制数进行哈希操作。别的就一模一样了。</p>
+<p><strong>WARNING: 一般情况下不要映射成0！否则会造成哈希冲突！</strong></p>
+<p><strong>WARNING: <del>这个算法下我们强的可怕！</del>我们rp很nb！不考虑哈希冲突！</strong></p>
+<p><strong>JINGYAN!!!: 当p取131或13331时，q（模）取2<sup>64</sup>时，在99.99%的情况下，都不会出现冲突。</strong></p>
+<p><strong>生活小寄巧：可用<code>ull</code>储存所有哈希值，这样就不用取模了，溢出就相当于取模了哈哈哈。</strong></p>
+<p><strong>所以就易如反掌瓮中捉鳖轻轻松松探囊取物——<code>h[i]=h[i-1]*p+str[i]</code></strong></p>
+<hr>
+<p>另外，这个方法有个<strong>小点</strong>可以注意一下：</p>
+<p>如果我们求出了字符串每个前缀的hash值，就可以求出每个子串的hash值。</p>
+<p>挂一个前缀和吧，<del>虽然应该没有人会需要它</del><a href="https://githarlem.github.io/2024/07/30/Partial-Sum/">“[编程笔记]-Partial_Sum前缀和”</a></p>
+<p>公式：<code>h[r]-h[l]*p^(r-l+1)</code></p>
+<p>推导：举个例子，一个是”GRAY”，一个是”GRAYGOO”，要想得到”GOO”，肯定要用”GRAYGOO”减去”GRAY”左移三位得到的”GRAY   “。<em>当然我更希望去个GOO留GRAY，但为了方便理解还是放弃了。</em></p>
+<p>啊对了其实这个小点是一个重点但是我懒得改前面的内容了所以就在前面加个着重符号吧(╹ڡ╹ )</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>由于这算法本来是用来字符串匹配，但例题拿来子串匹配，不仅完美结合了原方法，还巧妙融合了前缀和问题（就是上面那个重点），所以就直接用这道<del>毒瘤</del>好题了。</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/843/">AcWing841-字符串哈希</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ull;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>,P=<span class="hljs-number">131</span>;<br><br><span class="hljs-type">int</span> n,m;<br>string str;<br>ull h[N],p[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m&gt;&gt;str;<br>    str=<span class="hljs-string">&#x27; &#x27;</span>+str;<br>    p[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        p[i]=p[i<span class="hljs-number">-1</span>]*P;<br>        h[i]=h[i<span class="hljs-number">-1</span>]*P+str[i];<br>    &#125;<br>    <span class="hljs-type">int</span> l1,r1,l2,r2;<br>    ull h1,h2;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        cin&gt;&gt;l1&gt;&gt;r1&gt;&gt;l2&gt;&gt;r2;<br>        h1=h[r1]-h[l1<span class="hljs-number">-1</span>]*p[r1-l1<span class="hljs-number">+1</span>];<br>        h2=h[r2]-h[l2<span class="hljs-number">-1</span>]*p[r2-l2<span class="hljs-number">+1</span>];<br>        cout&lt;&lt;(h1==h2?<span class="hljs-string">&quot;Yes\n&quot;</span>:<span class="hljs-string">&quot;No\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="计数版"><a href="#计数版" class="headerlink" title="计数版"></a>计数版</h2><p>可以记录每个集合内的元素个数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Union_Find_Set</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> n,p[N],siz[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            n=x;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>                p[i]=i;<br>                siz[i]=<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">if</span>(p[x]!=x)p[x]=<span class="hljs-built_in">find</span>(p[x]);<br>            <span class="hljs-keyword">return</span> p[x];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            a=<span class="hljs-built_in">find</span>(a);b=<span class="hljs-built_in">find</span>(b);<br>            <span class="hljs-keyword">if</span>(a!=b)siz[b]+=siz[a];<br>            p[a]=b;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a)==<span class="hljs-built_in">find</span>(b);<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">size</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> siz[<span class="hljs-built_in">find</span>(x)];<br>        &#125;<br>&#125;ufs;<br></code></pre></td></tr></table></figure>
+<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p><em>再这么熬下去我就成国家一级保护废物了</em></p>
 
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/242/">AcWing240-食物链</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2024">Luogu2024-食物链</a></p>
-<p>（这是同一道题~话说洛谷的题号真吉利(～￣▽￣)～）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1.5e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Union_Find_Set</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> n,p[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            n=x;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>                p[i]=i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">if</span>(p[x]!=x)p[x]=<span class="hljs-built_in">find</span>(p[x]);<br>            <span class="hljs-keyword">return</span> p[x];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            a=<span class="hljs-built_in">find</span>(a);b=<span class="hljs-built_in">find</span>(b);<br>            p[a]=b;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a)==<span class="hljs-built_in">find</span>(b);<br>        &#125;<br>&#125;ufs;<br><br><span class="hljs-type">int</span> n,k;<br><span class="hljs-type">int</span> d,x,y;<br><span class="hljs-type">int</span> ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;k;<br>    ufs.<span class="hljs-built_in">init</span>(n*<span class="hljs-number">3</span>);<br>    <span class="hljs-keyword">while</span>(k--)&#123;<br>        cin&gt;&gt;d&gt;&gt;x&gt;&gt;y;<br>        <span class="hljs-keyword">if</span>(x&gt;n||y&gt;n)&#123;<br>            ans++;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(d==<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-keyword">if</span>(ufs.<span class="hljs-built_in">same</span>(x,y+n)||ufs.<span class="hljs-built_in">same</span>(x+n,y))&#123;<br>                ans++;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            ufs.<span class="hljs-built_in">merge</span>(x,y);<br>            ufs.<span class="hljs-built_in">merge</span>(x+n,y+n);<br>            ufs.<span class="hljs-built_in">merge</span>(x+n+n,y+n+n);<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(ufs.<span class="hljs-built_in">same</span>(x,y)||ufs.<span class="hljs-built_in">same</span>(x,y+n))&#123;<br>                ans++;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            ufs.<span class="hljs-built_in">merge</span>(x+n,y);<br>            ufs.<span class="hljs-built_in">merge</span>(x+n+n,y+n);<br>            ufs.<span class="hljs-built_in">merge</span>(x,y+n+n);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
             
@@ -690,9 +693,9 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/tree/" class="print-no-link">#树论</a>
+        <a href="/tags/strn/" class="print-no-link">#字符串</a>
       
-        <a href="/tags/ufst/" class="print-no-link">#并查集</a>
+        <a href="/tags/hash/" class="print-no-link">#哈希</a>
       
     </div>
   
@@ -704,8 +707,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Union_Find_Set并查集</div>
-      <div>http://githarlem.github.io/2024/08/02/Union-Find-Set/</div>
+      <div>[编程笔记]-String_Hash字符串哈希</div>
+      <div>http://githarlem.github.io/2024/08/03/String-Hash/</div>
     </div>
     <div class="license-meta">
       
@@ -717,13 +720,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月3日</div>
         </div>
       
       

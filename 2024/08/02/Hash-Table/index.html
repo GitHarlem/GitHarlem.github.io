@@ -19,16 +19,16 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一般都会选择模一个质数。 处理冲突有两种方式：拉链法（或者挂链法之类的）和开放寻址法。 拉链法">
+    <meta name="description" content="概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 顺便也挂一个字符串哈希吧，毕竟同根同源~“[编程笔记]-String_Hash字符串哈希” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Hash哈希">
-<meta property="og:url" content="http://githarlem.github.io/2024/08/02/Hash/index.html">
+<meta property="og:title" content="[编程笔记]-Hash_Table哈希表">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/02/Hash-Table/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一般都会选择模一个质数。 处理冲突有两种方式：拉链法（或者挂链法之类的）和开放寻址法。 拉链法">
+<meta property="og:description" content="概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 顺便也挂一个字符串哈希吧，毕竟同根同源~“[编程笔记]-String_Hash字符串哈希” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-02T14:00:06.000Z">
-<meta property="article:modified_time" content="2024-08-02T15:50:45.288Z">
+<meta property="article:modified_time" content="2024-08-02T16:06:52.724Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -40,7 +40,7 @@
   
   
   
-  <title>[编程笔记]-Hash哈希 - HarlemBlog</title>
+  <title>[编程笔记]-Hash_Table哈希表 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +233,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Hash哈希"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Hash_Table哈希表"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          637 字
+          665 字
         
       </span>
     
@@ -331,7 +331,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(21)</span>
+        <span class="list-group-count">(22)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -476,7 +476,7 @@
         aria-expanded="true"
       >
         数据结构
-        <span class="list-group-count">(11)</span>
+        <span class="list-group-count">(12)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -580,10 +580,19 @@
     
       
       
-        <a href="/2024/08/02/Hash/" title="[编程笔记]-Hash哈希"
+        <a href="/2024/08/02/Hash-Table/" title="[编程笔记]-Hash_Table哈希表"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">[编程笔记]-Hash哈希</span>
+          <span class="category-post">[编程笔记]-Hash_Table哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/String-Hash/" title="[编程笔记]-String_Hash字符串哈希"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-String_Hash字符串哈希</span>
         </a>
       
     
@@ -609,7 +618,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Hash哈希</h1>
+            <h1 id="seo-header">[编程笔记]-Hash_Table哈希表</h1>
             
             
               <div class="markdown-body">
@@ -618,6 +627,7 @@
 <p>听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～</p>
 <p>当然，如果已经学过离散化的，理解起来可能方便些。</p>
 <p>为了方便学习，这里挂一个离散化链接：<br><a href="https://githarlem.github.io/2024/07/31/Discretization/">“[编程笔记]-Discretization离散化”</a></p>
+<p>顺便也挂一个字符串哈希吧，毕竟同根同源~<br><a href="https://githarlem.github.io/2024/08/03/String-Hash/">“[编程笔记]-String_Hash字符串哈希”</a></p>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h2><p>这点就讲讲哈希函数，为了减少哈希冲突，我们一般都会选择模一个质数。</p>
 <h2 id="处理冲突"><a href="#处理冲突" class="headerlink" title="处理冲突"></a>处理冲突</h2><p>有两种方式：拉链法（或者挂链法之类的）和开放寻址法。</p>
 <h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><p>就是在哈希表上每一个节点后都拉一条链表，遇到冲突的直接插到链表后面，或者用类似链式前向星的方法插到表头。</p>
@@ -690,8 +700,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Hash哈希</div>
-      <div>http://githarlem.github.io/2024/08/02/Hash/</div>
+      <div>[编程笔记]-Hash_Table哈希表</div>
+      <div>http://githarlem.github.io/2024/08/02/Hash-Table/</div>
     </div>
     <div class="license-meta">
       
@@ -709,7 +719,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月3日</div>
         </div>
       
       
