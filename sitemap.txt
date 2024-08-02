@@ -1,7 +1,8 @@
+http://githarlem.github.io/2024/08/02/Heap/
 http://githarlem.github.io/2024/08/02/Union-Find-Set/
+http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/02/Trie-Tree/
 http://githarlem.github.io/2024/08/02/KMP/
-http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/01/Monotonic-Stack/
 http://githarlem.github.io/2024/08/01/Queue/
 http://githarlem.github.io/2024/08/01/Stack/
@@ -40,8 +41,8 @@ http://githarlem.github.io/tags/strn/
 http://githarlem.github.io/tags/kmpa/
 http://githarlem.github.io/tags/tree/
 http://githarlem.github.io/tags/trtr/
-http://githarlem.github.io/tags/%E6%95%B0%E8%AE%BA/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/heap/
 http://githarlem.github.io/categories/CodeNotes/
 http://githarlem.github.io/categories/CodeNotes/DataStructure/
 http://githarlem.github.io/categories/CodeNotes/BasicAlgorithms/

@@ -19,16 +19,16 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言单调队列，在STL中有priority_queue，可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗得时间简直了o(￣︶">
+    <meta name="description" content="前言单调队列，在STL中有priority_queue（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编程笔记]-Monotonic_Queue单调队列">
 <meta property="og:url" content="http://githarlem.github.io/2024/08/01/Monotonic-Queue/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言单调队列，在STL中有priority_queue，可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗得时间简直了o(￣︶">
+<meta property="og:description" content="前言单调队列，在STL中有priority_queue（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-01T12:52:00.000Z">
-<meta property="article:modified_time" content="2024-08-01T13:30:30.318Z">
+<meta property="article:modified_time" content="2024-08-02T11:49:11.348Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          726 字
+          733 字
         
       </span>
     
@@ -333,7 +333,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(19)</span>
+        <span class="list-group-count">(20)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -478,7 +478,7 @@
         aria-expanded="true"
       >
         数据结构
-        <span class="list-group-count">(9)</span>
+        <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -571,6 +571,15 @@
         </a>
       
     
+      
+      
+        <a href="/2024/08/02/Heap/" title="[编程笔记]-Heap堆"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Heap堆</span>
+        </a>
+      
+    
   </div>
 
         
@@ -598,7 +607,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单调队列，在STL中有<code>priority_queue</code>，可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——<strong>滑动窗口</strong>。</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单调队列，在STL中有<code>priority_queue</code>（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——<strong>滑动窗口</strong>。</p>
 <p>而滑动窗口，就对手写单调队列的能力要求比较高了。</p>
 <p>本博客会在单调栈的基础上讲解，所以不会的自助吧。</p>
 <p><a href="https://githarlem.github.io/2024/08/01/Monotonic-Stack/">“[编程笔记]-Monotonic_Stack单调栈”</a></p>
@@ -701,7 +710,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月1日</div>
+          <div>2024年8月2日</div>
         </div>
       
       
