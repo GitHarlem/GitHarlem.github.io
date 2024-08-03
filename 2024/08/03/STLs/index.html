@@ -1,0 +1,1750 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start --><meta name="msvalidate.01" content="B91A724EEC66762BA11DE7CBD56E2E6C" /><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/CLOG.png">
+  <link rel="icon" href="/img/CLOG.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000">
+  <meta name="author" content="Harlem">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.push_back(加入元素)   pop_b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[编程笔记]-STLs(STL大整合)">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/03/STLs/index.html">
+<meta property="og:site_name" content="HarlemBlog">
+<meta property="og:description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.push_back(加入元素)   pop_b">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
+<meta property="article:published_time" content="2024-08-03T00:38:02.000Z">
+<meta property="article:modified_time" content="2024-08-03T02:23:44.039Z">
+<meta property="article:author" content="Harlem">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="STL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
+  
+  
+  
+  <title>[编程笔记]-STLs(STL大整合) - HarlemBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"githarlem.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"xxC3pGsUk3aNPu9TVonwjTeC-gzGzoHsz","app_key":"5mZhDPfEAHkfkqNy03d001rg","server_url":"https://xxc3pgsu.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Harlem&#39;s BLOG </strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[编程笔记]-STLs(STL大整合)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Harlem
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-03 08:38" pubdate>
+          2024年8月3日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          4 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程笔记"
+        id="heading-0d3258b202341a6b87082916b17d5fea" role="tab" data-toggle="collapse" href="#collapse-0d3258b202341a6b87082916b17d5fea"
+        aria-expanded="true"
+      >
+        编程笔记
+        <span class="list-group-count">(23)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0d3258b202341a6b87082916b17d5fea"
+           role="tabpanel" aria-labelledby="heading-0d3258b202341a6b87082916b17d5fea">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
+        id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
+        aria-expanded="false"
+      >
+        基础算法
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
+           role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/26/Quick-Sort/" title="[编程笔记]-Quick_Sort快速排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Quick_Sort快速排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/27/Merge-Sort/" title="[编程笔记]-Merge_Sort归并排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Merge_Sort归并排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/28/Binary-Search/" title="[编程笔记]-Binary_Search二分查找"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Binary_Search二分查找</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/28/High-Precision-AddSub/" title="[编程笔记]-High_Precision(Add and Sub)高精度加减法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-High_Precision(Add and Sub)高精度加减法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/29/High-Precision-MulDiv-Simple/" title="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/30/Partial-Sum/" title="[编程笔记]-Partial_Sum前缀和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Partial_Sum前缀和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/30/Adjacent-Difference/" title="[编程笔记]-Adjacent_Difference差分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Adjacent_Difference差分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Two-Pointers/" title="[编程笔记]-Two_Pointers双指针"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Two_Pointers双指针</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Lowbit/" title="[编程笔记]-Lowbit取最小1"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Lowbit取最小1</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Discretization/" title="[编程笔记]-Discretization离散化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Discretization离散化</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
+        id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
+        aria-expanded="true"
+      >
+        数据结构
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0fea7c47d93da5689f31820ee525b367"
+           role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/01/Single-Linked-Lists/" title="[编程笔记]-Single-Linked_Lists单链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Single-Linked_Lists单链表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Double-Linked-Lists/" title="[编程笔记]-Double-Linked_Lists双链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Double-Linked_Lists双链表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Stack/" title="[编程笔记]-Stack栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Stack栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Queue/" title="[编程笔记]-queue队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-queue队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Monotonic-Stack/" title="[编程笔记]-Monotonic_Stack单调栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Monotonic_Stack单调栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Monotonic-Queue/" title="[编程笔记]-Monotonic_Queue单调队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Monotonic_Queue单调队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/KMP/" title="[编程笔记]-KMP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-KMP</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Trie-Tree/" title="[编程笔记]-Trie_Tree字典树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Trie_Tree字典树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Union-Find-Set/" title="[编程笔记]-Union_Find_Set并查集"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Union_Find_Set并查集</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Heap/" title="[编程笔记]-Heap堆"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Heap堆</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Hash-Table/" title="[编程笔记]-Hash_Table哈希表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Hash_Table哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/String-Hash/" title="[编程笔记]-String_Hash字符串哈希"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-String_Hash字符串哈希</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/STLs/" title="[编程笔记]-STLs(STL大整合)"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">[编程笔记]-STLs(STL大整合)</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[编程笔记]-STLs(STL大整合)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>手打STL毕竟只是锦上添花，STL才是雪中送炭。</p>
+<p>所以，来一篇STL<del>大杂烩</del>大整合！</p>
+<h1 id="VECTOR"><a href="#VECTOR" class="headerlink" title="VECTOR"></a>VECTOR</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>是一种动态数组，运用到倍增的思想。</p>
+<p>按字典序排序。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><em>因为申请空间耗时与空间大小无关、与申请次数有关——</em></p>
+<p>所以vector会倍增申请空间o(<em>￣︶￣</em>)o</p>
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>push_back()</code></td>
+<td align="center">在队尾加入元素</td>
+<td align="left"><code>vec.push_back(加入元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop_back()</code></td>
+<td align="center">在队尾删除元素</td>
+<td align="left"><code>vec.pop_back()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">判断是否为空</td>
+<td align="left"><code>vec.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>vec.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>size()</code></td>
+<td align="center">元素个数</td>
+<td align="left"><code>vec.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查找元素位置，否则返回队尾</td>
+<td align="left"><code>find(起始位置, 终止位置, 查找元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>front()</code></td>
+<td align="center">返回队头元素</td>
+<td align="left"><code>vec.front()</code></td>
+</tr>
+<tr>
+<td align="center"><code>back()</code></td>
+<td align="center">返回队尾元素</td>
+<td align="left"><code>vec.back()</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回队头迭代器</td>
+<td align="left"><code>vec.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回队尾迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>vec.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除指定元素</td>
+<td align="left"><code>vec.erase(迭代器)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除指定区间（左闭右开）元素</td>
+<td align="left"><code>vec.erase(开始迭代器, 结束迭代器)</code></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td align="center">随机选址</td>
+<td align="left"><code>vec[]</code></td>
+</tr>
+</tbody></table>
+<h2 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h2><ul>
+<li><code>vector&lt;TYPE&gt; a</code>，定义一个存储TYPE类型变量vector a。</li>
+<li><code>vector&lt;TYPE&gt; a(n)</code>，定义一个大小为n的存储TYPE类型变量vector a。</li>
+<li><code>vector&lt;TYPE&gt; a(n, x)</code>，定义一个大小为n的存储TYPE类型变量且初始值全为x的vector a。</li>
+<li><code>vector&lt;TYPE&gt; a[n]</code>，定义n个存储TYPE类型变量vector a。</li>
+</ul>
+<h1 id="PAIR"><a href="#PAIR" class="headerlink" title="PAIR"></a>PAIR</h1><h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><p>两个元素（不限种类）的结合体。</p>
+<p>有点就是自带比较函数，先比第一个再比第二个（各自按字典序排序），可以很方便地<code>sort()</code>。</p>
+<h2 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>first</code></td>
+<td align="center">第一元素</td>
+<td align="left"><code>p.first</code></td>
+</tr>
+<tr>
+<td align="center"><code>second</code></td>
+<td align="center">第二元素</td>
+<td align="left"><code>p.second</code></td>
+</tr>
+</tbody></table>
+<h2 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h2><p><code>pair&lt;T1, T2&gt; p</code>，定义一个两个元素分别是T1类型和T2类型的pair p。</p>
+<ul>
+<li>make_pair(a, b)，返回一个由a和b构成的pair。</li>
+<li>{a, b}，返回一个由a和b构成的pair。（c++11专用）</li>
+</ul>
+<h1 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h1><h2 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h2><p>字符串。</p>
+<h2 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>substr()</code></td>
+<td align="center">截取子串</td>
+<td align="left"><code>str.substr(起始下标, 截取长度)</code></td>
+</tr>
+<tr>
+<td align="center"><code>c_str()</code></td>
+<td align="center">转换为c语言字符串（支持scanf）</td>
+<td align="left"><code>str.c_str()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">判断是否为空</td>
+<td align="left"><code>str.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>str.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>size()</code></td>
+<td align="center">字符串长度</td>
+<td align="left"><code>str.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>length()</code></td>
+<td align="center">字符串长度</td>
+<td align="left"><code>str.length()</code></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td align="center">随机选址</td>
+<td align="left"><code>str[]</code></td>
+</tr>
+</tbody></table>
+<h3 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h3><h4 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h4><p>如果截取长度超出字符串长度，或没有设定截取长度，默认截取至结尾。</p>
+<h4 id="c-str"><a href="#c-str" class="headerlink" title="c_str()"></a>c_str()</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>,a.<span class="hljs-built_in">c_str</span>());<br></code></pre></td></tr></table></figure>
+
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><code>string a</code>，定义一个string a。</li>
+<li><code>string a = str</code>，定义一个内容为str的string a。</li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><ul>
+<li>a+&#x3D;b，在a末尾加上b（string）。</li>
+<li>a+&#x3D;b，在a末尾加上b（char）。</li>
+</ul>
+<h1 id="QUEUE"><a href="#QUEUE" class="headerlink" title="QUEUE"></a>QUEUE</h1><h2 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h2><p>队列。</p>
+<h2 id="常用函数-3"><a href="#常用函数-3" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>push()</code></td>
+<td align="center">入队</td>
+<td align="left"><code>q.push(入队元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop()</code></td>
+<td align="center">队头出队</td>
+<td align="left"><code>q.pop()</code></td>
+</tr>
+<tr>
+<td align="center"><code>front()</code></td>
+<td align="center">获取队头</td>
+<td align="left"><code>q.front()</code></td>
+</tr>
+<tr>
+<td align="center"><code>back()</code></td>
+<td align="center">获取队尾</td>
+<td align="left"><code>q.back()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">判断是否为空</td>
+<td align="left"><code>q.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>size()</code></td>
+<td align="center">队列元素个数</td>
+<td align="left"><code>q.size()</code></td>
+</tr>
+</tbody></table>
+<h2 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h2><h3 id="清空"><a href="#清空" class="headerlink" title="清空"></a>清空</h3><p>直接重开一个队列就行了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">q=<span class="hljs-built_in">queue</span>&lt;TYPE&gt;();<br></code></pre></td></tr></table></figure>
+
+<h1 id="PRIORITY-QUEUE"><a href="#PRIORITY-QUEUE" class="headerlink" title="PRIORITY_QUEUE"></a>PRIORITY_QUEUE</h1><h2 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h2><p>优先队列（堆），默认大根堆</p>
+<p><strong>比较常用</strong></p>
+<h2 id="常用函数-4"><a href="#常用函数-4" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>push()</code></td>
+<td align="center">入堆</td>
+<td align="left"><code>pq.push(入堆元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>top()</code></td>
+<td align="center">获取堆顶</td>
+<td align="left"><code>pq.top()</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop()</code></td>
+<td align="center">堆顶出堆</td>
+<td align="left"><code>pq.pop()</code></td>
+</tr>
+</tbody></table>
+<h2 id="操作-2"><a href="#操作-2" class="headerlink" title="操作"></a>操作</h2><h3 id="实现小根堆"><a href="#实现小根堆" class="headerlink" title="实现小根堆"></a>实现小根堆</h3><ul>
+<li>插入-x，最后输出的时候取反。</li>
+<li><code>priority_queue&lt;TYPE, vector&lt;TYPE&gt;, greater&lt;TYPE&gt; &gt;</code></li>
+</ul>
+<h1 id="STACK"><a href="#STACK" class="headerlink" title="STACK"></a>STACK</h1><h2 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h2><p>栈</p>
+<h2 id="常用函数-5"><a href="#常用函数-5" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>push()</code></td>
+<td align="center">入栈</td>
+<td align="left"><code>st.push(入栈元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>top()</code></td>
+<td align="center">获取栈顶</td>
+<td align="left"><code>st.top()</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop()</code></td>
+<td align="center">栈顶出栈</td>
+<td align="left"><code>st.pop()</code></td>
+</tr>
+<tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>st.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>st.empty()</code></td>
+</tr>
+</tbody></table>
+<h1 id="DEQUE"><a href="#DEQUE" class="headerlink" title="DEQUE"></a>DEQUE</h1><h2 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a>概念</h2><p>双端队列</p>
+<p><del>很牛逼哒</del></p>
+<p><em>效率低的令人发指，慢了好几倍~</em></p>
+<h2 id="常用函数-6"><a href="#常用函数-6" class="headerlink" title="常用函数"></a>常用函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>dq.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>dq.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>dq.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>front()</code></td>
+<td align="center">获取队头</td>
+<td align="left"><code>dq.front()</code></td>
+</tr>
+<tr>
+<td align="center"><code>back()</code></td>
+<td align="center">获取队尾</td>
+<td align="left"><code>dq.back()</code></td>
+</tr>
+<tr>
+<td align="center"><code>push_front()</code></td>
+<td align="center">在队头加入元素</td>
+<td align="left"><code>dq.push_front(加入元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop_front()</code></td>
+<td align="center">在队头删除元素</td>
+<td align="left"><code>dq.pop_front()</code></td>
+</tr>
+<tr>
+<td align="center"><code>push_back()</code></td>
+<td align="center">在队尾加入元素</td>
+<td align="left"><code>dq.push_back(加入元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>pop_back()</code></td>
+<td align="center">在队尾删除元素</td>
+<td align="left"><code>dq.pop_back()</code></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td align="center">随机选址</td>
+<td align="left"><code>dq[]</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回队头迭代器</td>
+<td align="left"><code>dq.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回队尾迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>dq.end()</code></td>
+</tr>
+</tbody></table>
+<h1 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h1><h2 id="set-multiset"><a href="#set-multiset" class="headerlink" title="set&#x2F;multiset"></a>set&#x2F;multiset</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>基于平衡二叉树（红黑树），动态维护有序序列。</p>
+<p><code>set</code>不能有重复元素，否则会被忽略掉。<br>而<code>multiset</code>可以。</p>
+<h3 id="常用函数-7"><a href="#常用函数-7" class="headerlink" title="常用函数"></a>常用函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>s.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>s.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>s.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回第一个迭代器</td>
+<td align="left"><code>s.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回最后的迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>s.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>insert()</code></td>
+<td align="center">插入元素</td>
+<td align="left"><code>s.insert(插入元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查找元素，若无则返回end迭代器</td>
+<td align="left"><code>s.find(查找元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>count()</code></td>
+<td align="center">返回某一元素个数</td>
+<td align="left"><code>s.count(查找元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除所有对应值的元素</td>
+<td align="left"><code>s.erase(删除值)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应迭代器的元素</td>
+<td align="left"><code>s.erase(删除迭代器)</code></td>
+</tr>
+<tr>
+<td align="center"><code>lower_bound()</code></td>
+<td align="center">返回大于等于标准值的最小数迭代器</td>
+<td align="left"><code>s.lower_bound(标准值)</code></td>
+</tr>
+<tr>
+<td align="center"><code>upper_bound()</code></td>
+<td align="center">返回大于标准值的最小数迭代器</td>
+<td align="left"><code>s.upper_bound(标准值)</code></td>
+</tr>
+</tbody></table>
+<h3 id="定义方式-1"><a href="#定义方式-1" class="headerlink" title="定义方式"></a>定义方式</h3><p><code>set&lt;TYPE&gt; s</code>，定义一个存储TYPE类型变量set s。<br><code>multiset&lt;TYPE&gt; ms</code>，定义一个存储TYPE类型变量multiset ms。</p>
+<h3 id="操作-3"><a href="#操作-3" class="headerlink" title="操作"></a>操作</h3><p>迭代器可以++&#x2F;–，前移后移。</p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>绝大部分O(logn)</p>
+<h2 id="unordered-set-unordered-muiltiset"><a href="#unordered-set-unordered-muiltiset" class="headerlink" title="unordered_set&#x2F;unordered_muiltiset"></a>unordered_set&#x2F;unordered_muiltiset</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>基于哈希表实现</p>
+<h3 id="常用函数-8"><a href="#常用函数-8" class="headerlink" title="常用函数"></a>常用函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>us.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>us.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>us.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回第一个迭代器</td>
+<td align="left"><code>us.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回最后的迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>us.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>insert()</code></td>
+<td align="center">插入元素</td>
+<td align="left"><code>us.insert(插入元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查找元素，若无则返回end迭代器</td>
+<td align="left"><code>us.find(查找元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>count()</code></td>
+<td align="center">返回某一元素个数</td>
+<td align="left"><code>us.count(查找元素)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除所有对应值的元素</td>
+<td align="left"><code>us.erase(删除值)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应迭代器的元素</td>
+<td align="left"><code>us.erase(删除迭代器)</code></td>
+</tr>
+</tbody></table>
+<h3 id="操作-4"><a href="#操作-4" class="headerlink" title="操作"></a>操作</h3><p>迭代器<strong>不</strong>可以++&#x2F;–，前移后移。</p>
+<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>增删改查O(1)</p>
+<h1 id="MAP"><a href="#MAP" class="headerlink" title="MAP"></a>MAP</h1><h2 id="map-multimap"><a href="#map-multimap" class="headerlink" title="map&#x2F;multimap"></a>map&#x2F;multimap</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>基于平衡二叉树（红黑树），动态维护有序序列。</p>
+<h3 id="常用函数-9"><a href="#常用函数-9" class="headerlink" title="常用函数"></a>常用函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>m.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>m.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>m.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回第一个迭代器</td>
+<td align="left"><code>m.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回最后的迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>m.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>insert()</code></td>
+<td align="center">插入一对元素</td>
+<td align="left"><code>m.insert(插入pair)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应对元素</td>
+<td align="left"><code>m.erase(删除pair)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应迭代器元素</td>
+<td align="left"><code>m.erase(删除迭代器)</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查找要求键元素迭代器，若无则返回end迭代器</td>
+<td align="left"><code>m.find(要求查找键)</code></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td align="center">像使用数组一样使用（查找、修改）</td>
+<td align="left"><code>m[]</code></td>
+</tr>
+<tr>
+<td align="center"><code>lower_bound()</code></td>
+<td align="center">返回大于等于标准值的最小数迭代器</td>
+<td align="left"><code>m.lower_bound(标准值)</code></td>
+</tr>
+<tr>
+<td align="center"><code>upper_bound()</code></td>
+<td align="center">返回大于标准值的最小数迭代器</td>
+<td align="left"><code>m.upper_bound(标准值)</code></td>
+</tr>
+</tbody></table>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p><code>[]</code>的时间复杂度是O(logn)的。</p>
+<h3 id="操作-5"><a href="#操作-5" class="headerlink" title="操作"></a>操作</h3><p>迭代器可以++&#x2F;–，前移后移。</p>
+<h3 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>绝大部分O(logn)</p>
+<h2 id="unordered-map-unordered-multimap"><a href="#unordered-map-unordered-multimap" class="headerlink" title="unordered_map&#x2F;unordered_multimap"></a>unordered_map&#x2F;unordered_multimap</h2><h3 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h3><p>基于哈希表实现</p>
+<h3 id="常用函数-10"><a href="#常用函数-10" class="headerlink" title="常用函数"></a>常用函数</h3><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>size()</code></td>
+<td align="center">获取元素个数</td>
+<td align="left"><code>um.size()</code></td>
+</tr>
+<tr>
+<td align="center"><code>empty()</code></td>
+<td align="center">是否为空</td>
+<td align="left"><code>um.empty()</code></td>
+</tr>
+<tr>
+<td align="center"><code>clear()</code></td>
+<td align="center">清空</td>
+<td align="left"><code>um.clear()</code></td>
+</tr>
+<tr>
+<td align="center"><code>begin()</code></td>
+<td align="center">返回第一个迭代器</td>
+<td align="left"><code>um.begin()</code></td>
+</tr>
+<tr>
+<td align="center"><code>end()</code></td>
+<td align="center">返回最后的迭代器（最后元素的后一个元素）</td>
+<td align="left"><code>um.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>insert()</code></td>
+<td align="center">插入一对元素</td>
+<td align="left"><code>um.insert(插入pair)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应对元素</td>
+<td align="left"><code>um.erase(删除pair)</code></td>
+</tr>
+<tr>
+<td align="center"><code>erase()</code></td>
+<td align="center">删除对应迭代器元素</td>
+<td align="left"><code>m.erase(删除迭代器)</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查找要求键元素迭代器，若无则返回end迭代器</td>
+<td align="left"><code>um.find(要求查找键)</code></td>
+</tr>
+<tr>
+<td align="center"><code>[]</code></td>
+<td align="center">像使用数组一样使用（查找、修改）</td>
+<td align="left"><code>um[]</code></td>
+</tr>
+</tbody></table>
+<h3 id="操作-6"><a href="#操作-6" class="headerlink" title="操作"></a>操作</h3><p>迭代器<strong>不</strong>可以++&#x2F;–，前移后移。</p>
+<h3 id="时间复杂度-3"><a href="#时间复杂度-3" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>增删改查O(1)</p>
+<h1 id="BITSET"><a href="#BITSET" class="headerlink" title="BITSET"></a>BITSET</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>压位</p>
+<p>bool数组一个元素占8位，而bitset一个元素只占1位，节省了八倍内存。</p>
+<h2 id="定义方式-2"><a href="#定义方式-2" class="headerlink" title="定义方式"></a>定义方式</h2><p><code>bitset&lt;n&gt; bs</code>，定义一个存储n个bool的bitset bs。</p>
+<h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><table>
+<thead>
+<tr>
+<th align="center">函数名</th>
+<th align="center">函数作用</th>
+<th align="left">函数用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>count()</code></td>
+<td align="center">获取1的个数</td>
+<td align="left"><code>bs.count()</code></td>
+</tr>
+<tr>
+<td align="center"><code>any()</code></td>
+<td align="center">判断是否有1</td>
+<td align="left"><code>bs.any()</code></td>
+</tr>
+<tr>
+<td align="center"><code>none()</code></td>
+<td align="center">判断是否全是0</td>
+<td align="left"><code>bs.none()</code></td>
+</tr>
+<tr>
+<td align="center"><code>set()</code></td>
+<td align="center">把所有位设成1</td>
+<td align="left"><code>bs.set()</code></td>
+</tr>
+<tr>
+<td align="center"><code>set()</code></td>
+<td align="center">把要求位置设成要求值</td>
+<td align="left"><code>bs.set(要求位置, 要求值)</code></td>
+</tr>
+<tr>
+<td align="center"><code>reset()</code></td>
+<td align="center">把所有位设成0</td>
+<td align="left"><code>bs.reset()</code></td>
+</tr>
+<tr>
+<td align="center"><code>flip()</code></td>
+<td align="center">把所有位取反</td>
+<td align="left"><code>bs.flip()</code></td>
+</tr>
+<tr>
+<td align="center"><code>flip()</code></td>
+<td align="center">把指定位取反</td>
+<td align="left"><code>bs.flip(指定位)</code></td>
+</tr>
+</tbody></table>
+<h2 id="操作-7"><a href="#操作-7" class="headerlink" title="操作"></a>操作</h2><p>支持所有位运算：<code>&amp;, |, ^, ~, &lt;&lt;, &gt;&gt;</code></p>
+<p>支持<code>==</code>和<code>!=</code></p>
+<p>支持<code>[]</code>看某一位</p>
+<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNotes/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNotes/DataStructure/" class="category-chain-item">数据结构</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/orgn/" class="print-no-link">#原创</a>
+      
+        <a href="/tags/code/" class="print-no-link">#编程</a>
+      
+        <a href="/tags/cppl/" class="print-no-link">#c++</a>
+      
+        <a href="/tags/note/" class="print-no-link">#笔记</a>
+      
+        <a href="/tags/stls/" class="print-no-link">#STL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[编程笔记]-STLs(STL大整合)</div>
+      <div>http://githarlem.github.io/2024/08/03/STLs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Harlem</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年8月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"xxC3pGsUk3aNPu9TVonwjTeC-gzGzoHsz","appKey":"5mZhDPfEAHkfkqNy03d001rg","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
