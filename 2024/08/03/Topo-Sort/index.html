@@ -19,28 +19,29 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”教学。 emmm就这样吧(。·ω·。) 思路乘法其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂">
+    <meta name="description" content="概念拓扑排序，就是对图中的点进行排序。 排序方式如下： 对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。 所以，图只能是有向图，还得是有向无环图。 实现记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。 无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/index.html">
+<meta property="og:title" content="[编程笔记]-Topo_Sort拓扑排序">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/03/Topo-Sort/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与int类型的小数的乘除计算，大数乘大数将会在“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”教学。 emmm就这样吧(。·ω·。) 思路乘法其实就跟列竖式差不多，把大数列在下面、小数列在上面，直接乘。 别忘了去前导0~ 除法就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂">
+<meta property="og:description" content="概念拓扑排序，就是对图中的点进行排序。 排序方式如下： 对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。 所以，图只能是有向图，还得是有向无环图。 实现记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。 无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-29T01:55:46.000Z">
-<meta property="article:modified_time" content="2024-07-30T01:03:41.309Z">
+<meta property="article:published_time" content="2024-08-03T07:36:23.000Z">
+<meta property="article:modified_time" content="2024-08-03T07:42:23.460Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="高精度">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版） - HarlemBlog</title>
+  <title>[编程笔记]-Topo_Sort拓扑排序 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Topo_Sort拓扑排序"></span>
           
         </div>
 
@@ -249,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-29 09:55" pubdate>
-          2024年7月29日 上午
+        <time datetime="2024-08-03 15:36" pubdate>
+          2024年8月3日 下午
         </time>
       </span>
     
@@ -261,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          427 字
+          405 字
         
       </span>
     
@@ -407,17 +408,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
         id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         基础算法
         <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-cca34e9f468bf2208ec04514e694f17a"
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
            role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
         
         
@@ -465,7 +466,7 @@
       
         <a href="/2024/07/29/High-Precision-MulDiv-Simple/" title="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</span>
         </a>
       
@@ -670,17 +671,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="树论图论"
         id="heading-a1d43542823371d0e5343b8e1c52651a" role="tab" data-toggle="collapse" href="#collapse-a1d43542823371d0e5343b8e1c52651a"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         树论图论
         <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-a1d43542823371d0e5343b8e1c52651a"
+      <div class="category-collapse collapse show" id="collapse-a1d43542823371d0e5343b8e1c52651a"
            role="tabpanel" aria-labelledby="heading-a1d43542823371d0e5343b8e1c52651a">
         
         
@@ -692,7 +693,7 @@
       
         <a href="/2024/08/03/Topo-Sort/" title="[编程笔记]-Topo_Sort拓扑排序"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Topo_Sort拓扑排序</span>
         </a>
       
@@ -719,26 +720,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</h1>
+            <h1 id="seo-header">[编程笔记]-Topo_Sort拓扑排序</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>鉴于此篇博客用于学习or巩固基础部分，故而这里只记录大数与<code>int</code>类型的小数的乘除计算，大数乘大数将会在<a href="https://githarlem.github.io/High-Precison-MulDiv-Complex">“[编程笔记]-High_Precision(Mul and Div)[COM]高精度乘除法（提高版）”</a>教学。</p>
-<p>emmm就这样吧(。·ω·。)</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h2><p>其实就跟<strong>列竖式</strong>差不多，把大数列在下面、小数列在上面，直接乘。</p>
-<p><em>别忘了去前导0~</em></p>
-<h2 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h2><p>就是用机器去模拟手写嘛。鉴于除法相较于其他三种计算有些复杂，这里给出详细步骤：</p>
-<ol>
-<li>准备好记录结果与记录余数的变量。</li>
-<li>从最高位开始往最低位遍历大数。</li>
-<li>将余数乘十并加上大数的这一位，作为新的被除数。</li>
-<li>记录新的被除数除以小数的商与新余数。</li>
-<li>去掉前导零。</li>
-</ol>
-<p><em>tips: 如果你用的是<code>vector</code>储存，请在第5步前反转队列。（详见代码）</em></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="乘法-1"><a href="#乘法-1" class="headerlink" title="乘法"></a>乘法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">mul</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;a.<span class="hljs-built_in">size</span>()||t;i++)&#123;<br>        <span class="hljs-keyword">if</span>(i&lt;a.<span class="hljs-built_in">size</span>())t+=a[i]*b;<br>        c.<span class="hljs-built_in">push_back</span>(t%<span class="hljs-number">10</span>);<br>        t/=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> c;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="除法-1"><a href="#除法-1" class="headerlink" title="除法"></a>除法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pair&lt;vector&lt;<span class="hljs-type">int</span>&gt;,<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">div</span>(vector&lt;<span class="hljs-type">int</span>&gt; &amp;a,<span class="hljs-type">int</span> &amp;b)&#123;<span class="hljs-comment">//同时返回结果和余数</span><br>    vector&lt;<span class="hljs-type">int</span>&gt; c;<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=a.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;i&gt;=<span class="hljs-number">0</span>;i--)&#123;<br>        t=t*<span class="hljs-number">10</span>+a[i];<br>        c.<span class="hljs-built_in">push_back</span>(t/b);<span class="hljs-comment">//注意，这里是从最高位开始往最低位储存，所以最后要先反转过来。</span><br>        t%=b;<br>    &#125;<br>    <span class="hljs-built_in">reverse</span>(c.<span class="hljs-built_in">begin</span>(),c.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//记得#include&lt;algorithm&gt;</span><br>    <span class="hljs-keyword">while</span>(c.<span class="hljs-built_in">size</span>()&gt;<span class="hljs-number">1</span>&amp;&amp;c.<span class="hljs-built_in">back</span>()==<span class="hljs-number">0</span>)c.<span class="hljs-built_in">pop_back</span>();<br>    <span class="hljs-keyword">return</span> &#123;c,t&#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>拓扑排序，就是对图中的点进行排序。</p>
+<p>排序方式如下：</p>
+<p>对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。</p>
+<p>所以，图只能是有向图，还得是<strong>有向无环图</strong>。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。</p>
+<p>无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当入度为0时才会把这个点加入队列，所以这个点只会被遍历一次。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>由于这是个算法，所以模板不是很固定，所以就直接上模板题吧。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/850/">AcWing848-有向图的拓扑排序</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> x,y;<br><span class="hljs-type">int</span> dg[N];<br>vector&lt;<span class="hljs-type">int</span>&gt; vec;<br><br><span class="hljs-type">int</span> idk;<br><span class="hljs-type">int</span> hd[N],to[N],ne[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    to[++idk]=b;<br>    ne[idk]=hd[a];<br>    hd[a]=idk;<br>    dg[b]++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">topo</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> fns=<span class="hljs-number">0</span>;<br>    queue&lt;<span class="hljs-type">int</span>&gt; q;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(dg[i]==<span class="hljs-number">0</span>)q.<span class="hljs-built_in">push</span>(i);<br>    &#125;<br>    <span class="hljs-keyword">while</span>(!q.<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-type">int</span> now=q.<span class="hljs-built_in">front</span>();q.<span class="hljs-built_in">pop</span>();<br>        vec.<span class="hljs-built_in">push_back</span>(now);<br>        fns++;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=hd[now];i;i=ne[i])&#123;<br>            dg[to[i]]--;<br>            <span class="hljs-keyword">if</span>(dg[to[i]]==<span class="hljs-number">0</span>)q.<span class="hljs-built_in">push</span>(to[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> fns==n;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        cin&gt;&gt;x&gt;&gt;y;<br>        <span class="hljs-built_in">merge</span>(x,y);<br>    &#125;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">topo</span>())&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;vec.<span class="hljs-built_in">size</span>();i++)cout&lt;&lt;vec[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        cout&lt;&lt;<span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
@@ -762,7 +758,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNote/BasicAlgorithm/" class="category-chain-item">基础算法</a>
+  <a href="/categories/CodeNote/%E6%A0%91%E8%AE%BA%E5%9B%BE%E8%AE%BA/" class="category-chain-item">树论图论</a>
   
   
 
@@ -787,7 +783,9 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/hprc/" class="print-no-link">#高精度</a>
+        <a href="/tags/grph/" class="print-no-link">#图论</a>
+      
+        <a href="/tags/sort/" class="print-no-link">#排序</a>
       
     </div>
   
@@ -799,8 +797,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</div>
-      <div>http://githarlem.github.io/2024/07/29/High-Precision-MulDiv-Simple/</div>
+      <div>[编程笔记]-Topo_Sort拓扑排序</div>
+      <div>http://githarlem.github.io/2024/08/03/Topo-Sort/</div>
     </div>
     <div class="license-meta">
       
@@ -812,13 +810,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月29日</div>
+          <div>2024年8月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月30日</div>
+          <div>2024年8月3日</div>
         </div>
       
       

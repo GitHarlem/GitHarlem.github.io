@@ -252,6 +252,90 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Topo-Sort/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Topo_Sort拓扑排序">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Topo-Sort/" target="_self">
+          [编程笔记]-Topo_Sort拓扑排序
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Topo-Sort/" target="_self">
+        <div>
+          概念拓扑排序，就是对图中的点进行排序。 排序方式如下： 对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。 所以，图只能是有向图，还得是有向无环图。 实现记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。 无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 15:36" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/%E6%A0%91%E8%AE%BA%E5%9B%BE%E8%AE%BA/" class="category-chain-item">树论图论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/sort/">#排序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/08/03/Storage-of-Graph/" target="_self">
           <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Storage_of_Graph图的存储">
         </a>
@@ -1003,90 +1087,6 @@
               <a href="/tags/tree/">#树论</a>
             
               <a href="/tags/trtr/">#字典树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/KMP/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-KMP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/KMP/" target="_self">
-          [编程笔记]-KMP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/KMP/" target="_self">
-        <div>
-          前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 08:07" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/strn/">#字符串</a>
-            
-              <a href="/tags/kmpa/">#KMP</a>
             
           </div>
         
