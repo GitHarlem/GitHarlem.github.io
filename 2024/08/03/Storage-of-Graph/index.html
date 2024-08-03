@@ -19,28 +19,29 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言lowbit是树状数组的基础啊，其重要性可想而知。 模板123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它">
+    <meta name="description" content="邻接矩阵啊开个二维数组，然后a[i][j]表示i到j的边长。完事了。 邻接表利用链表储存每个点的相邻节点。 链式前向星哈希中拉链法头插法也是用的这个。[编程笔记]-Hash_Table哈希表 记录每个节点的第一条边、每条边的边长、每条边指向的节点、每条边的下一条边（指把这个节点的所有边形成一种链式结构链接），然后就能遍历所有边了。 代码前面两个都太简单了，所以就直接上链式前向星的代码吧。 1234">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Lowbit取最小1">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/31/Lowbit/index.html">
+<meta property="og:title" content="[编程笔记]-Storage_of_Graph图的存储">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/03/Storage-of-Graph/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言lowbit是树状数组的基础啊，其重要性可想而知。 模板123int lowbit(int a)&#123;	return a&amp;-a;&#125; 演算众所周知，在二进制中，-a等同于~a+1（a的值取反再加一） a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。 故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它">
+<meta property="og:description" content="邻接矩阵啊开个二维数组，然后a[i][j]表示i到j的边长。完事了。 邻接表利用链表储存每个点的相邻节点。 链式前向星哈希中拉链法头插法也是用的这个。[编程笔记]-Hash_Table哈希表 记录每个节点的第一条边、每条边的边长、每条边指向的节点、每条边的下一条边（指把这个节点的所有边形成一种链式结构链接），然后就能遍历所有边了。 代码前面两个都太简单了，所以就直接上链式前向星的代码吧。 1234">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-31T06:35:39.000Z">
-<meta property="article:modified_time" content="2024-07-31T06:49:11.078Z">
+<meta property="article:published_time" content="2024-08-03T06:23:06.000Z">
+<meta property="article:modified_time" content="2024-08-03T06:32:38.325Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="位运算">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="树论">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Lowbit取最小1 - HarlemBlog</title>
+  <title>[编程笔记]-Storage_of_Graph图的存储 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Lowbit取最小1"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Storage_of_Graph图的存储"></span>
           
         </div>
 
@@ -249,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-31 14:35" pubdate>
-          2024年7月31日 下午
+        <time datetime="2024-08-03 14:23" pubdate>
+          2024年8月3日 下午
         </time>
       </span>
     
@@ -261,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          309 字
+          185 字
         
       </span>
     
@@ -352,17 +353,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图论树论"
         id="heading-f4fcf7c660cf8bdc443c6d22c3a63adf" role="tab" data-toggle="collapse" href="#collapse-f4fcf7c660cf8bdc443c6d22c3a63adf"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         图论树论
         <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-f4fcf7c660cf8bdc443c6d22c3a63adf"
+      <div class="category-collapse collapse show" id="collapse-f4fcf7c660cf8bdc443c6d22c3a63adf"
            role="tabpanel" aria-labelledby="heading-f4fcf7c660cf8bdc443c6d22c3a63adf">
         
         
@@ -392,7 +393,7 @@
       
         <a href="/2024/08/03/Storage-of-Graph/" title="[编程笔记]-Storage_of_Graph图的存储"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Storage_of_Graph图的存储</span>
         </a>
       
@@ -407,17 +408,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
         id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         基础算法
         <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-cca34e9f468bf2208ec04514e694f17a"
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
            role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
         
         
@@ -501,7 +502,7 @@
       
         <a href="/2024/07/31/Lowbit/" title="[编程笔记]-Lowbit取最小1"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Lowbit取最小1</span>
         </a>
       
@@ -682,24 +683,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Lowbit取最小1</h1>
+            <h1 id="seo-header">[编程笔记]-Storage_of_Graph图的存储</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>lowbit是树状数组的基础啊，其重要性可想而知。</p>
-<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span></span>&#123;<br>	<span class="hljs-keyword">return</span> a&amp;-a;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h1 id="演算"><a href="#演算" class="headerlink" title="演算"></a>演算</h1><p>众所周知，在二进制中，<code>-a</code>等同于<code>~a+1</code>（a的值取反再加一）</p>
-<p>a取反后，所有1变成0，0变成1，因此在原数中第一个1出现前，全都是1。</p>
-<p>故而，再加上一个一，第一个1前面全部变成0，第一个1本来取反变成0了，进位又变回1，然后就结束了，它后面的数字照样是原数取反的结果。</p>
-<p>这时候进行与运算，那么a中第一个1前面的全都是0，-a中第一个1前面的也全都是0，新数就全是0；</p>
-<p>第一个1后面的全都和原数取反，所以在新数中也是0。故而，就得到了第一个1组成的新数。</p>
-<p>举例：</p>
-<blockquote>
-<p>a&#x3D;1010011000<br><del>a&#x3D;0101100111<br>-a&#x3D;</del>a+1&#x3D;0101101000<br>a&amp;-a&#x3D;1010011000&amp;0101101000&#x3D;0000001000</p>
-</blockquote>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/803/">AcWing801-二进制中1的个数</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,ans;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> num&amp;-num;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>        ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(a)&#123;<br>            a-=<span class="hljs-built_in">lowbit</span>(a);<br>            ans++;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,ans);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h1><p>啊开个二维数组，然后a[i][j]表示i到j的边长。完事了。</p>
+<h1 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h1><p>利用链表储存每个点的相邻节点。</p>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><p>哈希中拉链法头插法也是用的这个。<br><a href="https://githarlem.github.io/2024/08/02/Hash-Table/">[编程笔记]-Hash_Table哈希表</a></p>
+<p>记录每个节点的第一条边、每条边的边长、每条边指向的节点、每条边的下一条边（指把这个节点的所有边形成一种链式结构链接），然后就能遍历所有边了。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>前面两个都太简单了，所以就直接上链式前向星的代码吧。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v,<span class="hljs-type">int</span> x)</span></span>&#123;<br>	ed[++idk]=x;<br>	to[idk]=v;<br>	ne[idk]=hd[u];<br>	hd[u]=idk;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
@@ -724,7 +718,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNote/BasicAlgorithm/" class="category-chain-item">基础算法</a>
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
   
   
 
@@ -749,7 +743,9 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/btam/" class="print-no-link">#位运算</a>
+        <a href="/tags/grph/" class="print-no-link">#图论</a>
+      
+        <a href="/tags/tree/" class="print-no-link">#树论</a>
       
     </div>
   
@@ -761,8 +757,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Lowbit取最小1</div>
-      <div>http://githarlem.github.io/2024/07/31/Lowbit/</div>
+      <div>[编程笔记]-Storage_of_Graph图的存储</div>
+      <div>http://githarlem.github.io/2024/08/03/Storage-of-Graph/</div>
     </div>
     <div class="license-meta">
       
@@ -774,13 +770,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月3日</div>
         </div>
       
       

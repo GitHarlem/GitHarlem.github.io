@@ -19,16 +19,16 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.push_back(加入元素)   pop_b">
+    <meta name="description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ 注意，这里只整理了常用函数，并不是全部函数！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编程笔记]-STLs(STL大整合)">
 <meta property="og:url" content="http://githarlem.github.io/2024/08/03/STLs/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.push_back(加入元素)   pop_b">
+<meta property="og:description" content="前言手打STL毕竟只是锦上添花，STL才是雪中送炭。 所以，来一篇STL大杂烩大整合！ 注意，这里只整理了常用函数，并不是全部函数！ VECTOR概念是一种动态数组，运用到倍增的思想。 按字典序排序。 原理因为申请空间耗时与空间大小无关、与申请次数有关—— 所以vector会倍增申请空间o(￣︶￣)o 常用函数   函数名 函数作用 函数用法    push_back() 在队尾加入元素 vec.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-03T00:38:02.000Z">
-<meta property="article:modified_time" content="2024-08-03T05:48:23.206Z">
+<meta property="article:modified_time" content="2024-08-03T06:35:08.049Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -331,7 +331,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(25)</span>
+        <span class="list-group-count">(26)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -358,7 +358,7 @@
         aria-expanded="false"
       >
         图论树论
-        <span class="list-group-count">(2)</span>
+        <span class="list-group-count">(3)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -385,6 +385,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">[编程笔记]-BFS广度优先搜索</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Storage-of-Graph/" title="[编程笔记]-Storage_of_Graph图的存储"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Storage_of_Graph图的存储</span>
         </a>
       
     
@@ -680,6 +689,7 @@
                 
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>手打STL毕竟只是锦上添花，STL才是雪中送炭。</p>
 <p>所以，来一篇STL<del>大杂烩</del>大整合！</p>
+<p>注意，这里只整理了常用函数，并不是全部函数！</p>
 <h1 id="VECTOR"><a href="#VECTOR" class="headerlink" title="VECTOR"></a>VECTOR</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>是一种动态数组，运用到倍增的思想。</p>
 <p>按字典序排序。</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p><em>因为申请空间耗时与空间大小无关、与申请次数有关——</em></p>
@@ -828,6 +838,11 @@
 <td align="center"><code>length()</code></td>
 <td align="center">字符串长度</td>
 <td align="left"><code>str.length()</code></td>
+</tr>
+<tr>
+<td align="center"><code>find()</code></td>
+<td align="center">查询字符位置</td>
+<td align="left"><code>str.find(查询字符)</code></td>
 </tr>
 <tr>
 <td align="center"><code>[]</code></td>
