@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>[编程笔记]-Shortest_Circuit_Problem(General)最短路问题总概</title>
+    <link href="/2024/08/03/Shortest-Circuit-Problem-General/"/>
+    <url>/2024/08/03/Shortest-Circuit-Problem-General/</url>
+    
+    <content type="html"><![CDATA[<p>#前言<br>本篇博客主要是总概整个最短路问题的算法一览，并不包括每个算法解析，如有需要，请看左边侧边栏的同分类下文章，毕竟也不多，自行寻找，谢谢。</p><h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>最短路问题就是求从某点到某点的最短距离。</p><p>源点就是起点，汇点就是终点。</p><h1 id="单源最短路"><a href="#单源最短路" class="headerlink" title="单源最短路"></a>单源最短路</h1><h2 id="边权全为正"><a href="#边权全为正" class="headerlink" title="边权全为正"></a>边权全为正</h2><h3 id="朴素Dijkstra"><a href="#朴素Dijkstra" class="headerlink" title="朴素Dijkstra"></a>朴素Dijkstra</h3><p>时间复杂度是O(n<sup>2</sup>)。</p><h3 id="堆优化Dijkstra"><a href="#堆优化Dijkstra" class="headerlink" title="堆优化Dijkstra"></a>堆优化Dijkstra</h3><p>使用堆优化Dijkstra算法，时间复杂度O(mlogn)。</p><h2 id="存在负权边"><a href="#存在负权边" class="headerlink" title="存在负权边"></a>存在负权边</h2><h3 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="Bellman-Ford"></a>Bellman-Ford</h3><p>时间复杂度O(nm)</p><h3 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h3><p><del>关于SPFA，它死了</del></p><p>时间复杂度一般O(m)，最坏O(nm)。</p><h1 id="多源汇最短路"><a href="#多源汇最短路" class="headerlink" title="多源汇最短路"></a>多源汇最短路</h1><h2 id="Floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h2><p>时间复杂度O(n<sup>3</sup>)。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>最短路</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Topo_Sort拓扑排序</title>
     <link href="/2024/08/03/Topo-Sort/"/>
     <url>/2024/08/03/Topo-Sort/</url>

@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/03/Shortest-Circuit-Problem-General/
 http://githarlem.github.io/2024/08/03/Topo-Sort/
 http://githarlem.github.io/2024/08/03/DFS/
 http://githarlem.github.io/2024/08/03/STLs/
@@ -55,6 +56,7 @@ http://githarlem.github.io/tags/stls/
 http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/tscp/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
