@@ -1,6 +1,6 @@
 http://githarlem.github.io/2024/08/04/Floyd/
-http://githarlem.github.io/2024/08/03/SPFA/
 http://githarlem.github.io/2024/08/03/Bellman-Ford/
+http://githarlem.github.io/2024/08/03/SPFA/
 http://githarlem.github.io/2024/08/03/Dijkstra-HeapOptimized/
 http://githarlem.github.io/2024/08/03/Dijkstra-Plain/
 http://githarlem.github.io/2024/08/03/Shortest-Circuit-Problem-General/
