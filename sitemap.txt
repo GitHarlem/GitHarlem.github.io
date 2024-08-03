@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/04/Floyd/
 http://githarlem.github.io/2024/08/03/SPFA/
 http://githarlem.github.io/2024/08/03/Bellman-Ford/
 http://githarlem.github.io/2024/08/03/Dijkstra-HeapOptimized/
@@ -64,6 +65,7 @@ http://githarlem.github.io/tags/tscp/
 http://githarlem.github.io/tags/bmfd/
 http://githarlem.github.io/tags/djst/
 http://githarlem.github.io/tags/SPFA/
+http://githarlem.github.io/tags/flyd/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
