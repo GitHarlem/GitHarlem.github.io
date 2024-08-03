@@ -252,6 +252,345 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/SPFA/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-SPFA">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/SPFA/" target="_self">
+          [编程笔记]-SPFA
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/SPFA/" target="_self">
+        <div>
+          实质关于SPFA，它亖了 就是对Bellman-Ford算法的一种优化。事实证明优化地很成功，直接给BF差不多干没了 可以得出，节点i路程变化，当且仅当指向i的节点的路程变化，然后就能写出一个接近bfs的算法。 特性通常情况下，SPFA是快于Dijkstra的。 ！！！但是！SPFA它亖了容易被卡啊！被卡了就真亖了！！！ 实现 把起点插入队列 取出队头，更新队头的所有出边。 每个更新成功的出边，都
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 23:27" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tscp/">#最短路</a>
+            
+              <a href="/tags/SPFA/">#SPFA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Bellman-Ford/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Bellman-Ford贝尔曼弗德">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Bellman-Ford/" target="_self">
+          [编程笔记]-Bellman-Ford贝尔曼弗德
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Bellman-Ford/" target="_self">
+        <div>
+          用处常用于在有负权边的有向无环图中进行最短路判断。 要是有负权回路就没有结果了（或结果是负无穷）。解释：每转一圈距离就减一点，那我转啊转啊转啊转啊……然后就不出来了(～￣▽￣)～ 事实上用死了的SPFA更好o(￣︶￣)o 因此，事实上，一般用BELLMAN-FORD的都是有边数长度限制的题目，具体会在世纪意义中说明。 实现操作重复执行n次：遍历所有边，尝试更新每个边指向点的dis。（松弛操作） 啊
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 22:40" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tscp/">#最短路</a>
+            
+              <a href="/tags/bmfd/">#Bellman-Ford</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+          [编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+        <div>
+          概念其实就是用堆来优化Dijkstra算法（废话）。由于O(logm)（STL）与O(logn)（手写）为同一数量级，所以还是推荐直接用STL里的优先队列了。 其实就是优化了找当前距离最短的点的过程嘛。 由于是稀疏图，所以要用链式前向星做了。 代码事实上这种优化算法往往比朴素版更常见~ 12345678910111213141516171819202122232425262728293031323
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 20:17" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/heap/">#堆</a>
+            
+              <a href="/tags/tscp/">#最短路</a>
+            
+              <a href="/tags/djst/">#Dijkstra</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Dijkstra-Plain/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Dijkstra-Plain/" target="_self">
+          [编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Dijkstra-Plain/" target="_self">
+        <div>
+          前言与之前不同的是，图论的问题，重实现，而不重原理，所以这几篇博客会重点记录实现部分。 实现 初始化：设立一个集合S（空）储存所有已确定最短距离的点，并设立距离dis数组，除了起点设为0外，其他点都设为正无穷。 在所有点中，找一个不在S里并且dis最小的点t 把t加入集合S，并且更新所有与之相连的点的距离。 重复执行2、3步直到每个点都加入集合S  代码update 2024&#x2F;8&#x2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 20:16" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tscp/">#最短路</a>
+            
+              <a href="/tags/djst/">#Dijkstra</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/08/03/Shortest-Circuit-Problem-General/" target="_self">
           <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Shortest_Circuit_Problem(General)最短路问题总概">
         </a>
@@ -268,7 +607,7 @@
       
       <a class="index-excerpt " href="/2024/08/03/Shortest-Circuit-Problem-General/" target="_self">
         <div>
-          #前言本篇博客主要是总概整个最短路问题的算法一览，并不包括每个算法解析，如有需要，请看左边侧边栏的同分类下文章，毕竟也不多，自行寻找，谢谢。 概念最短路问题就是求从某点到某点的最短距离。 源点就是起点，汇点就是终点。 单源最短路边权全为正朴素Dijkstra时间复杂度是O(n2)。 堆优化Dijkstra使用堆优化Dijkstra算法，时间复杂度O(mlogn)。 存在负权边Bellman-For
+          #前言本篇博客主要是总概整个最短路问题的算法一览，并不包括每个算法解析，如有需要，请看左边侧边栏的同分类下文章，毕竟也不多，自行寻找，谢谢。 概念最短路问题就是求从某点到某点的最短距离。 源点就是起点，汇点就是终点。 单源最短路边权全为正朴素Dijkstra时间复杂度是O(n2)。故多用于稠密图。 堆优化Dijkstra使用堆优化Dijkstra算法，时间复杂度O(mlogn)。故多用于稀疏图。
         </div>
       </a>
 
@@ -758,347 +1097,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/03/String-Hash/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-String_Hash字符串哈希">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/03/String-Hash/" target="_self">
-          [编程笔记]-String_Hash字符串哈希
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/03/String-Hash/" target="_self">
-        <div>
-          前言这边首先推荐有需要滴去先瞅眼哈希表。“[编程笔记]-Hash_Table哈希表” （半夜写的，可能有点癫嘿嘿嘿） 简介字符串哈希，就是对字符串进行哈希，达到快速储存和查询的目的。 实现求HASH这里要用到一种特殊的哈希方法：将字符串视作一个p进制数（p不一定，按题目要求来，一般就是所有可能出现的字符的个数，反正能让每个字符串独一无二就行），然后再对这个p进制数进行哈希操作。别的就一模一样了。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-03 00:04" pubdate>
-              2024-08-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/hash/">#哈希</a>
-            
-              <a href="/tags/strn/">#字符串</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/Hash-Table/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Hash_Table哈希表">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/Hash-Table/" target="_self">
-          [编程笔记]-Hash_Table哈希表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/Hash-Table/" target="_self">
-        <div>
-          概念通过哈希函数（自定义，一般是取模），把数据映射到哈希表上。 听不懂就对了，听得懂也没必要看原理了(～￣▽￣)～ 当然，如果已经学过离散化的，理解起来可能方便些。 为了方便学习，这里挂一个离散化链接：“[编程笔记]-Discretization离散化” 顺便也挂一个字符串哈希吧，毕竟同根同源~“[编程笔记]-String_Hash字符串哈希” 实现映射这点就讲讲哈希函数，为了减少哈希冲突，我们一
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 22:00" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/hash/">#哈希</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/Heap/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Heap堆">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/Heap/" target="_self">
-          [编程笔记]-Heap堆
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/Heap/" target="_self">
-        <div>
-          实质事实上，堆就是一棵完全二叉树。 在堆中，以小根堆为例，每个父节点总是小于等于子节点的。 所以根节点事实上就是最小值。 作用 插入一个数 求集合当中的最小值 删除最小值 删除任意元素（STL做不到） 修改任意元素（STL做不到）  实现存储利用一维数组实现，2x是x左子节点，2x+1是x右子节点。 基操根有两个基本操作：上移和下移，就是把节点与父节点&#x2F;子节点互换以维护堆的单调性。 初始
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 19:49" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/tree/">#树论</a>
-            
-              <a href="/tags/heap/">#堆</a>
-            
-              <a href="/tags/sort/">#排序</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/Union-Find-Set/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Union_Find_Set并查集">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/Union-Find-Set/" target="_self">
-          [编程笔记]-Union_Find_Set并查集
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/Union-Find-Set/" target="_self">
-        <div>
-          作用以接近O(1)的复杂度合并集合并查询两个元素是否在同一个集合中的简介好用数据结构。 实现概览将每个集合视作一棵树，每个节点储存它的父节点。特别地，根节点储存它本身。 初始化将每个点的父节点都设为它本身。 合并将其中一个集合的根节点的父节点设为另一个集合的根节点。 查询看两个点在不在同一个集合中，也就是看两个点的根节点一样不一样。 优化（路径压缩）其实还可以按秩合并，但那个优化代码量相对较大，并
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 17:11" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/tree/">#树论</a>
-            
-              <a href="/tags/ufst/">#并查集</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

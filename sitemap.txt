@@ -1,3 +1,7 @@
+http://githarlem.github.io/2024/08/03/SPFA/
+http://githarlem.github.io/2024/08/03/Bellman-Ford/
+http://githarlem.github.io/2024/08/03/Dijkstra-HeapOptimized/
+http://githarlem.github.io/2024/08/03/Dijkstra-Plain/
 http://githarlem.github.io/2024/08/03/Shortest-Circuit-Problem-General/
 http://githarlem.github.io/2024/08/03/Topo-Sort/
 http://githarlem.github.io/2024/08/03/DFS/
@@ -57,6 +61,9 @@ http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
 http://githarlem.github.io/tags/tscp/
+http://githarlem.github.io/tags/bmfd/
+http://githarlem.github.io/tags/djst/
+http://githarlem.github.io/tags/SPFA/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
