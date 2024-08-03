@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/01/Queue/
 http://githarlem.github.io/2024/08/04/Floyd/
 http://githarlem.github.io/2024/08/03/Bellman-Ford/
 http://githarlem.github.io/2024/08/03/SPFA/
@@ -18,7 +19,6 @@ http://githarlem.github.io/2024/08/02/Union-Find-Set/
 http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/02/Trie-Tree/
 http://githarlem.github.io/2024/08/01/Monotonic-Stack/
-http://githarlem.github.io/2024/08/01/Queue/
 http://githarlem.github.io/2024/08/01/Stack/
 http://githarlem.github.io/2024/08/01/Double-Linked-Lists/
 http://githarlem.github.io/2024/08/01/Single-Linked-Lists/
