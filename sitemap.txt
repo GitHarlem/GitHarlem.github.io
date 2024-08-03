@@ -59,4 +59,3 @@ http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
 http://githarlem.github.io/categories/CodeNote/DataStructure/
-http://githarlem.github.io/categories/CodeNote/%E6%A0%91%E8%AE%BA%E5%9B%BE%E8%AE%BA/
