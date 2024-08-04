@@ -1,3 +1,5 @@
+http://githarlem.github.io/2024/08/04/Kruskal/
+http://githarlem.github.io/2024/08/04/Prim/
 http://githarlem.github.io/2024/08/04/Minimum-Spanning-Tree-Problem-General/
 http://githarlem.github.io/2024/08/04/Floyd/
 http://githarlem.github.io/2024/08/01/Queue/
@@ -68,6 +70,8 @@ http://githarlem.github.io/tags/stls/
 http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/krsk/
+http://githarlem.github.io/tags/prim/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/

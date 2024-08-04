@@ -4,11 +4,93 @@
   
   
   <entry>
+    <title>[编程笔记]-Kruskal</title>
+    <link href="/2024/08/04/Kruskal/"/>
+    <url>/2024/08/04/Kruskal/</url>
+    
+    <content type="html"><![CDATA[<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>多在稀疏图中生成最小生成树</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><ol><li>将每条边从小到大排好序。</li><li>找到一条连接两个不同集合的边权最小的边，将其加入确定的边中。</li><li>重复n-1次，即所有点都加入了最小生成树。</li></ol><p>特殊地，判断连接的是否是两个不同集合，推荐使用并查集。<br><a href="https://githarlem.github.io/2024/08/02/Union-Find-Set/">[编程笔记]-Union_Find_Set并查集</a></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>,M=<span class="hljs-number">2e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ufset</span>&#123;<br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-type">int</span> n;<br>        <span class="hljs-type">int</span> p[N];<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            n=x;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>                p[i]=i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>            <span class="hljs-keyword">if</span>(p[x]!=x)p[x]=<span class="hljs-built_in">find</span>(p[x]);<br>            <span class="hljs-keyword">return</span> p[x];<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            a=<span class="hljs-built_in">find</span>(a);b=<span class="hljs-built_in">find</span>(b);<br>            p[a]=b;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">same</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">find</span>(a)==<span class="hljs-built_in">find</span>(b);<br>        &#125;<br>&#125;ufs;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">edge</span>&#123;<br>    <span class="hljs-type">int</span> u,v,w;<br>&#125;es[M];<br><br><span class="hljs-type">int</span> n,m;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(edge a,edge b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> a.w&lt;b.w;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">kruskal</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">sort</span>(es<span class="hljs-number">+1</span>,es<span class="hljs-number">+1</span>+m,cmp);<br>    ufs.<span class="hljs-built_in">init</span>(n);<br>    <span class="hljs-type">int</span> fns=<span class="hljs-number">0</span>,res=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>        <span class="hljs-keyword">while</span>(i&lt;=m&amp;&amp;ufs.<span class="hljs-built_in">same</span>(es[i].u,es[i].v))i++;<br>        <span class="hljs-keyword">if</span>(i&gt;m)<span class="hljs-keyword">break</span>;<br>        ufs.<span class="hljs-built_in">merge</span>(es[i].u,es[i].v);<br>        fns++;<br>        res+=es[i].w;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(fns==n<span class="hljs-number">-1</span>)cout&lt;&lt;res;<br>    <span class="hljs-keyword">else</span> cout&lt;&lt;<span class="hljs-string">&quot;impossible&quot;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>        cin&gt;&gt;es[i].u&gt;&gt;es[i].v&gt;&gt;es[i].w;<br>    &#125;<br>    <span class="hljs-built_in">kruskal</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>最小生成树</tag>
+      
+      <tag>Kruskal</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Prim</title>
+    <link href="/2024/08/04/Prim/"/>
+    <url>/2024/08/04/Prim/</url>
+    
+    <content type="html"><![CDATA[<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>和Dijkstra基本一模一样。</p><p>不过它每次找的是<strong>距离当前生成的树最近的节点，不是距离树根最近的节点</strong>。</p><p><a href="https://githarlem.github.io/2024/08/03/Dijkstra-Plain/">[编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）</a></p><ol><li>初始化：设立一个集合S（空）储存所有已在生成树中的点，并设立距离dis数组，除了起点设为0外，其他点都设为正无穷。</li><li>在所有点中，找一个不在S里并且dis最小的点t</li><li>把t加入集合S，并且更新所有与之相连的点的距离。</li><li>重复执行2、3步直到所有点都加入集合S（共执行n次）。</li></ol><p>注：Dij共迭代n-1次，因为开头指定了一个起点；但Prim并没有，所以执行n次。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">505</span>;<br><br><span class="hljs-type">int</span> g[N][N];<br><span class="hljs-type">int</span> dis[N];<br><span class="hljs-type">bool</span> fns[N]=&#123;<span class="hljs-literal">false</span>&#125;;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> u,v,w;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">prim</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>    dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> t=<span class="hljs-number">0</span>;t&lt;n;t++)&#123;<br>        <span class="hljs-type">int</span> mi=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>            <span class="hljs-keyword">if</span>(!fns[i]&amp;&amp;dis[i]&lt;dis[mi])mi=i;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(mi==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        fns[mi]=<span class="hljs-literal">true</span>;<br>        res+=dis[mi];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>            <span class="hljs-keyword">if</span>(g[mi][i]!=<span class="hljs-number">0x3f3f3f3f</span>)&#123;<br>                dis[i]=<span class="hljs-built_in">min</span>(dis[i],g[mi][i]);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;res;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-built_in">memset</span>(g,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(g));<br>    <span class="hljs-built_in">memset</span>(dis,<span class="hljs-number">0x3f</span>,<span class="hljs-built_in">sizeof</span>(dis));<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>        g[u][v]=<span class="hljs-built_in">min</span>(g[u][v],w);<br>        g[v][u]=g[u][v];<br>    &#125;<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">prim</span>())cout&lt;&lt;<span class="hljs-string">&quot;impossible&quot;</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>最小生成树</tag>
+      
+      <tag>Prim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Minimum_Spanning_Tree_Problem(General)最小生成树问题总概</title>
     <link href="/2024/08/04/Minimum-Spanning-Tree-Problem-General/"/>
     <url>/2024/08/04/Minimum-Spanning-Tree-Problem-General/</url>
     
-    <content type="html"><![CDATA[<h1 id="PRIM"><a href="#PRIM" class="headerlink" title="PRIM"></a>PRIM</h1><p>特别像Dijkstra，除了作用不一样，别的几乎都一样，甚至优化方式都一样Σ(っ °Д °;)っ</p><h2 id="朴素版"><a href="#朴素版" class="headerlink" title="朴素版"></a>朴素版</h2><p>时间复杂度O(n<sup>2</sup>)</p><p>通常用来解决稠密图。</p><h2 id="堆优化版"><a href="#堆优化版" class="headerlink" title="堆优化版"></a>堆优化版</h2><p><em>说实话，不常用，因为Kruskal比它好写。</em></p><p>时间复杂度O(mlogn)。</p><p>常用来解决稀疏图。</p><h1 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h1><p>时间复杂度O(mlogm)（和O(mlogn)同一个量级）。</p><p>常用来解决稀疏图。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="Prim"><a href="#Prim" class="headerlink" title="Prim"></a>Prim</h1><p>特别像Dijkstra，除了作用不一样，别的几乎都一样，甚至优化方式都一样Σ(っ °Д °;)っ</p><h2 id="朴素版"><a href="#朴素版" class="headerlink" title="朴素版"></a>朴素版</h2><p>时间复杂度O(n<sup>2</sup>)</p><p>通常用来解决稠密图。</p><h2 id="堆优化版"><a href="#堆优化版" class="headerlink" title="堆优化版"></a>堆优化版</h2><p><em>说实话，不常用，因为Kruskal比它好写。</em></p><p>时间复杂度O(mlogn)。</p><p>常用来解决稀疏图。</p><p><em>因为它不常用，也因为它的优化方法和Dij一样，所以就不专门讲了</em></p><h1 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h1><p>时间复杂度O(mlogm)（和O(mlogn)同一个量级）。</p><p>常用来解决稀疏图。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
     
     
     <categories>
