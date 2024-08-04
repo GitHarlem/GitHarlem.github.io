@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>[编程笔记]-Minimum_Spanning_Tree_Problem(General)最小生成树问题总概</title>
+    <link href="/2024/08/04/Minimum-Spanning-Tree-Problem-General/"/>
+    <url>/2024/08/04/Minimum-Spanning-Tree-Problem-General/</url>
+    
+    <content type="html"><![CDATA[<h1 id="PRIM"><a href="#PRIM" class="headerlink" title="PRIM"></a>PRIM</h1><p>特别像Dijkstra，除了作用不一样，别的几乎都一样，甚至优化方式都一样Σ(っ °Д °;)っ</p><h2 id="朴素版"><a href="#朴素版" class="headerlink" title="朴素版"></a>朴素版</h2><p>时间复杂度O(n<sup>2</sup>)</p><p>通常用来解决稠密图。</p><h2 id="堆优化版"><a href="#堆优化版" class="headerlink" title="堆优化版"></a>堆优化版</h2><p><em>说实话，不常用，因为Kruskal比它好写。</em></p><p>时间复杂度O(mlogn)。</p><p>常用来解决稀疏图。</p><h1 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h1><p>时间复杂度O(mlogm)（和O(mlogn)同一个量级）。</p><p>常用来解决稀疏图。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>最小生成树</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Floyd</title>
     <link href="/2024/08/04/Floyd/"/>
     <url>/2024/08/04/Floyd/</url>
@@ -340,9 +379,9 @@
       
       <tag>图论</tag>
       
-      <tag>搜索</tag>
-      
       <tag>树论</tag>
+      
+      <tag>搜索</tag>
       
       <tag>BFS</tag>
       
@@ -381,11 +420,11 @@
       
       <tag>图论</tag>
       
-      <tag>搜索</tag>
-      
       <tag>树论</tag>
       
       <tag>DFS</tag>
+      
+      <tag>搜索</tag>
       
     </tags>
     
@@ -1142,9 +1181,9 @@
       
       <tag>笔记</tag>
       
-      <tag>二分</tag>
-      
       <tag>搜索</tag>
+      
+      <tag>二分</tag>
       
     </tags>
     
