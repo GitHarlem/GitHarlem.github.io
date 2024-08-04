@@ -4,6 +4,84 @@
   
   
   <entry>
+    <title>[编程笔记]-Bipartite_Graph_Maximum_Match(Hungary_Algorithm)二分图最大匹配（匈牙利算法）</title>
+    <link href="/2024/08/04/Bipartite-Graph-Maximum-Match-Hungary-Algorithm/"/>
+    <url>/2024/08/04/Bipartite-Graph-Maximum-Match-Hungary-Algorithm/</url>
+    
+    <content type="html"><![CDATA[<h1 id="二分图最大匹配"><a href="#二分图最大匹配" class="headerlink" title="二分图最大匹配"></a>二分图最大匹配</h1><p>就是求出在二分图中，最多有多少对点能完成匹配。</p><p>有时还会让你输出方案。</p><p><strong>更高级的其实是带权的匹配问题，但鉴于这篇博客本意不在于此，所以就只讲解匈牙利算法了。</strong></p><p><strong>当然还有更高级的<del>我忘了</del>，到时候再说吧。</strong></p><h1 id="匈牙利算法"><a href="#匈牙利算法" class="headerlink" title="匈牙利算法"></a>匈牙利算法</h1><p>其实很简单，以左侧点为基准，对于每个点，尝试每个与它相连的右侧点：</p><p>如果右侧点没有匹配，那就直接上；如果右侧点有匹配了，就让跟它匹配的左侧点尝试找别的可以匹配的点（也就是递归），成了，就让那个点换一个匹配点，然后自己匹配上去；不成，那就接着试下一个点。</p><p>如果一个左侧点没法连上任何右侧点，即视为无法进行匹配。在某些题型中，就是匹配失败了。</p><p><em>y总の奇妙讲解belike: 一边男的，一边女的，男的找女的，如果就可能，就让她原配换一个，然后自己上去。实在换不了，自己再换一个对象。所以人嘛都要试一试，不能轻易放弃，要克服困难~</em></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>还是上道题感受一下问法：<br><a href="https://www.acwing.com/problem/content/863/">AcWing861-二分图的最大匹配</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">505</span>,M=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><br><span class="hljs-type">int</span> idk,hd[N],to[M],ne[M];<br><br><span class="hljs-type">int</span> n1,n2,m;<br><span class="hljs-type">int</span> u,v;<br><span class="hljs-type">bool</span> fns[N]=&#123;<span class="hljs-literal">false</span>&#125;;<br><span class="hljs-type">int</span> ma[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    to[++idk]=b;<br>    ne[idk]=hd[a];<br>    hd[a]=idk;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    fns[x]=<span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=hd[x];i;i=ne[i])&#123;<br>        <span class="hljs-keyword">if</span>(ma[to[i]]==<span class="hljs-number">0</span>||(!fns[ma[to[i]]]&amp;&amp;<span class="hljs-built_in">find</span>(ma[to[i]])))&#123;<br>            ma[to[i]]=x;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">hungary</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n1;i++)&#123;<br>        <span class="hljs-built_in">memset</span>(fns,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(fns));<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">find</span>(i))res++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n1&gt;&gt;n2&gt;&gt;m;<br>    <span class="hljs-keyword">while</span>(m--)&#123;<br>        cin&gt;&gt;u&gt;&gt;v;<br>        <span class="hljs-built_in">merge</span>(u,v);<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-built_in">hungary</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>二分图</tag>
+      
+      <tag>匈牙利算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Bipartite_Gragh_Determination(Staining_Method)二分图判定（染色法）</title>
+    <link href="/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/"/>
+    <url>/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/</url>
+    
+    <content type="html"><![CDATA[<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>判定一个图是不是<em>二分图</em>（可以分成左右两边、边只存在于两边之间而不在某一边内部的图）</p><p>二分图正规定义：图中不含奇数环。</p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>就是用DFS或BFS或其他遍历方式遍历整个图，尝试给每两个相邻点染上不同颜色，最多两色，如果成功就是二分图。</p><p>#代码<br>染色特别好理解，所以重点实在遍历上面。<br><a href="https://githarlem.github.io/2024/08/03/DFS/">[编程笔记]-DFS深度优先搜索</a><br><a href="https://githarlem.github.io/2024/08/03/BFS/">[编程笔记]-BFS广度优先搜索</a><br>（就不放代码了(～￣▽￣)～）</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>图论树论</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>二分图</tag>
+      
+      <tag>染色法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Kruskal</title>
     <link href="/2024/08/04/Kruskal/"/>
     <url>/2024/08/04/Kruskal/</url>
@@ -463,9 +541,9 @@
       
       <tag>树论</tag>
       
-      <tag>搜索</tag>
-      
       <tag>BFS</tag>
+      
+      <tag>搜索</tag>
       
     </tags>
     
@@ -504,9 +582,9 @@
       
       <tag>树论</tag>
       
-      <tag>DFS</tag>
-      
       <tag>搜索</tag>
+      
+      <tag>DFS</tag>
       
     </tags>
     
