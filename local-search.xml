@@ -4,6 +4,90 @@
   
   
   <entry>
+    <title>[编程笔记]-Fermat&#39;s_Little_Theorem费马小定理</title>
+    <link href="/2024/08/05/Fermats-Little-Theorem/"/>
+    <url>/2024/08/05/Fermats-Little-Theorem/</url>
+    
+    <content type="html"><![CDATA[<h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><p>a<sup>p-1</sup>≡1(mod p)</p><h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><p>这个嘛……你需要完整的欧拉函数以及欧拉定理知识，然后进行简单的拓展……</p><p>所以其实费马小定理我已经在欧拉函数里写好了，这里再写一篇只是为了方便搜索。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>质数</tag>
+      
+      <tag>费马小定理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Euler&#39;s_Totient_Function欧拉函数</title>
+    <link href="/2024/08/05/Eulers-Totient-Function/"/>
+    <url>/2024/08/05/Eulers-Totient-Function/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>φ(n)表示1~n之中与n互质的数的个数</p><p>令N&#x3D;P<sub>1</sub><sup>α<sub>1</sub></sup>*P<sub>2</sub><sup>α<sub>2</sub></sup>*P<sub>3</sub><sup>α<sub>3</sub></sup>*…*P<sub>k</sub><sup>α<sub>k</sub></sup></p><p>则φ(N)&#x3D;N(1-1&#x2F;P<sub>1</sub>)(1-1&#x2F;P<sub>2</sub>)(1-1&#x2F;P<sub>3</sub>)…(1-1&#x2F;P<sub>k</sub>)</p><h1 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h1><ol><li>求出N的质因数</li><li>从1~N中去掉P<sub>1</sub>，P<sub>2</sub>到P<sub>k</sub>的倍数。</li><li>加上所有P<sub>i</sub>*P<sub>j</sub>的倍数，因为第二步把它们多减了一次。</li><li>减去所有P<sub>i</sub>*P<sub>j</sub>*P<sub>k</sub>的倍数，因为第三步把它们多加了一次……</li></ol><p><img src="/P1.png" alt="手搓示意图1"></p><p><img src="/P2.png" alt="手搓示意图2"></p><p>可得：</p><p><strong>容斥原理</strong><br>N-N&#x2F;P<sub>1</sub>-N&#x2F;P<sub>2</sub>-N&#x2F;P<sub>3</sub>-…-N&#x2F;P<sub>k</sub><br>  +N&#x2F;P<sub>1</sub>P<sub>2</sub>+N&#x2F;P<sub>1</sub>P<sub>3</sub>+…+N&#x2F;P<sub>k-1</sub>P<sub>k</sub><br>  -N&#x2F;P<sub>1</sub>P<sub>2</sub>P<sub>3</sub>-…-N&#x2F;P<sub>k-2</sub>P<sub>k-1</sub>P<sub>k</sub><br>  +…<br>归纳得：</p><p>φ(N)&#x3D;N(1-1&#x2F;P<sub>1</sub>)(1-1&#x2F;P<sub>2</sub>)(1-1&#x2F;P<sub>3</sub>)…(1-1&#x2F;P<sub>k</sub>)</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="朴素做法"><a href="#朴素做法" class="headerlink" title="朴素做法"></a>朴素做法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">105</span>;<br><br><span class="hljs-type">int</span> res;<br><span class="hljs-type">int</span> n,a;<br><span class="hljs-type">int</span> prime[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-type">int</span> res=a;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=a/i;i++)&#123;<br>            <span class="hljs-keyword">if</span>(a%i==<span class="hljs-number">0</span>)&#123;<br>                res=res/i*(i<span class="hljs-number">-1</span>);<br>                <span class="hljs-keyword">while</span>(a%i==<span class="hljs-number">0</span>)a/=i;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">1</span>)res=res/a*(a<span class="hljs-number">-1</span>);<br>        cout&lt;&lt;res&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="线性筛法"><a href="#线性筛法" class="headerlink" title="线性筛法"></a>线性筛法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>要是不会线性筛，就请先学一下先：<br><a href="https://githarlem.github.io/2024/08/05/Prime-Basis/">[编程笔记]-Prime_Basis质数基础</a></p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>特殊但不是很特殊地，φ(1)&#x3D;1，因为1本身也与1互质。</p><p>当x为质数时，φ(x)&#x3D;x-1</p><p>对于每个x&#x3D;P<sub>j</sub>*i：</p><ol><li>若i%P<sub>j</sub>&#x3D;&#x3D;0，那么P<sub>j</sub>就是i的最小质因子，因此x的质因子就是i的质因子。所以，φ(x)&#x3D;P<sub>j</sub>*φ(i)。（详细：由于质因子相同，所以两个欧拉函数除了开头”N”部分都一样，而x也就是P<sub>j</sub>*i，所以就是P<sub>j</sub>*i*[函数后部分]，即P<sub>j</sub>*φ(i)）</li><li>若i%P<sub>j</sub>!&#x3D;0，那么P<sub>j</sub>就不是i的质因子，但是i*P<sub>j</sub>的最小质因子。因为P<sub>j</sub>是质数，所以它的质因子只有它本身。φ(P<sub>j</sub>*i)&#x3D;P<sub>j</sub>*i*[i的欧拉函数剩余部分]*(1-1&#x2F;P<sub>j</sub>)，也就等同于φ(P<sub>j</sub>)*φ(i)，或者是(P<sub>j</sub>-1)*φ(i)。</li></ol><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n, phi[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">euler</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> prime[N];<br>    <span class="hljs-type">bool</span> st[N]=&#123;<span class="hljs-literal">false</span>&#125;;<br>    phi[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!st[i])&#123;<br>            prime[++cnt]=i;<br>            phi[i]=i<span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;prime[j]&lt;=n/i;j++)&#123;<br>            st[prime[j]*i]=<span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">if</span>(i%prime[j]==<span class="hljs-number">0</span>)&#123;<br>                phi[prime[j]*i]=prime[j]*phi[i];<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            phi[prime[j]*i]=phi[prime[j]]*phi[i];<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>这应该算是拓展了吧</p><h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p>若a与n互质，a<sup>φ(n)</sup>≡1(mod n)</p><h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>若在1~n中，所有与n互质的数为a<sub>1</sub>, a<sub>2</sub>, …a<sub>φ(n)</sub></p><p>又因a与n互质，</p><p>所以a*a<sub>1</sub>, a*a<sub>2</sub>, …a*a<sub>φ(n)</sub> 都满足≡1(mod n)</p><p>并且在这个序列里，产生的数两两各不相同。</p><p>证明如下：</p><blockquote><p>反证法，若a*a<sub>i</sub>≡a*a<sub>j</sub>(mod n)<br>则a(a<sub>i</sub>-a<sub>j</sub>)≡0(mod n)<br>因a与n互质，可得：<br>a<sub>i</sub>-a<sub>j</sub>≡0(mod n)<br>a<sub>i</sub>≡a<sub>j</sub>(mod n)<br>但a<sub>i</sub>, a<sub>j</sub>都是n的不同的质因数，因此不成立。</p></blockquote><p>因此，新序列也是φ(n)个互不相同且与n互质的数。</p><p>那么就可以得到（毕竟与n互质的数只有φ(n)个）：前后两个序列，内部元素（mod n后）其实是一样的，就是顺序可能会有所不同，所以它们乘积也应该同余。</p><p>那么易得：</p><p>a<sup>φ(n)</sup>(a<sub>1</sub>*…*a<sub>φ(n)</sub>)≡a<sub>1</sub>*…*a<sub>φ(n)</sub>(mod n)</p><p>又因a<sub>i</sub>都是n的质因数，所以，(a<sub>1</sub>*…*a<sub>φ(n)</sub>)也就是n的质因数。</p><p>所以a<sup>φ(n)</sup>≡1(mod n)</p><h2 id="简单推论——费马小定理"><a href="#简单推论——费马小定理" class="headerlink" title="简单推论——费马小定理"></a>简单推论——费马小定理</h2><p>当n为质数时，a<sup>φ(p)</sup>≡1(mod p)</p><p>则，a<sup>p-1</sup>≡1(mod p)</p><p>没错这就是<strong>费马小定理</strong>。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>质数</tag>
+      
+      <tag>线性筛</tag>
+      
+      <tag>欧拉函数</tag>
+      
+      <tag>欧拉定理</tag>
+      
+      <tag>费马小定理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Divisor_Basis约数基础</title>
     <link href="/2024/08/05/Divisor-Basis/"/>
     <url>/2024/08/05/Divisor-Basis/</url>
@@ -29,6 +113,8 @@
       <tag>c++</tag>
       
       <tag>笔记</tag>
+      
+      <tag>数学</tag>
       
       <tag>约数</tag>
       

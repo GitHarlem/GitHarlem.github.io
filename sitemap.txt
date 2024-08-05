@@ -1,3 +1,5 @@
+http://githarlem.github.io/2024/08/05/Fermats-Little-Theorem/
+http://githarlem.github.io/2024/08/05/Eulers-Totient-Function/
 http://githarlem.github.io/2024/08/05/Divisor-Basis/
 http://githarlem.github.io/2024/08/05/Prime-Basis/
 http://githarlem.github.io/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/
@@ -86,6 +88,9 @@ http://githarlem.github.io/tags/erts/
 http://githarlem.github.io/tags/eule/
 http://githarlem.github.io/tags/dvsr/
 http://githarlem.github.io/tags/gcdv/
+http://githarlem.github.io/tags/eltf/
+http://githarlem.github.io/tags/elth/
+http://githarlem.github.io/tags/fmlt/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
