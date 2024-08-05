@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/05/Prime-Basis/
 http://githarlem.github.io/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/
 http://githarlem.github.io/2024/08/04/Bipartite-Graph-Maximum-Match-Hungary-Algorithm/
 http://githarlem.github.io/2024/08/04/Kruskal/
@@ -77,7 +78,13 @@ http://githarlem.github.io/tags/stls/
 http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/math/
+http://githarlem.github.io/tags/prme/
+http://githarlem.github.io/tags/pnsv/
+http://githarlem.github.io/tags/erts/
+http://githarlem.github.io/tags/eule/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/DataStructure/
+http://githarlem.github.io/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/
