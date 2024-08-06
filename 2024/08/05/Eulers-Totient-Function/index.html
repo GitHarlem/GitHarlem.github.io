@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-05T06:07:35.000Z">
-<meta property="article:modified_time" content="2024-08-05T14:57:28.120Z">
+<meta property="article:modified_time" content="2024-08-06T01:43:16.097Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          863 字
+          868 字
         
       </span>
     
@@ -336,7 +336,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(42)</span>
+        <span class="list-group-count">(43)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -605,7 +605,7 @@
         aria-expanded="true"
       >
         数学知识
-        <span class="list-group-count">(4)</span>
+        <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -650,6 +650,15 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">[编程笔记]-Fermat&#39;s_Little_Theorem费马小定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/Binary-Exponentiation/" title="[编程笔记]-Binary_Exponentiation快速幂"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Binary_Exponentiation快速幂</span>
         </a>
       
     
@@ -813,8 +822,8 @@
 <li>加上所有P<sub>i</sub>*P<sub>j</sub>的倍数，因为第二步把它们多减了一次。</li>
 <li>减去所有P<sub>i</sub>*P<sub>j</sub>*P<sub>k</sub>的倍数，因为第三步把它们多加了一次……</li>
 </ol>
-<p><img src="/P1.png" srcset="/img/loading.gif" lazyload alt="手搓示意图1"></p>
-<p><img src="/P2.png" srcset="/img/loading.gif" lazyload alt="手搓示意图2"></p>
+<p><img src="/2024/07/30/Adjacent-Difference/ion/P1.png" srcset="/img/loading.gif" lazyload alt="手搓示意图1"></p>
+<p><img src="/2024/07/30/Adjacent-Difference/ion/P2.png" srcset="/img/loading.gif" lazyload alt="手搓示意图2"></p>
 <p>可得：</p>
 <p><strong>容斥原理</strong><br>N-N&#x2F;P<sub>1</sub>-N&#x2F;P<sub>2</sub>-N&#x2F;P<sub>3</sub>-…-N&#x2F;P<sub>k</sub><br>  +N&#x2F;P<sub>1</sub>P<sub>2</sub>+N&#x2F;P<sub>1</sub>P<sub>3</sub>+…+N&#x2F;P<sub>k-1</sub>P<sub>k</sub><br>  -N&#x2F;P<sub>1</sub>P<sub>2</sub>P<sub>3</sub>-…-N&#x2F;P<sub>k-2</sub>P<sub>k-1</sub>P<sub>k</sub><br>  +…<br>归纳得：</p>
 <p>φ(N)&#x3D;N(1-1&#x2F;P<sub>1</sub>)(1-1&#x2F;P<sub>2</sub>)(1-1&#x2F;P<sub>3</sub>)…(1-1&#x2F;P<sub>k</sub>)</p>
@@ -830,8 +839,7 @@
 </ol>
 <h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n, phi[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">euler</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> prime[N];<br>    <span class="hljs-type">bool</span> st[N]=&#123;<span class="hljs-literal">false</span>&#125;;<br>    phi[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!st[i])&#123;<br>            prime[++cnt]=i;<br>            phi[i]=i<span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;prime[j]&lt;=n/i;j++)&#123;<br>            st[prime[j]*i]=<span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">if</span>(i%prime[j]==<span class="hljs-number">0</span>)&#123;<br>                phi[prime[j]*i]=prime[j]*phi[i];<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            phi[prime[j]*i]=phi[prime[j]]*phi[i];<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><p>这应该算是拓展了吧</p>
-<h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p>若a与n互质，a<sup>φ(n)</sup>≡1(mod n)</p>
+<h1 id="欧拉定理"><a href="#欧拉定理" class="headerlink" title="欧拉定理"></a>欧拉定理</h1><h2 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h2><p>若a与n互质，a<sup>φ(n)</sup>≡1(mod n)</p>
 <h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>若在1~n中，所有与n互质的数为a<sub>1</sub>, a<sub>2</sub>, …a<sub>φ(n)</sub></p>
 <p>又因a与n互质，</p>
 <p>所以a*a<sub>1</sub>, a*a<sub>2</sub>, …a*a<sub>φ(n)</sub> 都满足≡1(mod n)</p>
@@ -846,8 +854,10 @@
 <p>a<sup>φ(n)</sup>(a<sub>1</sub>*…*a<sub>φ(n)</sub>)≡a<sub>1</sub>*…*a<sub>φ(n)</sub>(mod n)</p>
 <p>又因a<sub>i</sub>都是n的质因数，所以，(a<sub>1</sub>*…*a<sub>φ(n)</sub>)也就是n的质因数。</p>
 <p>所以a<sup>φ(n)</sup>≡1(mod n)</p>
+<p>别忘了a与n互质。</p>
 <h2 id="简单推论——费马小定理"><a href="#简单推论——费马小定理" class="headerlink" title="简单推论——费马小定理"></a>简单推论——费马小定理</h2><p>当n为质数时，a<sup>φ(p)</sup>≡1(mod p)</p>
 <p>则，a<sup>p-1</sup>≡1(mod p)</p>
+<p>别忘了a与p互质。</p>
 <p>没错这就是<strong>费马小定理</strong>。</p>
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
@@ -938,7 +948,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月5日</div>
+          <div>2024年8月6日</div>
         </div>
       
       

@@ -19,29 +19,30 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存">
+    <meta name="description" content="思想把a的k次方分解成a的（2的次方）次方之积。 也就是把k分成2的不同次方相加嘛。容易得到，2的每个次方最多只会出现一次（不然就能进位算进更高一次的次方里面去了）。 差不多就是这样。 时间复杂度O(logk)（k为幂数） 实现递归法很简单，根据思想就能得出。每次都把次方平均分，如果是奇数，就在结果处额外乘一个n即可，然后递归次方的二分之一，直到0次方。 迭代法事实上，可以把次数写出二进制写法，然">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-KMP">
-<meta property="og:url" content="http://githarlem.github.io/2024/08/02/KMP/index.html">
+<meta property="og:title" content="[编程笔记]-Binary_Exponentiation快速幂">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/05/Binary-Exponentiation/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存">
+<meta property="og:description" content="思想把a的k次方分解成a的（2的次方）次方之积。 也就是把k分成2的不同次方相加嘛。容易得到，2的每个次方最多只会出现一次（不然就能进位算进更高一次的次方里面去了）。 差不多就是这样。 时间复杂度O(logk)（k为幂数） 实现递归法很简单，根据思想就能得出。每次都把次方平均分，如果是奇数，就在结果处额外乘一个n即可，然后递归次方的二分之一，直到0次方。 迭代法事实上，可以把次数写出二进制写法，然">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-08-02T00:07:35.000Z">
-<meta property="article:modified_time" content="2024-08-02T16:02:44.164Z">
+<meta property="article:published_time" content="2024-08-05T15:08:36.000Z">
+<meta property="article:modified_time" content="2024-08-06T01:55:32.064Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="字符串">
-<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="快速幂">
+<meta property="article:tag" content="乘法逆元">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-KMP - HarlemBlog</title>
+  <title>[编程笔记]-Binary_Exponentiation快速幂 - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-KMP"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Binary_Exponentiation快速幂"></span>
           
         </div>
 
@@ -250,8 +251,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-02 08:07" pubdate>
-          2024年8月2日 早上
+        <time datetime="2024-08-05 23:08" pubdate>
+          2024年8月5日 晚上
         </time>
       </span>
     
@@ -262,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          859 字
         
       </span>
     
@@ -273,7 +274,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -595,17 +596,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学知识"
         id="heading-8661db9285a1d69f4ddaead674b45191" role="tab" data-toggle="collapse" href="#collapse-8661db9285a1d69f4ddaead674b45191"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         数学知识
         <span class="list-group-count">(5)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-8661db9285a1d69f4ddaead674b45191"
+      <div class="category-collapse collapse show" id="collapse-8661db9285a1d69f4ddaead674b45191"
            role="tabpanel" aria-labelledby="heading-8661db9285a1d69f4ddaead674b45191">
         
         
@@ -653,7 +654,7 @@
       
         <a href="/2024/08/05/Binary-Exponentiation/" title="[编程笔记]-Binary_Exponentiation快速幂"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Binary_Exponentiation快速幂</span>
         </a>
       
@@ -668,17 +669,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
         id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         数据结构
         <span class="list-group-count">(13)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-0fea7c47d93da5689f31820ee525b367"
+      <div class="category-collapse collapse " id="collapse-0fea7c47d93da5689f31820ee525b367"
            role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
         
         
@@ -744,7 +745,7 @@
       
         <a href="/2024/08/02/KMP/" title="[编程笔记]-KMP"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-KMP</span>
         </a>
       
@@ -804,62 +805,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-KMP</h1>
+            <h1 id="seo-header">[编程笔记]-Binary_Exponentiation快速幂</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>KMP真的<strong>很不好理解</strong>，但其实理解了原理，<strong>代码就没有任何的问题了</strong>。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h2 id="总概"><a href="#总概" class="headerlink" title="总概"></a>总概</h2><p>KMP嘛，其实就是优化字符串匹配的过程。</p>
-<p>优化的终点就是当前点匹配不上时的操作。对比如下：</p>
-<ul>
-<li>暴力算法：后移一位，从头开始匹配。</li>
-<li>KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。</li>
-</ul>
-<p>（这句话可能有点绕，但学完整个算法就理解了。）</p>
-<p>（至于为什么把它分在数据结构……<del>你就说next数组存没存数据吧</del>）</p>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p>整个KMP算法其实分为两步：</p>
-<ol>
-<li>找next数组</li>
-<li>匹配！</li>
-</ol>
-<p>至于具体怎么做，马上就知道了。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="找next数组"><a href="#找next数组" class="headerlink" title="找next数组"></a>找next数组</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>next数组，其实就是寻找如果当前点匹配不上，<strong>上一个最近的可以匹配的点</strong>。重点，就在于如何判断<strong>可以匹配</strong>。</p>
-<p>假设被匹配字符串到了第i个元素，匹配字符串到了第j个元素，那么可以肯定的是，两个字符串当前元素前面的元素，一定是完全相等的。<em>不然就没法匹配当前元素了~</em></p>
-<ul>
-<li>如果当前元素相同，那最好，i和j各自前进一位，把刚才进行匹配的元素加入前面已经完成匹配的部分中。</li>
-<li>如果当前元素不同，那就到了next数组发挥作用的时候了。</li>
-</ul>
-<p>将两个字符串中已经匹配好的子串单独拿出来（包括被匹配串中移出的部分），可以看出，被匹配串的后缀，与匹配串是完全相同的。</p>
-<p>之所以这样，是因为在匹配的过程中，匹配串肯定是从前往后进行匹配的，因此它的前缀必须先完成匹配。在这个匹配过程中，匹配串肯定是在向后移动，那么被匹配串中肯定就有元素匹配不上，那么这些元素就全都排在当前完成匹配的元素的前面，所以当前被匹配串子串的后缀肯定是完成匹配了的。</p>
-<p>（这里不是说被匹配串整个串，只是当前对比元素的前面形成的完成匹配的子串）</p>
-<p>所以可以得出，前缀与被匹配串的后缀相同的匹配串可以进行匹配。</p>
-<p>那么上一个可以进行匹配的元素，肯定也满足这个性质。</p>
-<p>当前的子串与被匹配串后缀相等，但是后一个元素无法匹配，就需要找到上一个在匹配串中满足条件的子串，用它的后一位元素再与被匹配串中当前匹配元素匹配。</p>
-<p><strong>所以新的元素的前缀也要与被匹配串的后缀相同。</strong></p>
-<p><strong>而被匹配串的当前的最大相同后缀，其实就是匹配串当前已经完成匹配的子串。</strong></p>
-<p><strong>后缀的后缀和前缀的前缀一定相同。</strong></p>
-<p><strong>所以也就是要找到匹配串前缀中最长的前缀，与被匹配串后缀中最长的后缀相同。</strong></p>
-<p><strong>联立第二句话与第四句话，当前最长的满足条件的子串就是当前匹配串子串中最大公共前后缀。</strong></p>
-<p><strong>所以下一个匹配的元素就是最大公共前缀的后一位。也就是next数组中的存储的东西了。</strong></p>
-<p>归根结底，找next数组的过程，其实就是不断找最大公共前后缀的过程。</p>
-<p>找的是当前匹配元素之前形成的子串中的最大前缀的后一位元素。</p>
-<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>现在问题就变成了找当前元素之前的子串（不包括当前元素）的最长公共前后缀大小的问题。</p>
-<p>假设已经完成了第i个元素，它的next是j。<br>（相当于从第1个元素到第i-1个元素形成的子串中，最长公共前后缀长度是j-1）</p>
-<p>现在，我们就对比元素i与元素j。</p>
-<ul>
-<li>如果相同，那么<code>next[i+1]=j+1</code>，因为后缀新加入了一个与前缀新加入的元素相同的元素，还是最长公共前后缀，长度增加了一。最后<code>j++, i++</code>就行了。</li>
-<li>如果不同，也就相当于两个字符串匹配的过程，j不断地去找上一个满足条件的元素<code>j=next[j]</code>，直到当前元素j与元素i相同为止，<code>next[i+1]=j+1</code>，然后<code>j++, i++</code>。</li>
-<li>如果所有元素都不同，特计<code>next[i+1]=0</code>，表示无法匹配，后移一位重启匹配。</li>
-</ul>
-<p>然后一直循环，直到整个匹配串找完为止。</p>
-<h3 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h3><p>怎么匹配？其实就跟找next数组一模一样，不过并不是对比同一个字符串的前后缀，而是匹配匹配串的前缀和被匹配串的后缀罢了。</p>
-<p>思路其实是完全相同的。当匹配串完成了最后一个元素的匹配时，就说明整个串都完成匹配了。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/833/">AcWing831-KMP字符串</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>,M=<span class="hljs-number">1e6</span><span class="hljs-number">+6</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">char</span> p[N],s[M];<br><span class="hljs-type">int</span> ne[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;p<span class="hljs-number">+1</span>&gt;&gt;m&gt;&gt;s<span class="hljs-number">+1</span>;<br>    <span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,j=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(i&lt;=n)&#123;<br>        <span class="hljs-keyword">if</span>(j==<span class="hljs-number">0</span>||p[i]==p[j]) ne[++i]=++j;<br>        <span class="hljs-keyword">else</span> j=ne[j];<br>    &#125;<br>    i=j=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(i&lt;=m)&#123;<br>        <span class="hljs-keyword">if</span>(j==<span class="hljs-number">0</span>||s[i]==p[j]) i++,j++;<br>        <span class="hljs-keyword">else</span> j=ne[j];<br>        <span class="hljs-keyword">if</span>(j==n<span class="hljs-number">+1</span>)&#123;<br>            cout&lt;&lt;i-n<span class="hljs-number">-1</span>&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>            j=ne[j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h1><p>把a的k次方分解成a的（2的次方）次方之积。</p>
+<p>也就是把k分成2的不同次方相加嘛。容易得到，2的每个次方最多只会出现一次（不然就能<del>进位</del>算进更高一次的次方里面去了）。</p>
+<p>差不多就是这样。</p>
+<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>O(logk)（k为幂数）</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h2><p>很简单，根据思想就能得出。<br>每次都把次方平均分，如果是奇数，就在结果处额外乘一个n即可，然后递归次方的二分之一，直到0次方。</p>
+<h2 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h2><p>事实上，可以把次数写出二进制写法，然后就可以根据每一位上是否为1分出不同的加项了。</p>
+<p>每次幂次左移一位，不要忘了把底数平方一次（实现一次平方），然后根据当前幂次的二进制最低位来判断是否要乘入结果。</p>
+<p>可能讲的不是很清楚，但差不多应该也讲清了思路，带着代码可能更好理解。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><h2 id="递归法-1"><a href="#递归法-1" class="headerlink" title="递归法"></a>递归法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">qm</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> p)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-type">int</span> t=<span class="hljs-built_in">qm</span>(a,b/<span class="hljs-number">2</span>,p);<br>    <span class="hljs-keyword">if</span>(b%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span> (ll)t*t%p;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-built_in">return</span> (ll)t*t*a%p;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注：实测这份代码的精度没有下面那份高，速度也不够好，所以还是推荐迭代法。</p>
+<h1 id="迭代法-1"><a href="#迭代法-1" class="headerlink" title="迭代法"></a>迭代法</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">qm</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> p)</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(b)&#123;<br>        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>)res=(ll)res*a%p;<br>        a=(ll)a*a%p;<br>        b&gt;&gt;=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p><em>愉快地亖了</em></p>
+<h1 id="应用——乘法逆元"><a href="#应用——乘法逆元" class="headerlink" title="应用——乘法逆元"></a>应用——乘法逆元</h1><p>以后应该会专门写一篇介绍乘法逆元，<del>到时候就把这部分复制过去</del>这里就顺便介绍一下，专门讲用快速幂解决的方法。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><strong>若b与m互质</strong>，满足b|a，a&#x2F;b≡ax(mod m)，则称x为b模m的逆元，记作b<sup>-1</sup>（是标记，不是b的-1次方，可以是整数）</p>
+<p>然后就可以把÷b的情况转化为×b的逆元的情况，在编程中，这就准确多了。</p>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><blockquote>
+<p>a&#x2F;b≡ab<sup>-1</sup> (mod m)</p>
+<p>b*a&#x2F;b≡b*ab<sup>-1</sup> (mod m)</p>
+<p>a≡a*b*b<sup>-1</sup> (mod m)</p>
+<p>-&gt; b*b<sup>-1</sup>≡1 (mod m)</p>
+</blockquote>
+<p>（最后一步的条件是a%m!&#x3D;0，虽然a与m不一定互质，但由于a有b这个和m互质的质因子，所以a%m!&#x3D;0）</p>
+<p>即为:<br><strong>bx≡1 (mod m)</strong></p>
+<p>公式美化：<strong>ax≡1 (mod m)</strong></p>
+<h2 id="计算逆元"><a href="#计算逆元" class="headerlink" title="计算逆元"></a>计算逆元</h2><p>在快速幂求解过程中中，一般要求m为质数。</p>
+<p>因此，ax≡1 (mod p)</p>
+<p>根据<strong>费马小定理</strong>，a<sup>p-1</sup>≡1 (mod p)</p>
+<p>然后把根据费马小定理的这个式子拆出来一个<br>a：a*a<sup>a-2</sup>≡1 (mod p)</p>
+<p>所以a<sup>p-2</sup>&#x3D;x，就是a模p的逆元。</p>
+<p>又因p是质数，所以p&gt;&#x3D;2，因此p-2&gt;&#x3D;0。</p>
+<p><strong>因此，求a模p的逆元，也就是求a<sup>p-2</sup></strong></p>
+<p><strong>但是，若p与a不互质，则无解，因为不可能出现余数。同时，这也是费马小定理使用前提和乘法逆元定义中的一部分。</strong></p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">int</span> n,a,p;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">qmi</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> q)</span></span>&#123;<br>    <span class="hljs-type">int</span> res=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(b)&#123;<br>        <span class="hljs-keyword">if</span>(b&amp;<span class="hljs-number">1</span>)res=(ll)res*a%p;<br>        a=(ll)a*a%p;<br>        b&gt;&gt;=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a&gt;&gt;p;<br>        <span class="hljs-keyword">if</span>(a%p!=<span class="hljs-number">0</span>)cout&lt;&lt;<span class="hljs-built_in">qmi</span>(a,p<span class="hljs-number">-2</span>,p)&lt;&lt;endl;<span class="hljs-comment">//由于p是质数，所以二者不互质就只有倍数关系</span><br>        <span class="hljs-keyword">else</span> cout&lt;&lt;<span class="hljs-string">&quot;impossible&quot;</span>&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
             
@@ -882,7 +867,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
+  <a href="/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="category-chain-item">数学知识</a>
   
   
 
@@ -907,9 +892,11 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/strn/" class="print-no-link">#字符串</a>
+        <a href="/tags/bnlf/" class="print-no-link">#倍增</a>
       
-        <a href="/tags/kmpa/" class="print-no-link">#KMP</a>
+        <a href="/tags/bnep/" class="print-no-link">#快速幂</a>
+      
+        <a href="/tags/mmiv/" class="print-no-link">#乘法逆元</a>
       
     </div>
   
@@ -921,8 +908,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-KMP</div>
-      <div>http://githarlem.github.io/2024/08/02/KMP/</div>
+      <div>[编程笔记]-Binary_Exponentiation快速幂</div>
+      <div>http://githarlem.github.io/2024/08/05/Binary-Exponentiation/</div>
     </div>
     <div class="license-meta">
       
@@ -934,13 +921,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月5日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月3日</div>
+          <div>2024年8月6日</div>
         </div>
       
       
