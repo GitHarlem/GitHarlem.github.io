@@ -827,6 +827,20 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://githarlem.github.io/tags/crth/</loc>
+    <lastmod>2024-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/tags/lceq/</loc>
+    <lastmod>2024-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
