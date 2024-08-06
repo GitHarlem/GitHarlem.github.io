@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-05T02:00:43.000Z">
-<meta property="article:modified_time" content="2024-08-05T06:08:33.256Z">
+<meta property="article:modified_time" content="2024-08-06T06:39:06.016Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -37,6 +37,7 @@
 <meta property="article:tag" content="数学">
 <meta property="article:tag" content="约数">
 <meta property="article:tag" content="最大公约数">
+<meta property="article:tag" content="欧几里得算法">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
@@ -263,7 +264,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          712 字
+          714 字
         
       </span>
     
@@ -274,7 +275,7 @@
         
         
         
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -333,7 +334,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(43)</span>
+        <span class="list-group-count">(47)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -602,7 +603,7 @@
         aria-expanded="true"
       >
         数学知识
-        <span class="list-group-count">(5)</span>
+        <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -656,6 +657,42 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">[编程笔记]-Binary_Exponentiation快速幂</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Bezouts-Lemma/" title="[编程笔记]-Bezout&#39;s_Lemma裴蜀定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Bezout&#39;s_Lemma裴蜀定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Extended-Euclidean-Algorithm/" title="[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Linear-Congruence-Equation/" title="[编程笔记]-Linear_Congruence_Equation线性同余方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Linear_Congruence_Equation线性同余方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/07/Chinese-Remainder-Theorem/" title="[编程笔记]-Chinese_Remainder_Theorem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Chinese_Remainder_Theorem</span>
         </a>
       
     
@@ -846,7 +883,7 @@
 <p>若d|x, d|y, 则d|ax+by</p>
 <p>a%b&#x3D;&#x3D;a-c*b</p>
 <p>令a,b最大公约数为d1，则d1|a, d1|b, 所以d1|a-c*b，即d1|a%b。</p>
-<p>令b,a%b最大公约数为d2，则d2|b, d2|a-c<em>b, 所以d2|a-c</em>b+c*b，即d2|a。</p>
+<p>令b,a%b最大公约数为d2，则d2|b, d2|a-c*b, 所以d2|a-c*b+c*b，即d2|a。</p>
 <p>因此，二者的公约数全部相同，最大公约数也相同。</p>
 <p>特殊但其实不特殊地，当b&#x3D;&#x3D;0时，最大公约数是a，因为0可以被任何数整除都余0。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> b?<span class="hljs-built_in">gcd</span>(b,a%b):a;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -906,6 +943,8 @@
       
         <a href="/tags/gcdv/" class="print-no-link">#最大公约数</a>
       
+        <a href="/tags/elda/" class="print-no-link">#欧几里得算法</a>
+      
     </div>
   
 </div>
@@ -935,7 +974,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月5日</div>
+          <div>2024年8月6日</div>
         </div>
       
       

@@ -1,0 +1,1303 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head><!-- hexo injector head_begin start --><meta name="msvalidate.01" content="B91A724EEC66762BA11DE7CBD56E2E6C" /><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/CLOG.png">
+  <link rel="icon" href="/img/CLOG.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000">
+  <meta name="author" content="Harlem">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="定理gcd(a,b)|ax+bya、b都是是gcd(a,b)的倍数，对于任意不全为零整数x、y所以gcd(a,b)|ax+by 因此a、b能凑出来的最小的数就是它的最大公约数。 ax+by&#x3D;gcd(a, b)对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b) 证明：我们可以使用构造法 构造出一种方式，对于任意正整数a, b，一定存在非零整数x,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[编程笔记]-Bezout&#39;s_Lemma裴蜀定理">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/06/Bezouts-Lemma/index.html">
+<meta property="og:site_name" content="HarlemBlog">
+<meta property="og:description" content="定理gcd(a,b)|ax+bya、b都是是gcd(a,b)的倍数，对于任意不全为零整数x、y所以gcd(a,b)|ax+by 因此a、b能凑出来的最小的数就是它的最大公约数。 ax+by&#x3D;gcd(a, b)对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b) 证明：我们可以使用构造法 构造出一种方式，对于任意正整数a, b，一定存在非零整数x,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
+<meta property="article:published_time" content="2024-08-06T02:05:43.000Z">
+<meta property="article:modified_time" content="2024-08-06T02:58:21.525Z">
+<meta property="article:author" content="Harlem">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="最大公约数">
+<meta property="article:tag" content="裴蜀定理">
+<meta property="article:tag" content="拓展欧几里得算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
+  
+  
+  
+  <title>[编程笔记]-Bezout&#39;s_Lemma裴蜀定理 - HarlemBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"githarlem.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"xxC3pGsUk3aNPu9TVonwjTeC-gzGzoHsz","app_key":"5mZhDPfEAHkfkqNy03d001rg","server_url":"https://xxc3pgsu.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Harlem&#39;s BLOG </strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="[编程笔记]-Bezout&#39;s_Lemma裴蜀定理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Harlem
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-06 10:05" pubdate>
+          2024年8月6日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          179 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          1 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程笔记"
+        id="heading-0d3258b202341a6b87082916b17d5fea" role="tab" data-toggle="collapse" href="#collapse-0d3258b202341a6b87082916b17d5fea"
+        aria-expanded="true"
+      >
+        编程笔记
+        <span class="list-group-count">(47)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-0d3258b202341a6b87082916b17d5fea"
+           role="tabpanel" aria-labelledby="heading-0d3258b202341a6b87082916b17d5fea">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="图论树论"
+        id="heading-f4fcf7c660cf8bdc443c6d22c3a63adf" role="tab" data-toggle="collapse" href="#collapse-f4fcf7c660cf8bdc443c6d22c3a63adf"
+        aria-expanded="false"
+      >
+        图论树论
+        <span class="list-group-count">(15)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-f4fcf7c660cf8bdc443c6d22c3a63adf"
+           role="tabpanel" aria-labelledby="heading-f4fcf7c660cf8bdc443c6d22c3a63adf">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/03/DFS/" title="[编程笔记]-DFS深度优先搜索"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-DFS深度优先搜索</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/BFS/" title="[编程笔记]-BFS广度优先搜索"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-BFS广度优先搜索</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Storage-of-Graph/" title="[编程笔记]-Storage_of_Graph图的存储"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Storage_of_Graph图的存储</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Topo-Sort/" title="[编程笔记]-Topo_Sort拓扑排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Topo_Sort拓扑排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Shortest-Circuit-Problem-General/" title="[编程笔记]-Shortest_Circuit_Problem(General)最短路问题总概"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Shortest_Circuit_Problem(General)最短路问题总概</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Dijkstra-Plain/" title="[编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Dijkstra-HeapOptimized/" title="[编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/Bellman-Ford/" title="[编程笔记]-Bellman-Ford"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Bellman-Ford</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/03/SPFA/" title="[编程笔记]-SPFA"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-SPFA</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/04/Floyd/" title="[编程笔记]-Floyd"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Floyd</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/CodeNote/GraphTree/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
+        id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
+        aria-expanded="false"
+      >
+        基础算法
+        <span class="list-group-count">(10)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
+           role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/07/26/Quick-Sort/" title="[编程笔记]-Quick_Sort快速排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Quick_Sort快速排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/27/Merge-Sort/" title="[编程笔记]-Merge_Sort归并排序"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Merge_Sort归并排序</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/28/Binary-Search/" title="[编程笔记]-Binary_Search二分查找"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Binary_Search二分查找</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/28/High-Precision-AddSub/" title="[编程笔记]-High_Precision(Add and Sub)高精度加减法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-High_Precision(Add and Sub)高精度加减法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/29/High-Precision-MulDiv-Simple/" title="[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-High_Precision(Mul and Div)[SIM]高精度乘除法（基础版）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/30/Partial-Sum/" title="[编程笔记]-Partial_Sum前缀和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Partial_Sum前缀和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/30/Adjacent-Difference/" title="[编程笔记]-Adjacent_Difference差分"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Adjacent_Difference差分</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Two-Pointers/" title="[编程笔记]-Two_Pointers双指针"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Two_Pointers双指针</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Lowbit/" title="[编程笔记]-Lowbit取最小1"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Lowbit取最小1</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/07/31/Discretization/" title="[编程笔记]-Discretization离散化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Discretization离散化</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学知识"
+        id="heading-8661db9285a1d69f4ddaead674b45191" role="tab" data-toggle="collapse" href="#collapse-8661db9285a1d69f4ddaead674b45191"
+        aria-expanded="true"
+      >
+        数学知识
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-8661db9285a1d69f4ddaead674b45191"
+           role="tabpanel" aria-labelledby="heading-8661db9285a1d69f4ddaead674b45191">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/05/Prime-Basis/" title="[编程笔记]-Prime_Basis质数基础"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Prime_Basis质数基础</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/Divisor-Basis/" title="[编程笔记]-Divisor_Basis约数基础"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Divisor_Basis约数基础</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/Eulers-Totient-Function/" title="[编程笔记]-Euler&#39;s_Totient_Function欧拉函数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Euler&#39;s_Totient_Function欧拉函数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/Fermats-Little-Theorem/" title="[编程笔记]-Fermat&#39;s_Little_Theorem费马小定理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Fermat&#39;s_Little_Theorem费马小定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/05/Binary-Exponentiation/" title="[编程笔记]-Binary_Exponentiation快速幂"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Binary_Exponentiation快速幂</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Bezouts-Lemma/" title="[编程笔记]-Bezout&#39;s_Lemma裴蜀定理"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">[编程笔记]-Bezout&#39;s_Lemma裴蜀定理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Extended-Euclidean-Algorithm/" title="[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/06/Linear-Congruence-Equation/" title="[编程笔记]-Linear_Congruence_Equation线性同余方程"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Linear_Congruence_Equation线性同余方程</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/07/Chinese-Remainder-Theorem/" title="[编程笔记]-Chinese_Remainder_Theorem"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Chinese_Remainder_Theorem</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数据结构"
+        id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
+        aria-expanded="false"
+      >
+        数据结构
+        <span class="list-group-count">(13)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-0fea7c47d93da5689f31820ee525b367"
+           role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/01/Single-Linked-Lists/" title="[编程笔记]-Single-Linked_Lists单链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Single-Linked_Lists单链表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Double-Linked-Lists/" title="[编程笔记]-Double-Linked_Lists双链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Double-Linked_Lists双链表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Stack/" title="[编程笔记]-Stack栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Stack栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Queue/" title="[编程笔记]-Queue队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Queue队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Monotonic-Stack/" title="[编程笔记]-Monotonic_Stack单调栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Monotonic_Stack单调栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/01/Monotonic-Queue/" title="[编程笔记]-Monotonic_Queue单调队列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Monotonic_Queue单调队列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/KMP/" title="[编程笔记]-KMP"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-KMP</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Trie-Tree/" title="[编程笔记]-Trie_Tree字典树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Trie_Tree字典树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Union-Find-Set/" title="[编程笔记]-Union_Find_Set并查集"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Union_Find_Set并查集</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/02/Heap/" title="[编程笔记]-Heap堆"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Heap堆</span>
+        </a>
+      
+    
+      
+      
+        <a href="/categories/CodeNote/DataStructure/" class="list-group-item list-group-item-action">
+          <span class="category-post">More...</span>
+        </a>
+        
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">[编程笔记]-Bezout&#39;s_Lemma裴蜀定理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><h2 id="gcd-a-b-ax-by"><a href="#gcd-a-b-ax-by" class="headerlink" title="gcd(a,b)|ax+by"></a>gcd(a,b)|ax+by</h2><p>a、b都是是gcd(a,b)的倍数，对于任意不全为零整数x、y所以gcd(a,b)|ax+by</p>
+<p>因此a、b能凑出来的最小的数就是它的最大公约数。</p>
+<h2 id="ax-by-gcd-a-b"><a href="#ax-by-gcd-a-b" class="headerlink" title="ax+by&#x3D;gcd(a, b)"></a>ax+by&#x3D;gcd(a, b)</h2><p>对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b)</p>
+<p>证明：我们可以使用<strong>构造法</strong></p>
+<p>构造出一种方式，对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b)，呢么就可以证明这个公式成立了。</p>
+<p>这个方法就是拓展欧几里得算法。<br><a href="https://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</a></p>
+<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="category-chain-item">数学知识</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/orgn/" class="print-no-link">#原创</a>
+      
+        <a href="/tags/code/" class="print-no-link">#编程</a>
+      
+        <a href="/tags/cppl/" class="print-no-link">#c++</a>
+      
+        <a href="/tags/note/" class="print-no-link">#笔记</a>
+      
+        <a href="/tags/math/" class="print-no-link">#数学</a>
+      
+        <a href="/tags/gcdv/" class="print-no-link">#最大公约数</a>
+      
+        <a href="/tags/bzlm/" class="print-no-link">#裴蜀定理</a>
+      
+        <a href="/tags/exea/" class="print-no-link">#拓展欧几里得算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>[编程笔记]-Bezout&#39;s_Lemma裴蜀定理</div>
+      <div>http://githarlem.github.io/2024/08/06/Bezouts-Lemma/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Harlem</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月6日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2024年8月6日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="NC - 非商业性使用">
+                    <i class="iconfont icon-cc-nc"></i>
+                  </span>
+                </a>
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-cc-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"xxC3pGsUk3aNPu9TVonwjTeC-gzGzoHsz","appKey":"5mZhDPfEAHkfkqNy03d001rg","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

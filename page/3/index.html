@@ -252,6 +252,350 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Topo-Sort/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Topo_Sort拓扑排序">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Topo-Sort/" target="_self">
+          [编程笔记]-Topo_Sort拓扑排序
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Topo-Sort/" target="_self">
+        <div>
+          概念拓扑排序，就是对图中的点进行排序。 排序方式如下： 对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。 所以，图只能是有向图，还得是有向无环图。 实现记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。 无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 15:36" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/sort/">#排序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Storage-of-Graph/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Storage_of_Graph图的存储">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Storage-of-Graph/" target="_self">
+          [编程笔记]-Storage_of_Graph图的存储
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Storage-of-Graph/" target="_self">
+        <div>
+          邻接矩阵啊开个二维数组，然后a[i][j]表示i到j的边长。完事了。 邻接表利用链表储存每个点的相邻节点。 链式前向星哈希中拉链法头插法也是用的这个。[编程笔记]-Hash_Table哈希表 记录每个节点的第一条边、每条边的边长、每条边指向的节点、每条边的下一条边（指把这个节点的所有边形成一种链式结构链接），然后就能遍历所有边了。 代码前面两个都太简单了，所以就直接上链式前向星的代码吧。 1234
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 14:23" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tree/">#树论</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/BFS/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-BFS广度优先搜索">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/BFS/" target="_self">
+          [编程笔记]-BFS广度优先搜索
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/BFS/" target="_self">
+        <div>
+          前言BFS(Breadth First Search)，广度优先搜索，典中典，重中重。 作用一般用来在图、树中进行搜索。 原理过程可视作一棵树，每次把所有子节点都搜一遍，然后把所有子节点加入待搜索的队列中，排着队一个一个搜，每一个又把所有子节点加入队中…… 其实就是一层一层地搜索~ 实现一般用队列来模拟，需要O(2h)的空间。同时，由于BFS算法的性质，它可以用来解决“最短路”问题。 实现最短路：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 10:56" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tree/">#树论</a>
+            
+              <a href="/tags/bfsa/">#BFS</a>
+            
+              <a href="/tags/srch/">#搜索</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/DFS/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-DFS深度优先搜索">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/DFS/" target="_self">
+          [编程笔记]-DFS深度优先搜索
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/DFS/" target="_self">
+        <div>
+          简介DFS(Deep First Search)，深度优先搜索，典中典，重中重。 作用一般用来在图、树中进行搜索。 原理过程可视作一棵树，每次向着子节点搜索，搜到叶节点就回溯，然后搜下一个子节点，直到把子节点搜完了就接着回溯。 实现一般用栈来模拟，需要O(h)的空间 概念回溯就是从子节点回到父节点 剪枝跳过已经遍历过的点减少时间复杂度。 代码递归这个太简单了，过(～￣▽￣)～ 栈这个嘛……说句实话
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 10:44" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tree/">#树论</a>
+            
+              <a href="/tags/srch/">#搜索</a>
+            
+              <a href="/tags/dfsa/">#DFS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/08/03/STLs/" target="_self">
           <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-STLs(STL大整合)">
         </a>
@@ -743,344 +1087,6 @@
               <a href="/tags/tree/">#树论</a>
             
               <a href="/tags/trtr/">#字典树</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/KMP/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-KMP">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/KMP/" target="_self">
-          [编程笔记]-KMP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/KMP/" target="_self">
-        <div>
-          前言KMP真的很不好理解，但其实理解了原理，代码就没有任何的问题了。 原理总概KMP嘛，其实就是优化字符串匹配的过程。 优化的终点就是当前点匹配不上时的操作。对比如下：  暴力算法：后移一位，从头开始匹配。 KMP算法：找到匹配串中距离当前点最近的可以与被匹配串匹配的点，直到当前点可以匹配为止。  （这句话可能有点绕，但学完整个算法就理解了。） （至于为什么把它分在数据结构……你就说next数组存
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 08:07" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/strn/">#字符串</a>
-            
-              <a href="/tags/kmpa/">#KMP</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/01/Monotonic-Queue/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Monotonic_Queue单调队列">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/01/Monotonic-Queue/" target="_self">
-          [编程笔记]-Monotonic_Queue单调队列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/01/Monotonic-Queue/" target="_self">
-        <div>
-          前言单调队列，在STL中有priority_queue（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-01 20:52" pubdate>
-              2024-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/quue/">#队列</a>
-            
-              <a href="/tags/hstl/">#手打STL</a>
-            
-              <a href="/tags/mvwd/">#滑动窗口</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/01/Monotonic-Stack/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Monotonic_Stack单调栈">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/01/Monotonic-Stack/" target="_self">
-          [编程笔记]-Monotonic_Stack单调栈
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/01/Monotonic-Stack/" target="_self">
-        <div>
-          简介具有单调性的栈（站内元素单调递增或单调递减） 常见题型问数组中每一个元素左侧&#x2F;右侧离它最近的比它大&#x2F;小的元素是什么。 代码123456789101112131415161718192021class Monotonic_Stack&#123;//这里是单调递减，要改的话改fix()就行了。    public:        int a[N];        int siz
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-01 20:12" pubdate>
-              2024-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/hstl/">#手打STL</a>
-            
-              <a href="/tags/stck/">#栈</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/01/Queue/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Queue队列">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/01/Queue/" target="_self">
-          [编程笔记]-Queue队列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/01/Queue/" target="_self">
-        <div>
-          简介一种先进先出的数据结构，就像排队一样。 代码1234567891011121314151617class Static_Queue&#123;    public:        int front,back;//这里front可以视作第0个元素，它的下一位才是第一个真正的元素。        int a[N];        void push(int x)&#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-01 19:49" pubdate>
-              2024-08-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/quue/">#队列</a>
-            
-              <a href="/tags/hstl/">#手打STL</a>
             
           </div>
         

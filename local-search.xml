@@ -4,6 +4,174 @@
   
   
   <entry>
+    <title>[编程笔记]-Chinese_Remainder_Theorem</title>
+    <link href="/2024/08/07/Chinese-Remainder-Theorem/"/>
+    <url>/2024/08/07/Chinese-Remainder-Theorem/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>刚打完cf，当前时间1:04。</p><p>链接就不放了，照着标签去找吧，总能找到的。</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>若m<sub>1</sub>, m<sub>2</sub>, m<sub>3</sub>, …, m<sub>k</sub>两两互质</p><p>满足如下条件：</p><blockquote><p>x≡a<sub>1</sub>(mod m<sub>1</sub>)<br>x≡a<sub>2</sub>(mod m<sub>2</sub>)<br>x≡a<sub>3</sub>(mod m<sub>3</sub>)<br>…<br>x≡a<sub>k</sub>(mod m<sub>k</sub>)</p></blockquote><p>设M&#x3D;m<sub>1</sub>m<sub>2</sub>m<sub>3</sub>…m<sub>k</sub></p><p>M<sub>i</sub>&#x3D;M&#x2F;m<sub>i</sub>，就是除了m<sub>i</sub>外所有m的乘积。</p><p>因为所有m两两互质，所以M<sub>i</sub>与m<sub>i</sub>互质。</p><p>所以，我们就可以求出M<sub>i</sub><sup>-1</sup>(mod m<sub>i</sub>)，因为互质，所以存在。由于m<sub>i</sub>不一定是质数，这里使用<strong>拓展欧几里得算法</strong>。</p><p>这里我们先给出x，然后再解释：<br>x&#x3D;a<sub>1</sub>M<sub>1</sub>M<sub>1</sub><sup>-1</sup>+a<sub>2</sub>M<sub>2</sub>M<sub>2</sub><sup>-1</sup>+a<sub>3</sub>M<sub>3</sub>M<sub>3</sub><sup>-1</sup>+…+a<sub>k</sub>M<sub>k</sub>M<sub>k</sub><sup>-1</sup></p><p>为什么呢？根据乘法逆元的定义，可以得到：M<sub>i</sub>M<sub>i</sub><sup>-1</sup>≡1(mod m<sub>i</sub>)</p><p>然后，除了第i项之外，其它项内都含有m<sub>i</sub>这个因数，模m<sub>i</sub>都为0。</p><p>所以最后模的结果就是a<sub>i</sub>%m<sub>i</sub>。</p><p>满足条件。</p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>明天再补，我真不想变成国家一级保护废物。</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>质数</tag>
+      
+      <tag>乘法逆元</tag>
+      
+      <tag>拓展欧几里得算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Linear_Congruence_Equation线性同余方程</title>
+    <link href="/2024/08/06/Linear-Congruence-Equation/"/>
+    <url>/2024/08/06/Linear-Congruence-Equation/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>形如ax≡b(mod m)的方程</p><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p><a href="https://githarlem.github.io/2024/08/06/Bezouts-Lemma/">[编程笔记]-Bezout’s_Lemma裴蜀定理</a><br><em>（乘法逆元页面尚未创建，可以去快速幂看看概念）</em><br><a href="https://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</a></p><h1 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h1><h2 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h2><p>暂时没时间写，等把乘法逆元搞出来再写吧。</p><h2 id="拓展欧几里得算法"><a href="#拓展欧几里得算法" class="headerlink" title="拓展欧几里得算法"></a>拓展欧几里得算法</h2><p>线性同余方程等价于<br>ax&#x3D;my+b(y∈Z)<br>ax-my&#x3D;b</p><p>设y’&#x3D;-y</p><p>ax+my’&#x3D;b</p><p>根据裴蜀定理，对于任意不全为0的x、y，gcd(a,b)|ax+by</p><p>那么，只要gcd(a,m)|b，就一定有解；反之，则一定无解。</p><p>只要它有解，就可以用拓展欧几里得算法求出一个解，使ax+my’&#x3D;gcd(a, m)&#x3D;d，记作x<sub>0</sub>、y<sub>0</sub></p><p>而只要把等式右边化作b即可，所以左右两边各乘b&#x2F;d</p><p>(x*b&#x2F;d)a+(y’*b&#x2F;d)m&#x3D;b</p><p>这样就得到了一组x、y’的解。如果需要y取相反数即可。</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>鉴于有些抽象，这里直接给出一道例题。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,b,m;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> &amp;x,<span class="hljs-type">int</span> &amp;y)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123;<br>        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>    <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(b,a%b,y,x);<br>    y-=a/b*x;<br>    <span class="hljs-keyword">return</span> d;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a&gt;&gt;b&gt;&gt;m;<br>        <span class="hljs-type">int</span> x,y;<br>        <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(a,m,x,y);<br>        <span class="hljs-keyword">if</span>(b%d!=<span class="hljs-number">0</span>)cout&lt;&lt;<span class="hljs-string">&quot;impossible\n&quot;</span>;<br>        <span class="hljs-keyword">else</span> cout&lt;&lt;(ll)x*(b/d)%m&lt;&lt;endl;<span class="hljs-comment">//题目要求在int范围内，所以直接%一个m就行，满足条件。</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>乘法逆元</tag>
+      
+      <tag>裴蜀定理</tag>
+      
+      <tag>拓展欧几里得算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</title>
+    <link href="/2024/08/06/Extended-Euclidean-Algorithm/"/>
+    <url>/2024/08/06/Extended-Euclidean-Algorithm/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p>在学习拓展欧几里得算法前，建议先阅读裴蜀定理和乘法逆元两个页面了解本算法的作用。<br><a href="https://githarlem.github.io/2024/08/06/Bezouts-Lemma/">[编程笔记]-Bezout’s_Lemma裴蜀定理</a><br><em>（乘法逆元页面尚未创建，可以去快速幂看看概念）</em></p><p>另外，如果你不知道欧几里得算法（辗转相除法），建议去约数基础部分先学习一下。<br><a href="https://githarlem.github.io/2024/08/05/Divisor-Basis/">[编程笔记]-Divisor_Basis约数基础</a></p><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>首先，既然是拓展欧几里得算法，肯定要从欧几里得算法拓展。</p><p>这里直接给出（证明见欧几里得算法）：gcd(a, b)&#x3D;&#x3D;gcd(b, a%b)</p><p>已知当b&#x3D;&#x3D;0时，gcd(a,b)&#x3D;a。</p><p>拓展欧几里得算法就是要找非零整数x, y，使得**ax+by&#x3D;gcd(a, b)**嘛（证明裴蜀定理），那么b&#x3D;&#x3D;0时，x&#x3D;1，b本来应该是任意数，这里特殊设置为0。</p><p>好，那么接下来就开始模拟递归返回的过程了——</p><p>假设我们按照定义写代码，下一层递归中的x、y记作x&#39;、y&#39;，可以得到：</p><p>若当前函数是gcd(a, b)，那么它的下一层递归也就应该是gcd(b, a%b)。</p><p>那么根据欧几里得定理，gcd(b, a%b)&#x3D;&#x3D;gcd(a, b)，这里把它们记作d。</p><p>又根据裴蜀定理，可得b*x&#39;+(a%b)*y&#39;&#x3D;&#x3D;d</p><p>这里讲一下%的展开方法：a%b&#x3D;a-⌊a&#x2F;b⌋*b</p><p>然后把得到的式子展开并重新整理：<br>y&#39;*a+(x&#39;-y&#39;*⌊a&#x2F;b⌋)*b&#x3D;&#x3D;d</p><p>这个表达式表示的是gcd(b, a%b)得到的式子，也就是这一层递归的下一层递归得到的式子。</p><p>而在这一层递归中，x*a+y*b&#x3D;&#x3D;d，</p><p>因此x&#x3D;y&#39;, y&#x3D;x&#39;-y&#39;*⌊a&#x2F;b⌋</p><p>刚递归回溯到这一层时x、y实际是x&#39;、y&#39;，那如果在传参数的时候互换一下，x、y实际就成了y&#39;、x&#39;，那么就可以得出x、y的更新代码：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">exgcd</span>(b, a%b, y, x);<br><span class="hljs-comment">//x不变</span><br>y=y-a/b*x<span class="hljs-comment">//鉴于运算顺序从左往右，要求先向下取整再运算，如果先乘了的话会出现误差，当然加个括号也行。</span><br></code></pre></td></tr></table></figure><p>然后啊，经过验证，裴蜀定理就成立了。</p><p>说实话这个根据需要证明的定理构造过程在运用需要证明的定理方式下通过结果证明了需要证明的定理的定理证明方式还是有点不好理解的，甚至新接触数论的蒟蒻们（包括我TAT）会感受到这有一点逻辑悖论的味道。</p><p>那么重点就在于程序的完成了。</p><h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> &amp;x,<span class="hljs-type">int</span> &amp;y)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123;<br>        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>    <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(b,a%b,y,x);<br>    y-=a/b*x;<br>    <span class="hljs-keyword">return</span> d;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="通解"><a href="#通解" class="headerlink" title="通解"></a>通解</h1><p>另外，x、y是不唯一的，求通解如下：</p><p>已知ax<sub>0</sub>+by<sub>0</sub>&#x3D;&#x3D;d</p><p>那么ax<sub>0</sub>+by<sub>0</sub>-(a*b)&#x2F;d+(a*b)&#x2F;d&#x3D;&#x3D;d（(a*b)&#x2F;d定为整数，因为d是最大公约数。）</p><p>化得a(x<sub>0</sub>-b&#x2F;d)+b(y<sub>0</sub>+a&#x2F;d)&#x3D;&#x3D;d</p><p>那么就可以得到通解:<br>x&#x3D;x<sub>0</sub>-b&#x2F;d*k,(k∈Z)<br>y&#x3D;y<sub>0</sub>+a&#x2F;d*k,(k∈Z)</p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p>跟着醉酒·y总走了三遍没走明白，然后才想起来y总喝醉了Σ(っ °Д °;)っ<br>然后就在评论区里搞懂哩，以为自己学的有问题，想了好久(ノへ￣、)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>最大公约数</tag>
+      
+      <tag>乘法逆元</tag>
+      
+      <tag>裴蜀定理</tag>
+      
+      <tag>拓展欧几里得算法</tag>
+      
+      <tag>欧几里得算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Bezout&#39;s_Lemma裴蜀定理</title>
+    <link href="/2024/08/06/Bezouts-Lemma/"/>
+    <url>/2024/08/06/Bezouts-Lemma/</url>
+    
+    <content type="html"><![CDATA[<h1 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h1><h2 id="gcd-a-b-ax-by"><a href="#gcd-a-b-ax-by" class="headerlink" title="gcd(a,b)|ax+by"></a>gcd(a,b)|ax+by</h2><p>a、b都是是gcd(a,b)的倍数，对于任意不全为零整数x、y所以gcd(a,b)|ax+by</p><p>因此a、b能凑出来的最小的数就是它的最大公约数。</p><h2 id="ax-by-gcd-a-b"><a href="#ax-by-gcd-a-b" class="headerlink" title="ax+by&#x3D;gcd(a, b)"></a>ax+by&#x3D;gcd(a, b)</h2><p>对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b)</p><p>证明：我们可以使用<strong>构造法</strong></p><p>构造出一种方式，对于任意正整数a, b，一定存在非零整数x, y，使得ax+by&#x3D;gcd(a, b)，呢么就可以证明这个公式成立了。</p><p>这个方法就是拓展欧几里得算法。<br><a href="https://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</a></p><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>数学知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>最大公约数</tag>
+      
+      <tag>裴蜀定理</tag>
+      
+      <tag>拓展欧几里得算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Binary_Exponentiation快速幂</title>
     <link href="/2024/08/05/Binary-Exponentiation/"/>
     <url>/2024/08/05/Binary-Exponentiation/</url>
@@ -29,6 +197,8 @@
       <tag>c++</tag>
       
       <tag>笔记</tag>
+      
+      <tag>数学</tag>
       
       <tag>倍增</tag>
       
@@ -131,7 +301,7 @@
     <link href="/2024/08/05/Divisor-Basis/"/>
     <url>/2024/08/05/Divisor-Basis/</url>
     
-    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>x的约数其实就是能整除x的正整数。</p><p>例：4的约数有{1,2,4}。</p><h1 id="求约数。"><a href="#求约数。" class="headerlink" title="求约数。"></a>求约数。</h1><p>对，没错，还是试除法。</p><p>不会可以看看质数基础（？）<br><a href="https://githarlem.github.io/2024/08/05/Prime-Basis/">[编程笔记]-Prime_Basis质数基础</a></p><p>O(sqrt(n))</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">get_dvs</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=num/i;i++)&#123;<br>        <span class="hljs-keyword">if</span>(num%i==<span class="hljs-number">0</span>)&#123;<br>            res.<span class="hljs-built_in">push_back</span>(i);<br>            <span class="hljs-keyword">if</span>(num/i!=i)res.<span class="hljs-built_in">push_back</span>(num/i);<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(res.<span class="hljs-built_in">begin</span>(),res.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="约数个数"><a href="#约数个数" class="headerlink" title="约数个数"></a>约数个数</h1><h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>算数基本定理：<br>N&#x3D;P1<sup>a1</sup><em>P2<sup>a2</sup></em>…*Pk<sup>ak</sup></p><p>那么N的约数个数是(a1+1)(a2+1)…(ak+1)</p><h2 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h2><p>令d为N的约数，则有</p><p>d&#x3D;P1<sup>b1</sup><em>P2<sup>b2</sup></em>…*Pk<sup>bk</sup></p><p>(0&lt;&#x3D;bi&lt;&#x3D;ai)</p><p>就是<strong>分解质因数</strong><br><a href="https://githarlem.github.io/2024/08/05/Prime-Basis/">[编程笔记]-Prime_Basis质数基础</a></p><p>所以枚举所有情况就好了。每一个b都有(a+1)种情况，然后乘法定理。</p><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="https://www.acwing.com/problem/content/872/">AcWing870-约数个数</a><br>由于公式是乘法，题目要求中也是乘法，就相当于看作同一个数了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><br><span class="hljs-type">int</span> n,a;<br>ll ans=<span class="hljs-number">1</span>;<br>unordered_map&lt;<span class="hljs-type">int</span>,ll&gt; mp;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=a/i;i++)&#123;<br>            <span class="hljs-keyword">while</span>(a%i==<span class="hljs-number">0</span>)&#123;<br>                a/=i;<br>                mp[i]++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">1</span>)mp[a]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> p:mp)&#123;<br>        ans=ans*(p.second<span class="hljs-number">+1</span>)%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="约数之和"><a href="#约数之和" class="headerlink" title="约数之和"></a>约数之和</h1><p>(p1<sup>0</sup>+p1<sup>1</sup>+p1<sup>2</sup>+…+p1<sup>a1</sup>)<em>…</em>(pk<sup>0</sup>+pk<sup>1</sup>+pk<sup>2</sup>+…+pk<sup>ak</sup>)</p><p>把这个公式展开，就是所有情况的约数相加了。</p><p>求上面那个公式：<br>重复a次t&#x3D;p*t+1</p><p>t初始为1</p><ol><li>t&#x3D;p+1</li><li>t&#x3D;p<sup>2</sup>+p+1</li><li>t&#x3D;p<sup>3</sup>+p<sup>2</sup>+p+1<br>…</li></ol><p>然后就没有然后了</p><p><a href="https://www.acwing.com/problem/content/873/">AcWing871-约数之和</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><br><span class="hljs-type">int</span> n,a;<br>ll ans=<span class="hljs-number">1</span>;<br>unordered_map&lt;<span class="hljs-type">int</span>,ll&gt; mp;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=a/i;i++)&#123;<br>            <span class="hljs-keyword">while</span>(a%i==<span class="hljs-number">0</span>)&#123;<br>                a/=i;<br>                mp[i]++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">1</span>)mp[a]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> pa:mp)&#123;<br>        <span class="hljs-type">int</span> p=pa.first,a=pa.second;<br>        ll t=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(a--)t=(t*p<span class="hljs-number">+1</span>)%mod;<br>        ans=ans*t%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="最大公约数——欧几里得算法"><a href="#最大公约数——欧几里得算法" class="headerlink" title="最大公约数——欧几里得算法"></a>最大公约数——欧几里得算法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>欧几里得算法（Euclidean Algorithm），也叫辗转相除法（是不是熟悉多哩(￣︶￣)），主要用来解决最大公约数（最大公因数）问题。</p><p><em>tips: __gcd()应该也是用这个的吧</em></p><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><code>gcd(a, b)=gcd(b, a%b)</code></p><p>若d|x, d|y, 则d|ax+by</p><p>a%b&#x3D;&#x3D;a-c*b</p><p>令a,b最大公约数为d1，则d1|a, d1|b, 所以d1|a-c*b，即d1|a%b。</p><p>令b,a%b最大公约数为d2，则d2|b, d2|a-c<em>b, 所以d2|a-c</em>b+c*b，即d2|a。</p><p>因此，二者的公约数全部相同，最大公约数也相同。</p><p>特殊但其实不特殊地，当b&#x3D;&#x3D;0时，最大公约数是a，因为0可以被任何数整除都余0。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> b?<span class="hljs-built_in">gcd</span>(b,a%b):a;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p><em>骚年，你已经打开了通往数论的大门，走上了这条不归路了（〒▽〒）</em></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>x的约数其实就是能整除x的正整数。</p><p>例：4的约数有{1,2,4}。</p><h1 id="求约数。"><a href="#求约数。" class="headerlink" title="求约数。"></a>求约数。</h1><p>对，没错，还是试除法。</p><p>不会可以看看质数基础（？）<br><a href="https://githarlem.github.io/2024/08/05/Prime-Basis/">[编程笔记]-Prime_Basis质数基础</a></p><p>O(sqrt(n))</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">get_dvs</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span></span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=num/i;i++)&#123;<br>        <span class="hljs-keyword">if</span>(num%i==<span class="hljs-number">0</span>)&#123;<br>            res.<span class="hljs-built_in">push_back</span>(i);<br>            <span class="hljs-keyword">if</span>(num/i!=i)res.<span class="hljs-built_in">push_back</span>(num/i);<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(res.<span class="hljs-built_in">begin</span>(),res.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="约数个数"><a href="#约数个数" class="headerlink" title="约数个数"></a>约数个数</h1><h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p>算数基本定理：<br>N&#x3D;P1<sup>a1</sup><em>P2<sup>a2</sup></em>…*Pk<sup>ak</sup></p><p>那么N的约数个数是(a1+1)(a2+1)…(ak+1)</p><h2 id="证明："><a href="#证明：" class="headerlink" title="证明："></a>证明：</h2><p>令d为N的约数，则有</p><p>d&#x3D;P1<sup>b1</sup><em>P2<sup>b2</sup></em>…*Pk<sup>bk</sup></p><p>(0&lt;&#x3D;bi&lt;&#x3D;ai)</p><p>就是<strong>分解质因数</strong><br><a href="https://githarlem.github.io/2024/08/05/Prime-Basis/">[编程笔记]-Prime_Basis质数基础</a></p><p>所以枚举所有情况就好了。每一个b都有(a+1)种情况，然后乘法定理。</p><h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a href="https://www.acwing.com/problem/content/872/">AcWing870-约数个数</a><br>由于公式是乘法，题目要求中也是乘法，就相当于看作同一个数了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><br><span class="hljs-type">int</span> n,a;<br>ll ans=<span class="hljs-number">1</span>;<br>unordered_map&lt;<span class="hljs-type">int</span>,ll&gt; mp;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=a/i;i++)&#123;<br>            <span class="hljs-keyword">while</span>(a%i==<span class="hljs-number">0</span>)&#123;<br>                a/=i;<br>                mp[i]++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">1</span>)mp[a]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> p:mp)&#123;<br>        ans=ans*(p.second<span class="hljs-number">+1</span>)%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="约数之和"><a href="#约数之和" class="headerlink" title="约数之和"></a>约数之和</h1><p>(p1<sup>0</sup>+p1<sup>1</sup>+p1<sup>2</sup>+…+p1<sup>a1</sup>)<em>…</em>(pk<sup>0</sup>+pk<sup>1</sup>+pk<sup>2</sup>+…+pk<sup>ak</sup>)</p><p>把这个公式展开，就是所有情况的约数相加了。</p><p>求上面那个公式：<br>重复a次t&#x3D;p*t+1</p><p>t初始为1</p><ol><li>t&#x3D;p+1</li><li>t&#x3D;p<sup>2</sup>+p+1</li><li>t&#x3D;p<sup>3</sup>+p<sup>2</sup>+p+1<br>…</li></ol><p>然后就没有然后了</p><p><a href="https://www.acwing.com/problem/content/873/">AcWing871-约数之和</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod=<span class="hljs-number">1e9</span><span class="hljs-number">+7</span>;<br><br><span class="hljs-type">int</span> n,a;<br>ll ans=<span class="hljs-number">1</span>;<br>unordered_map&lt;<span class="hljs-type">int</span>,ll&gt; mp;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=a/i;i++)&#123;<br>            <span class="hljs-keyword">while</span>(a%i==<span class="hljs-number">0</span>)&#123;<br>                a/=i;<br>                mp[i]++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(a&gt;<span class="hljs-number">1</span>)mp[a]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> pa:mp)&#123;<br>        <span class="hljs-type">int</span> p=pa.first,a=pa.second;<br>        ll t=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(a--)t=(t*p<span class="hljs-number">+1</span>)%mod;<br>        ans=ans*t%mod;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="最大公约数——欧几里得算法"><a href="#最大公约数——欧几里得算法" class="headerlink" title="最大公约数——欧几里得算法"></a>最大公约数——欧几里得算法</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>欧几里得算法（Euclidean Algorithm），也叫辗转相除法（是不是熟悉多哩(￣︶￣)），主要用来解决最大公约数（最大公因数）问题。</p><p><em>tips: __gcd()应该也是用这个的吧</em></p><h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><code>gcd(a, b)=gcd(b, a%b)</code></p><p>若d|x, d|y, 则d|ax+by</p><p>a%b&#x3D;&#x3D;a-c*b</p><p>令a,b最大公约数为d1，则d1|a, d1|b, 所以d1|a-c*b，即d1|a%b。</p><p>令b,a%b最大公约数为d2，则d2|b, d2|a-c*b, 所以d2|a-c*b+c*b，即d2|a。</p><p>因此，二者的公约数全部相同，最大公约数也相同。</p><p>特殊但其实不特殊地，当b&#x3D;&#x3D;0时，最大公约数是a，因为0可以被任何数整除都余0。</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> b?<span class="hljs-built_in">gcd</span>(b,a%b):a;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p><em>骚年，你已经打开了通往数论的大门，走上了这条不归路了（〒▽〒）</em></p>]]></content>
     
     
     <categories>
@@ -158,6 +328,8 @@
       <tag>约数</tag>
       
       <tag>最大公约数</tag>
+      
+      <tag>欧几里得算法</tag>
       
     </tags>
     
