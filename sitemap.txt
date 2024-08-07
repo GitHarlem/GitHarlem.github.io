@@ -1,6 +1,6 @@
 http://githarlem.github.io/2024/08/07/Chinese-Remainder-Theorem/
-http://githarlem.github.io/2024/08/06/Linear-Congruence-Equation/
 http://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/
+http://githarlem.github.io/2024/08/06/Linear-Congruence-Equation/
 http://githarlem.github.io/2024/08/05/Divisor-Basis/
 http://githarlem.github.io/2024/08/05/Binary-Exponentiation/
 http://githarlem.github.io/2024/08/06/Bezouts-Lemma/

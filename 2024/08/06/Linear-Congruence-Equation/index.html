@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-06T13:04:00.000Z">
-<meta property="article:modified_time" content="2024-08-06T17:21:51.539Z">
+<meta property="article:modified_time" content="2024-08-07T01:16:12.980Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -265,7 +265,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          392 字
+          399 字
         
       </span>
     
@@ -858,9 +858,9 @@
 <p>那么，只要gcd(a,m)|b，就一定有解；反之，则一定无解。</p>
 <p>只要它有解，就可以用拓展欧几里得算法求出一个解，使ax+my’&#x3D;gcd(a, m)&#x3D;d，记作x<sub>0</sub>、y<sub>0</sub></p>
 <p>而只要把等式右边化作b即可，所以左右两边各乘b&#x2F;d</p>
-<p>(x*b&#x2F;d)a+(y’*b&#x2F;d)m&#x3D;b</p>
+<p>(x<sub>0</sub>*b&#x2F;d)a+(y<sub>0</sub>*b&#x2F;d)m&#x3D;b</p>
 <p>这样就得到了一组x、y’的解。如果需要y取相反数即可。</p>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>鉴于有些抽象，这里直接给出一道例题。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>鉴于有些抽象，这里直接给出一道例题。<br><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/880/">AcWing878-线性同余方程</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> ll;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a,b,m;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> &amp;x,<span class="hljs-type">int</span> &amp;y)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123;<br>        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>    <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(b,a%b,y,x);<br>    y-=a/b*x;<br>    <span class="hljs-keyword">return</span> d;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">while</span>(n--)&#123;<br>        cin&gt;&gt;a&gt;&gt;b&gt;&gt;m;<br>        <span class="hljs-type">int</span> x,y;<br>        <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(a,m,x,y);<br>        <span class="hljs-keyword">if</span>(b%d!=<span class="hljs-number">0</span>)cout&lt;&lt;<span class="hljs-string">&quot;impossible\n&quot;</span>;<br>        <span class="hljs-keyword">else</span> cout&lt;&lt;(ll)x*(b/d)%m&lt;&lt;endl;<span class="hljs-comment">//题目要求在int范围内，所以直接%一个m就行，满足条件。</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
