@@ -859,9 +859,9 @@
 <h3 id="区间修改"><a href="#区间修改" class="headerlink" title="区间修改"></a>区间修改</h3><p>然后就是区间修改部分了：</p>
 <h4 id="修改单点的效果"><a href="#修改单点的效果" class="headerlink" title="修改单点的效果"></a>修改单点的效果</h4><p>为了理解算法，我们要先理解如果修改一个点的差分值会发生什么。</p>
 <p>已知每个点的数值与其对应的“L”型有关，又可直接视作它与原点形成的矩阵，因而一旦其矩阵中包含被修改的元素，其数值也会收到影响：</p>
-<p><img src="/t0.png" srcset="/img/loading.gif" lazyload alt="红色为修改元素，图中只有棕色点受影响"></p>
+<p><img src="/2024/07/30/Adjacent-Difference/t0.png" srcset="/img/loading.gif" lazyload alt="红色为修改元素，图中只有棕色点受影响"></p>
 <p>故而会受到影响的元素图如下：</p>
-<p><img src="/t1.png" srcset="/img/loading.gif" lazyload alt="如图"></p>
+<p><img src="/2024/07/30/Adjacent-Difference/t1.png" srcset="/img/loading.gif" lazyload alt="如图"></p>
 <p>那么现在再去理解区间修改就简单多了。</p>
 <h4 id="步入正轨"><a href="#步入正轨" class="headerlink" title="步入正轨"></a>步入正轨</h4><p>已知受影响区间在当前点的右下角，也就是和前缀和刚好相反的，那么在此就不重复推算思路了，也就是矩阵减去“L”型。</p>
 <p>而差分中无论是矩阵还是“L”型都在右下方，其他与前缀和基本完全一致。</p>
