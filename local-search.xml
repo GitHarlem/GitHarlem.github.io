@@ -4,6 +4,41 @@
   
   
   <entry>
+    <title>[编程笔记]-Interval_DP区间DP</title>
+    <link href="/2024/08/09/Interval-DP/"/>
+    <url>/2024/08/09/Interval-DP/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>区间DP，在定义状态时，往往定义的是一个<strong>区间的情况</strong>（不同于线性，线性往往定义的是单个点情况）。具体的，区间DP表示的区间可以重叠，并且可以由另外的有关区间转化而来。</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/284/">AcWing282-石子合并</a><br><a href="https://www.luogu.com.cn/problem/P1775">LuoguP1775-石子合并</a></p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">303</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> a[N],s[N];<br><span class="hljs-type">int</span> f[N][N];<span class="hljs-comment">//从第i堆到第j堆石子合并成1个的最小价值</span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>        s[i]=s[i<span class="hljs-number">-1</span>]+a[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> l=<span class="hljs-number">2</span>;l&lt;=n;l++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i+l<span class="hljs-number">-1</span>&lt;=n;i++)&#123;<br>            <span class="hljs-type">int</span> j=i+l<span class="hljs-number">-1</span>;<br>            f[i][j]=INT_MAX;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=i;k&lt;j;k++)&#123;<br>                f[i][j]=<span class="hljs-built_in">min</span>(f[i][j],f[i][k]+f[k<span class="hljs-number">+1</span>][j]+s[j]-s[i<span class="hljs-number">-1</span>]);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[<span class="hljs-number">1</span>][n];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>动态规划</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-Linear_DP线性DP</title>
     <link href="/2024/08/08/Linear-DP/"/>
     <url>/2024/08/08/Linear-DP/</url>
