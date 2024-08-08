@@ -19,28 +19,30 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言最近时间紧迫，从这篇文章开始，就着重记笔记了，不再提供详细教程。 简介双指针算法，名义上说就是使用两个指针循环（一个或多个）数组，但实际上通常用不到指针。 一般情况下，双指针算法用于特定情境，将O(n2)的时间复杂度简化成O(n)。 模板一般情况下，形如下方所示的代码，在满足特定需求的情况下，都可以转化成双指针来做。 1234567for(int i&#x3D;0;i&lt;n;i++)&#123;	f">
+    <meta name="description" content="概览背包问题，就是给定你一些背包和一些物品，通常情况下给出物品的价值和体积，再在不同类型中给定不同的限制条件，最后往往希望你给出能获得的最大价值。 01背包要求限制背包的最大体积，给出每种物品的体积和价值，每种物品只有一个，求能获得的最大价值。 解决基础版考虑状态dp[i][j]，表示在前i件物品中有j的体积可以获得的最大利润。 对于每个dp[i][j]，有两种情况：选不选第j件物品。  若选，则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Two_Pointers双指针">
-<meta property="og:url" content="http://githarlem.github.io/2024/07/31/Two-Pointers/index.html">
+<meta property="og:title" content="[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/07/Knapsack-Problem-Basic/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言最近时间紧迫，从这篇文章开始，就着重记笔记了，不再提供详细教程。 简介双指针算法，名义上说就是使用两个指针循环（一个或多个）数组，但实际上通常用不到指针。 一般情况下，双指针算法用于特定情境，将O(n2)的时间复杂度简化成O(n)。 模板一般情况下，形如下方所示的代码，在满足特定需求的情况下，都可以转化成双指针来做。 1234567for(int i&#x3D;0;i&lt;n;i++)&#123;	f">
+<meta property="og:description" content="概览背包问题，就是给定你一些背包和一些物品，通常情况下给出物品的价值和体积，再在不同类型中给定不同的限制条件，最后往往希望你给出能获得的最大价值。 01背包要求限制背包的最大体积，给出每种物品的体积和价值，每种物品只有一个，求能获得的最大价值。 解决基础版考虑状态dp[i][j]，表示在前i件物品中有j的体积可以获得的最大利润。 对于每个dp[i][j]，有两种情况：选不选第j件物品。  若选，则">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-07-31T01:28:31.000Z">
-<meta property="article:modified_time" content="2024-07-31T01:37:12.217Z">
+<meta property="article:published_time" content="2024-08-07T05:06:01.000Z">
+<meta property="article:modified_time" content="2024-08-08T02:31:27.004Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="背包问题">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Two_Pointers双指针 - HarlemBlog</title>
+  <title>[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版） - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -233,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Two_Pointers双指针"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）"></span>
           
         </div>
 
@@ -249,8 +251,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-31 09:28" pubdate>
-          2024年7月31日 上午
+        <time datetime="2024-08-07 13:06" pubdate>
+          2024年8月7日 下午
         </time>
       </span>
     
@@ -261,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          279 字
+          2.4k 字
         
       </span>
     
@@ -272,7 +274,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -352,17 +354,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="动态规划"
         id="heading-8c05890ac8f93d0195f884f1ff4656ec" role="tab" data-toggle="collapse" href="#collapse-8c05890ac8f93d0195f884f1ff4656ec"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         动态规划
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-8c05890ac8f93d0195f884f1ff4656ec"
+      <div class="category-collapse collapse show" id="collapse-8c05890ac8f93d0195f884f1ff4656ec"
            role="tabpanel" aria-labelledby="heading-8c05890ac8f93d0195f884f1ff4656ec">
         
         
@@ -374,7 +376,7 @@
       
         <a href="/2024/08/07/Knapsack-Problem-Basic/" title="[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）</span>
         </a>
       
@@ -522,17 +524,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="基础算法"
         id="heading-cca34e9f468bf2208ec04514e694f17a" role="tab" data-toggle="collapse" href="#collapse-cca34e9f468bf2208ec04514e694f17a"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         基础算法
         <span class="list-group-count">(10)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-cca34e9f468bf2208ec04514e694f17a"
+      <div class="category-collapse collapse " id="collapse-cca34e9f468bf2208ec04514e694f17a"
            role="tabpanel" aria-labelledby="heading-cca34e9f468bf2208ec04514e694f17a">
         
         
@@ -607,7 +609,7 @@
       
         <a href="/2024/07/31/Two-Pointers/" title="[编程笔记]-Two_Pointers双指针"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Two_Pointers双指针</span>
         </a>
       
@@ -885,21 +887,76 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Two_Pointers双指针</h1>
+            <h1 id="seo-header">[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近时间紧迫，从这篇文章开始，就着重记笔记了，不再提供详细教程。</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>双指针算法，名义上说就是使用两个指针循环（一个或多个）数组，但实际上通常用不到指针。</p>
-<p>一般情况下，双指针算法用于特定情境，将O(n<sup>2</sup>)的时间复杂度简化成O(n)。</p>
-<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>一般情况下，形如下方所示的代码，在满足特定需求的情况下，都可以转化成双指针来做。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)&#123;<br>		<span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br>			<span class="hljs-comment">//功能代码</span><br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>转化成：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-built_in">check</span>(i,j))&#123;<br>		j++;<br>	&#125;<br>	<span class="hljs-comment">//功能代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>背包问题，就是给定你一些背包和一些物品，通常情况下给出物品的价值和体积，再在不同类型中给定不同的限制条件，最后往往希望你给出能获得的最大价值。</p>
+<h1 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h1><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p>限制背包的最大体积，给出每种物品的体积和价值，每种物品<strong>只有一个</strong>，求能获得的最大价值。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="基础版"><a href="#基础版" class="headerlink" title="基础版"></a>基础版</h3><p>考虑状态dp[i][j]，表示在前i件物品中有j的体积可以获得的最大利润。</p>
+<p>对于每个dp[i][j]，有两种情况：选不选第j件物品。</p>
+<ul>
+<li>若选，则dp[i][j]&#x3D;dp[i-1][j-v[i]]+w[i]，表示在前i-1个物品中，若有j-当前物品体积的剩余体积，还能获得的最大价值，加上当前物品的价值。</li>
+<li>若不选，则dp[i][j]&#x3D;dp[i-1][j]，表示就不说了。</li>
+<li>两者取最大值，作为在前i个物品中有j的体积的最大价值。</li>
+</ul>
+<p>还是挺好理解的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,nv;<br><span class="hljs-type">int</span> v[N],w[N];<br><span class="hljs-type">int</span> f[N][N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>    &#125;<br>    <span class="hljs-comment">//f[0][i]全为0，但初始默认就是0，就不用初始化了。</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=m;j++)&#123;<br>            f[i][j]=f[i<span class="hljs-number">-1</span>][j];<br>            <span class="hljs-keyword">if</span>(j&gt;=v[i])f[i][j]=<span class="hljs-built_in">max</span>(f[i<span class="hljs-number">-1</span>][j-v[i]]+w[i],f[i][j]);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[n][m]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/801/">AcWing799-最长连续不重复子序列</a></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e5</span><span class="hljs-number">+5</span>;<br><span class="hljs-type">int</span> n,ans;<br><span class="hljs-type">int</span> a[N],s[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>,j=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a[i]);<br>        s[a[i]]++;<br>        <span class="hljs-keyword">while</span>(s[a[i]]&gt;<span class="hljs-number">0</span>)&#123;<br>            s[a[j++]]--;<br>        &#125;<br>        ans=<span class="hljs-built_in">max</span>(ans,i-j<span class="hljs-number">+1</span>);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,ans);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="优化版"><a href="#优化版" class="headerlink" title="优化版"></a>优化版</h3><p>毕竟是二维背包，还是有点好空间，这里就思考把它转化成一维：</p>
+<p>首先，可以省略的肯定是第一维。这里如下推导：</p>
+<p>对于对于当前循环而言，dp中储存的其实就是i-1的值，所以第一个维度没有必要，考虑使用滚动数组实现优化。</p>
+<p>特殊地，我们应该从后往前循环，因为新的dp中会用到它前面的值，我们必须保证它前面的值是前i-1个的dp值。若从前往后循环，它前面的值就是更新之后的值了。</p>
+<p>另外，w[i]之前的体积，我们可以不操作，它们就默认还是i-1的值，仍然符合。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,nv;<br><span class="hljs-type">int</span> v[N],w[N];<br><span class="hljs-type">int</span> f[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=m;j&gt;=v[i];j--)&#123;<br>            f[j]=<span class="hljs-built_in">max</span>(f[j-v[i]]+w[i],f[j]);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[m]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>是不是很简单~</p>
+<h1 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h1><h2 id="要求-1"><a href="#要求-1" class="headerlink" title="要求"></a>要求</h2><p>限制背包的最大体积，给出每种物品的体积和价值，每种物品<strong>有无限个</strong>，求能获得的最大价值。</p>
+<h2 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h2><p>完全背包和01背包很像的，所以就接着01背包讲了。</p>
+<h3 id="基础版-1"><a href="#基础版-1" class="headerlink" title="基础版"></a>基础版</h3><p>这里与01背包唯一的区别就是每种物品可以放多个，并且没有数量限制。怎么解决呢？事实上，我们只需要更改一下状态转移方程就行了<del>（废话）</del></p>
+<p>一共有哪些选法呢？选0个、1个、2个……直到背包装不下了为止。</p>
+<p>那么方程就是这样的：</p>
+<p>dp[i][j]&#x3D;max(dp[i][j],dp[i-1][j-k<em>v[i]]+k</em>w[i])</p>
+<p>其中k就是选j的个数，枚举即可。还是很简单对吧。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> v[N],w[N];<br><span class="hljs-type">int</span> f[N][N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=m;j++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k*v[i]&lt;=j;k++)&#123;<br>                f[i][j]=<span class="hljs-built_in">max</span>(f[i][j],f[i<span class="hljs-number">-1</span>][j-k*v[i]]+w[i]*k);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[n][m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="优化版-1"><a href="#优化版-1" class="headerlink" title="优化版"></a>优化版</h3><p>不只是空间，这次时间复杂度也上去了，所以优化是必须的。</p>
+<p>我们先枚举一些情况来找规律：</p>
+<blockquote>
+<p>f[i][j]&#x3D;max(f[i-1][j],f[i-1][j-v]+w,f[i-1][j-2v]+2w,f[i-1][j-3v]+3w,…)<br>f[i][j-v]&#x3D;max(f[i-1][j-v],f[i-1][j-2v]+w,f[i-1][j-3v]+2w,…)<br>f[i][j-2v]&#x3D;max(f[i-1][j-2v],f[i-1][j-3v]+w,…)</p>
+</blockquote>
+<p>那么规律就很明显了：</p>
+<p>f[i][j]&#x3D;max(f[i-1][j], f[i][j-v]+w)</p>
+<p>这是一种规律上的理解，接下来说一个理解性的理解（是我个人理解的理解，所以如果你不理解也请你理解理解）</p>
+<p>既然一个物品有多个，那么就是说当前物品可以选多个，因此不管之前选没选过都可以再选（不同于01），故而j空间获取的最大值范围就广了，不只是前i-1件可以获得的最大值，<strong>而是前i件可以获得的最大值（包括i）</strong>，因此就可以由f[i][j-v[i]]+w[i]获得。</p>
+<p>这样的话，就包含了含有多个i的情况，并且自动地在所有可行情况中取了最大值。</p>
+<p>以上都相当于优化了k循环，但后就是喜闻乐见地优化i循环。</p>
+<p>具体过程就不说了，值得一提的是：记得从前往后循环，因为这次需要的dp值是第i次的，需要先进行更新。同样的，由上方方程可以得到，直接省略v[i]之前的状态是可行的，它们将默认被赋值为i-1的情况。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> v[N],w[N];<br><span class="hljs-type">int</span> f[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;v[i]&gt;&gt;w[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=v[i];j&lt;=m;j++)&#123;<br>            f[j]=<span class="hljs-built_in">max</span>(f[j],f[j-v[i]]+w[i]);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h1><h2 id="要求-2"><a href="#要求-2" class="headerlink" title="要求"></a>要求</h2><p>限制背包的最大体积，给出每种物品的体积和价值，每种物品<strong>只有特定数量个</strong>，求能获得的最大价值。</p>
+<h2 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h2><p>鉴于上面已经有了两个基础类型的铺垫，这里就不卖关子了，直接开始：</p>
+<h3 id="基础版-2"><a href="#基础版-2" class="headerlink" title="基础版"></a>基础版</h3><p>和完全背包差不多，在k哪里多加一个限制：k≤s[i]（i的个数）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e3</span><span class="hljs-number">+3</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> v[N],w[N],s[N];<br><span class="hljs-type">int</span> f[N][N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;v[i]&gt;&gt;w[i]&gt;&gt;s[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;=m;j++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k*v[i]&lt;=j&amp;&amp;k&lt;=s[i];k++)&#123;<br>                f[i][j]=<span class="hljs-built_in">max</span>(f[i][j],f[i<span class="hljs-number">-1</span>][j-k*v[i]]+w[i]*k);<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[n][m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>是不是更简单了~</p>
+<h3 id="优化版-2"><a href="#优化版-2" class="headerlink" title="优化版"></a>优化版</h3><h4 id="二进制优化"><a href="#二进制优化" class="headerlink" title="二进制优化"></a>二进制优化</h4><p>这里呢，我们使用<strong>二进制优化</strong>，含有倍增思想。</p>
+<p>我们可以把每个物品的个数分成几组，每个组个数如下：</p>
+<p>2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>, 2<sup>3</sup>, …, 2<sup>k</sup>, c</p>
+<p>2<sup>0</sup>+2<sup>1</sup>+2<sup>2</sup>+2<sup>3</sup>+…+2<sup>k</sup>+c&#x3D;s</p>
+<p>要求c&lt;2<sup>k+1</sup></p>
+<p>那么，我们就可以凑出0~s里面所有的数了（不加c可以凑出0~2<sup>k+1</sup>-1里的所有数，加c可以凑出c~s里的所有数，又因c&lt;2<sup>k+1</sup>，所以满足条件）。</p>
+<p>因此，我们只需要让k遍历这些组即可，可以凑出所有情况，那么就一定能求得正确的最大值。</p>
+<p>然后呢，我们的问题就变成了解决一个<strong>大小为nlogs</strong>的<strong>01背包</strong>（倍增性质，2<sup>i</sup>每个都只需要选一次，就能凑出所有可能）</p>
+<p>最后顺便把第一维优化了，这个不必多说。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">12000</span>,M=<span class="hljs-number">2005</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> v[N],w[N],f[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> a,b,s;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a&gt;&gt;b&gt;&gt;s;<br>        <span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span>(k&lt;=s)&#123;<br>            cnt++;<br>            v[cnt]=a*k;<br>            w[cnt]=b*k;<br>            s-=k;<br>            k*=<span class="hljs-number">2</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(s)&#123;<br>            cnt++;<br>            v[cnt]=a*s;<br>            w[cnt]=b*s;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> cnt;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m;<br>    n=<span class="hljs-built_in">init</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=m;j&gt;=v[i];j--)&#123;<br>            f[j]=<span class="hljs-built_in">max</span>(f[j],f[j-v[i]]+w[i]);<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="单调队列优化"><a href="#单调队列优化" class="headerlink" title="单调队列优化"></a>单调队列优化</h4><p>基础的话只学习二进制优化应该就够<del>（呛）</del>了，所以就不放单调队列优化了，有时间写一篇提高版的话可以顺带着提一嘴。</p>
+<h1 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h1><h2 id="要求-3"><a href="#要求-3" class="headerlink" title="要求"></a>要求</h2><p>限制背包的最大体积，给出每种物品的体积和价值，其中分成了很多组，每组物品<strong>最多只选一个</strong>，求能获得的最大价值。</p>
+<h2 id="解决-3"><a href="#解决-3" class="headerlink" title="解决"></a>解决</h2><p>其实很简单啊，我们把每一组都视作一个物品，但是这个物品有很多种vw组合，然后直接用01背包做就行了。</p>
+<p>可能有一点点抽象，但是看了代码就茅塞顿开。<del>这部分比二进制优化好做多了</del></p>
+<p>这里的优化就是最简单的滚动数组，不做解释。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">105</span>;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">int</span> s[N],v[N][N],w[N][N];<br><span class="hljs-type">int</span> f[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n&gt;&gt;m;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;s[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;k&lt;=s[i];k++)&#123;<br>            cin&gt;&gt;v[i][k]&gt;&gt;w[i][k];<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=m;j&gt;=<span class="hljs-number">0</span>;j--)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">1</span>;k&lt;=s[i];k++)&#123;<br>                <span class="hljs-keyword">if</span>(v[i][k]&lt;=j)&#123;<br>                    f[j]=<span class="hljs-built_in">max</span>(f[j],f[j-v[i][k]]+w[i][k]);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;f[m];<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
@@ -924,7 +981,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNote/BasicAlgorithm/" class="category-chain-item">基础算法</a>
+  <a href="/categories/CodeNote/DynamicProgramming/" class="category-chain-item">动态规划</a>
   
   
 
@@ -949,7 +1006,11 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/tpts/" class="print-no-link">#双指针</a>
+        <a href="/tags/bnlf/" class="print-no-link">#倍增</a>
+      
+        <a href="/tags/dnpg/" class="print-no-link">#动态规划</a>
+      
+        <a href="/tags/knsk/" class="print-no-link">#背包问题</a>
       
     </div>
   
@@ -961,8 +1022,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Two_Pointers双指针</div>
-      <div>http://githarlem.github.io/2024/07/31/Two-Pointers/</div>
+      <div>[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）</div>
+      <div>http://githarlem.github.io/2024/08/07/Knapsack-Problem-Basic/</div>
     </div>
     <div class="license-meta">
       
@@ -974,13 +1035,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月7日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年7月31日</div>
+          <div>2024年8月8日</div>
         </div>
       
       

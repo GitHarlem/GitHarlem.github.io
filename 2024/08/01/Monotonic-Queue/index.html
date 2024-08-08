@@ -19,16 +19,16 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言单调队列，在STL中有priority_queue（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗">
+    <meta name="description" content="前言update2024&#x2F;08&#x2F;07: 写的太乱了，刚好后面动规要引用，回来看了一眼不堪直视，遂重写 单调队列，在STL中有priority_queue（其实人家是堆hh），但事实上和单调队列还是有差距的，详见正文。 而滑动窗口，就是利用单调队列思想，实现的一种算法。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈” “[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[编程笔记]-Monotonic_Queue单调队列">
 <meta property="og:url" content="http://githarlem.github.io/2024/08/01/Monotonic-Queue/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前言单调队列，在STL中有priority_queue（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——滑动窗口。 而滑动窗口，就对手写单调队列的能力要求比较高了。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈”  简介具有单调性的队列。 模板不至于，朋友，在单向队列里维护单调性耗">
+<meta property="og:description" content="前言update2024&#x2F;08&#x2F;07: 写的太乱了，刚好后面动规要引用，回来看了一眼不堪直视，遂重写 单调队列，在STL中有priority_queue（其实人家是堆hh），但事实上和单调队列还是有差距的，详见正文。 而滑动窗口，就是利用单调队列思想，实现的一种算法。 本博客会在单调栈的基础上讲解，所以不会的自助吧。 “[编程笔记]-Monotonic_Stack单调栈” “[">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
 <meta property="article:published_time" content="2024-08-01T12:52:00.000Z">
-<meta property="article:modified_time" content="2024-08-02T11:49:11.348Z">
+<meta property="article:modified_time" content="2024-08-07T16:09:17.279Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          733 字
+          693 字
         
       </span>
     
@@ -333,7 +333,7 @@
         aria-expanded="true"
       >
         编程笔记
-        <span class="list-group-count">(47)</span>
+        <span class="list-group-count">(49)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -349,6 +349,52 @@
   </div>
 
           
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="动态规划"
+        id="heading-8c05890ac8f93d0195f884f1ff4656ec" role="tab" data-toggle="collapse" href="#collapse-8c05890ac8f93d0195f884f1ff4656ec"
+        aria-expanded="false"
+      >
+        动态规划
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse " id="collapse-8c05890ac8f93d0195f884f1ff4656ec"
+           role="tabpanel" aria-labelledby="heading-8c05890ac8f93d0195f884f1ff4656ec">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2024/08/07/Knapsack-Problem-Basic/" title="[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Knapsack_Problem(Basic)背包问题（基础版）</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2024/08/07/Dynamic-Programming-General/" title="[编程笔记]-Dynamic_Programming(General)动态规划总概"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">[编程笔记]-Dynamic_Programming(General)动态规划总概</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
   
     
     
@@ -846,25 +892,24 @@
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>单调队列，在STL中有<code>priority_queue</code>（其实人家是堆hh），可以完成很多操作。事实上，还有个更响亮的名字，和pq完全分割，作为一个单独的算法存在——<strong>滑动窗口</strong>。</p>
-<p>而滑动窗口，就对手写单调队列的能力要求比较高了。</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em>update2024&#x2F;08&#x2F;07: 写的太乱了，刚好后面动规要引用，回来看了一眼不堪直视，遂重写</em></p>
+<p>单调队列，在STL中有<code>priority_queue</code>（其实人家是堆hh），但事实上和单调队列还是有差距的，详见正文。</p>
+<p>而滑动窗口，就是利用单调队列思想，实现的一种算法。</p>
 <p>本博客会在单调栈的基础上讲解，所以不会的自助吧。</p>
 <p><a href="https://githarlem.github.io/2024/08/01/Monotonic-Stack/">“[编程笔记]-Monotonic_Stack单调栈”</a></p>
-<p><a href="https://githarlem.github.io/2024/08/01/Queue/"></a></p>
+<p><a href="https://githarlem.github.io/2024/08/01/Queue/">“[编程笔记]-Queue队列”</a></p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>具有单调性的队列。</p>
-<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>不至于，朋友，在单向队列里维护单调性耗得时间简直了o(<em>￣︶￣</em>)o</p>
-<p>所以需要单调队列的话就直接用STL库吧，手写STL单调队列的内容我是不会放在这里写的。</p>
-<p>通常情况下在队列中维护单调性都需要双端队列，也就是栈和队列的结合体。</p>
-<p>但事实上那个算法和单调栈一毛一样，就多了个去除队首元素的内容（滑动窗口特色）。</p>
-<p><em>你想，维护单调性肯定是从队尾维护啊~</em></p>
-<p>然后呢，通常意义上滑动窗口的算法，维护的是一种很新的单调性。它会把队首和队尾所有不符合要求（不一定是同一个要求）的全部去掉，然后把元素插到队尾上去，其实不是很满足单调队列的要求。至于新在哪里，就是它对于队头元素也有要求，所以才会达到窗口移动而不是扩张的目的。（不然答案就固定了，一直是队头元素）</p>
+<p>具体的，事实上，它是一个双端队列，可以完成队头、队尾的插入删除操作。</p>
+<p>如果你想维护单调性，肯定是需要维护队尾的不是么。</p>
+<p>因此，单调队列和单调栈的唯一区别，就是需要从队头删除元素。</p>
+<p>但是从队头删除元素就和单调性无关了。通常的，题目中都会有对于队列的限制，比如说限制队列长度之类的。为了维护这些性质，我们就需要从队头删除元素了（当然，如果题目没有要求，理论上来说你从队尾删除也没有任何问题，因此使用滑动窗口的题目中都会有要求的）。</p>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>相对于一个数据结构单调栈来说，单调队列其实更有灵活性，并且表现得像一种思想或者说是算法。</p>
+<p>当然你也可以用双端队列进行模拟，但介于那就是单调栈加上一些队头维护操作，那些操作还得根据题目要求来，就没有必要再给出模板了，直接找单调栈的即可。</p>
 <p>所以就直接给例题吧。</p>
 <h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p>开个部分告诉你，会在例题中讲解滑动窗口问题。</p>
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/156/">AcWing154-滑动窗口</a></p>
-<p>这题名字叫滑动窗口，但事实上和广义上的滑动窗口还是有区别的。</p>
-<p><em>在这道题中，窗口队头更新的条件是队列大小过大，而广义的滑动窗口算法中队头更新的条件并非一定是队列大小限制。</em></p>
-<p>但是它用的也就是滑动窗口算法，只是说滑动窗口算法不只是这道题中的算法而已。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//不想打class了，就这样吧，理解就行</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e6</span><span class="hljs-number">+6</span>;<br><br><span class="hljs-type">int</span> n,k;<br><span class="hljs-type">int</span> a[N];<br><br><span class="hljs-type">int</span> h1,t1,h2,t2;<br><span class="hljs-type">int</span> s1[N],s2[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(h1&lt;t1&amp;&amp;i-s1[h1<span class="hljs-number">+1</span>]<span class="hljs-number">+1</span>&gt;k)h1++;<br>        <span class="hljs-keyword">while</span>(h1&lt;t1&amp;&amp;a[s1[t1]]&gt;=a[i])t1--;<br>        s1[++t1]=i;<br>        <span class="hljs-keyword">if</span>(i&gt;=k)cout&lt;&lt;a[s1[h1<span class="hljs-number">+1</span>]]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(h2&lt;t2&amp;&amp;i-s2[h2<span class="hljs-number">+1</span>]<span class="hljs-number">+1</span>&gt;k)h2++;<br>        <span class="hljs-keyword">while</span>(h2&lt;t2&amp;&amp;a[s2[t2]]&lt;=a[i])t2--;<br>        s2[++t2]=i;<br>        <span class="hljs-keyword">if</span>(i&gt;=k)cout&lt;&lt;a[s2[h2<span class="hljs-number">+1</span>]]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>值得注意的是：它用的也就是滑动窗口算法，只是说滑动窗口算法不只是这道题中的算法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//手打双端队列模拟滑动窗口</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">1e6</span><span class="hljs-number">+6</span>;<br><br><span class="hljs-type">int</span> n,k;<br><span class="hljs-type">int</span> a[N];<br><br><span class="hljs-type">int</span> h1,t1,h2,t2;<br><span class="hljs-type">int</span> s1[N],s2[N];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;a[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(h1&lt;t1&amp;&amp;i-s1[h1<span class="hljs-number">+1</span>]<span class="hljs-number">+1</span>&gt;k)h1++;<br>        <span class="hljs-keyword">while</span>(h1&lt;t1&amp;&amp;a[s1[t1]]&gt;=a[i])t1--;<br>        s1[++t1]=i;<br>        <span class="hljs-keyword">if</span>(i&gt;=k)cout&lt;&lt;a[s1[h1<span class="hljs-number">+1</span>]]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(h2&lt;t2&amp;&amp;i-s2[h2<span class="hljs-number">+1</span>]<span class="hljs-number">+1</span>&gt;k)h2++;<br>        <span class="hljs-keyword">while</span>(h2&lt;t2&amp;&amp;a[s2[t2]]&lt;=a[i])t2--;<br>        s2[++t2]=i;<br>        <span class="hljs-keyword">if</span>(i&gt;=k)cout&lt;&lt;a[s2[h2<span class="hljs-number">+1</span>]]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
@@ -949,7 +994,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月2日</div>
+          <div>2024年8月8日</div>
         </div>
       
       

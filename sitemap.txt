@@ -1,3 +1,6 @@
+http://githarlem.github.io/2024/08/07/Knapsack-Problem-Basic/
+http://githarlem.github.io/2024/08/01/Monotonic-Queue/
+http://githarlem.github.io/2024/08/07/Dynamic-Programming-General/
 http://githarlem.github.io/2024/08/07/Chinese-Remainder-Theorem/
 http://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/
 http://githarlem.github.io/2024/08/06/Linear-Congruence-Equation/
@@ -30,7 +33,6 @@ http://githarlem.github.io/2024/08/02/KMP/
 http://githarlem.github.io/2024/07/31/Discretization/
 http://githarlem.github.io/2024/08/02/Heap/
 http://githarlem.github.io/2024/08/02/Union-Find-Set/
-http://githarlem.github.io/2024/08/01/Monotonic-Queue/
 http://githarlem.github.io/2024/08/02/Trie-Tree/
 http://githarlem.github.io/2024/08/01/Monotonic-Stack/
 http://githarlem.github.io/2024/08/01/Stack/
@@ -104,8 +106,11 @@ http://githarlem.github.io/tags/stls/
 http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/dnpg/
+http://githarlem.github.io/tags/knsk/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/
 http://githarlem.github.io/categories/CodeNote/GraphTree/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
 http://githarlem.github.io/categories/CodeNote/DataStructure/
+http://githarlem.github.io/categories/CodeNote/DynamicProgramming/
