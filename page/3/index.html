@@ -252,6 +252,94 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+          [编程笔记]-Dijkstra(HeapOptimized)迪杰斯特拉（堆优化）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/03/Dijkstra-HeapOptimized/" target="_self">
+        <div>
+          概念其实就是用堆来优化Dijkstra算法（废话）。由于O(logm)（STL）与O(logn)（手写）为同一数量级，所以还是推荐直接用STL里的优先队列了。 其实就是优化了找当前距离最短的点的过程嘛。 由于是稀疏图，所以要用链式前向星做了。 代码事实上这种优化算法往往比朴素版更常见~ 12345678910111213141516171819202122232425262728293031323
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-03 20:17" pubdate>
+              2024-08-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/tscp/">#最短路</a>
+            
+              <a href="/tags/djst/">#Dijkstra</a>
+            
+              <a href="/tags/heap/">#堆</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/08/03/Dijkstra-Plain/" target="_self">
           <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Dijkstra(Plain)迪杰斯特拉（朴素版）">
         </a>
@@ -1003,92 +1091,6 @@
               <a href="/tags/note/">#笔记</a>
             
               <a href="/tags/hash/">#哈希</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/02/Heap/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Heap堆">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/02/Heap/" target="_self">
-          [编程笔记]-Heap堆
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/02/Heap/" target="_self">
-        <div>
-          实质事实上，堆就是一棵完全二叉树。 在堆中，以小根堆为例，每个父节点总是小于等于子节点的。 所以根节点事实上就是最小值。 作用 插入一个数 求集合当中的最小值 删除最小值 删除任意元素（STL做不到） 修改任意元素（STL做不到）  实现存储利用一维数组实现，2x是x左子节点，2x+1是x右子节点。 基操根有两个基本操作：上移和下移，就是把节点与父节点&#x2F;子节点互换以维护堆的单调性。 初始
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-02 19:49" pubdate>
-              2024-08-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/DataStructure/" class="category-chain-item">数据结构</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/tree/">#树论</a>
-            
-              <a href="/tags/heap/">#堆</a>
-            
-              <a href="/tags/sort/">#排序</a>
             
           </div>
         
