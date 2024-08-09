@@ -19,33 +19,29 @@
   <meta name="author" content="Harlem">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前置在学习拓展欧几里得算法前，建议先阅读裴蜀定理和乘法逆元两个页面了解本算法的作用。[编程笔记]-Bezout’s_Lemma裴蜀定理（乘法逆元页面尚未创建，可以去快速幂看看概念） 另外，如果你不知道欧几里得算法（辗转相除法），建议去约数基础部分先学习一下。[编程笔记]-Divisor_Basis约数基础 实现首先，既然是拓展欧几里得算法，肯定要从欧几里得算法拓展。 这里直接给出（证明见欧几里得算">
+    <meta name="description" content="概念把状态压缩成（二进制）整数表示的动态规划，通常情况下每一位上的数字表示当前状态这个位置的元素属性。 例题没错还是直接上例题了。AcWing291-蒙德里安的梦想 至于思路，我们考虑一列一列从左到右思考。 我们只要求出所有合理的横着的方块摆放情况，就可以得到答案。 对于每一列，我们记录当前状态为表示整个数列每一行是否有以这一行这一列为左半部分的横方块（向右一列伸出）。 对于每一列，我们都枚举所有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法">
-<meta property="og:url" content="http://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/index.html">
+<meta property="og:title" content="[编程笔记]-State_Compression_DP状压DP">
+<meta property="og:url" content="http://githarlem.github.io/2024/08/09/State-Compression-DP/index.html">
 <meta property="og:site_name" content="HarlemBlog">
-<meta property="og:description" content="前置在学习拓展欧几里得算法前，建议先阅读裴蜀定理和乘法逆元两个页面了解本算法的作用。[编程笔记]-Bezout’s_Lemma裴蜀定理（乘法逆元页面尚未创建，可以去快速幂看看概念） 另外，如果你不知道欧几里得算法（辗转相除法），建议去约数基础部分先学习一下。[编程笔记]-Divisor_Basis约数基础 实现首先，既然是拓展欧几里得算法，肯定要从欧几里得算法拓展。 这里直接给出（证明见欧几里得算">
+<meta property="og:description" content="概念把状态压缩成（二进制）整数表示的动态规划，通常情况下每一位上的数字表示当前状态这个位置的元素属性。 例题没错还是直接上例题了。AcWing291-蒙德里安的梦想 至于思路，我们考虑一列一列从左到右思考。 我们只要求出所有合理的横着的方块摆放情况，就可以得到答案。 对于每一列，我们记录当前状态为表示整个数列每一行是否有以这一行这一列为左半部分的横方块（向右一列伸出）。 对于每一列，我们都枚举所有">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://githarlem.github.io/img/cpp1.png">
-<meta property="article:published_time" content="2024-08-06T02:08:20.000Z">
-<meta property="article:modified_time" content="2024-08-07T01:17:48.675Z">
+<meta property="article:published_time" content="2024-08-09T10:31:00.000Z">
+<meta property="article:modified_time" content="2024-08-09T10:41:42.263Z">
 <meta property="article:author" content="Harlem">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="编程">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="数学">
-<meta property="article:tag" content="乘法逆元">
-<meta property="article:tag" content="裴蜀定理">
-<meta property="article:tag" content="最大公约数">
-<meta property="article:tag" content="拓展欧几里得算法">
-<meta property="article:tag" content="欧几里得算法">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="二进制">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://githarlem.github.io/img/cpp1.png">
   
   
   
-  <title>[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法 - HarlemBlog</title>
+  <title>[编程笔记]-State_Compression_DP状压DP - HarlemBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法"></span>
+            <span id="subtitle" data-typed-text="[编程笔记]-State_Compression_DP状压DP"></span>
           
         </div>
 
@@ -254,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-08-06 10:08" pubdate>
-          2024年8月6日 上午
+        <time datetime="2024-08-09 18:31" pubdate>
+          2024年8月9日 晚上
         </time>
       </span>
     
@@ -266,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          933 字
+          523 字
         
       </span>
     
@@ -277,7 +273,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -357,17 +353,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
+      <a class="category-subitem 
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="动态规划"
         id="heading-8c05890ac8f93d0195f884f1ff4656ec" role="tab" data-toggle="collapse" href="#collapse-8c05890ac8f93d0195f884f1ff4656ec"
-        aria-expanded="false"
+        aria-expanded="true"
       >
         动态规划
         <span class="list-group-count">(7)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse " id="collapse-8c05890ac8f93d0195f884f1ff4656ec"
+      <div class="category-collapse collapse show" id="collapse-8c05890ac8f93d0195f884f1ff4656ec"
            role="tabpanel" aria-labelledby="heading-8c05890ac8f93d0195f884f1ff4656ec">
         
         
@@ -433,7 +429,7 @@
       
         <a href="/2024/08/09/State-Compression-DP/" title="[编程笔记]-State_Compression_DP状压DP"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">[编程笔记]-State_Compression_DP状压DP</span>
         </a>
       
@@ -690,17 +686,17 @@
     
     
     <div class="category-sub row nomargin-x">
-      <a class="category-subitem 
+      <a class="category-subitem collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="数学知识"
         id="heading-8661db9285a1d69f4ddaead674b45191" role="tab" data-toggle="collapse" href="#collapse-8661db9285a1d69f4ddaead674b45191"
-        aria-expanded="true"
+        aria-expanded="false"
       >
         数学知识
         <span class="list-group-count">(9)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-8661db9285a1d69f4ddaead674b45191"
+      <div class="category-collapse collapse " id="collapse-8661db9285a1d69f4ddaead674b45191"
            role="tabpanel" aria-labelledby="heading-8661db9285a1d69f4ddaead674b45191">
         
         
@@ -766,7 +762,7 @@
       
         <a href="/2024/08/06/Extended-Euclidean-Algorithm/" title="[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</span>
         </a>
       
@@ -935,43 +931,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</h1>
+            <h1 id="seo-header">[编程笔记]-State_Compression_DP状压DP</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p>在学习拓展欧几里得算法前，建议先阅读裴蜀定理和乘法逆元两个页面了解本算法的作用。<br><a href="https://githarlem.github.io/2024/08/06/Bezouts-Lemma/">[编程笔记]-Bezout’s_Lemma裴蜀定理</a><br><em>（乘法逆元页面尚未创建，可以去快速幂看看概念）</em></p>
-<p>另外，如果你不知道欧几里得算法（辗转相除法），建议去约数基础部分先学习一下。<br><a href="https://githarlem.github.io/2024/08/05/Divisor-Basis/">[编程笔记]-Divisor_Basis约数基础</a></p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>首先，既然是拓展欧几里得算法，肯定要从欧几里得算法拓展。</p>
-<p>这里直接给出（证明见欧几里得算法）：gcd(a, b)&#x3D;&#x3D;gcd(b, a%b)</p>
-<p>已知当b&#x3D;&#x3D;0时，gcd(a,b)&#x3D;a。</p>
-<p>拓展欧几里得算法就是要找非零整数x, y，使得**ax+by&#x3D;gcd(a, b)**嘛（证明裴蜀定理），那么b&#x3D;&#x3D;0时，x&#x3D;1，b本来应该是任意数，这里特殊设置为0。</p>
-<p>好，那么接下来就开始模拟递归返回的过程了——</p>
-<p>假设我们按照定义写代码，下一层递归中的x、y记作x&#39;、y&#39;，可以得到：</p>
-<p>若当前函数是gcd(a, b)，那么它的下一层递归也就应该是gcd(b, a%b)。</p>
-<p>那么根据欧几里得定理，gcd(b, a%b)&#x3D;&#x3D;gcd(a, b)，这里把它们记作d。</p>
-<p>又根据裴蜀定理，可得b*x&#39;+(a%b)*y&#39;&#x3D;&#x3D;d</p>
-<p>这里讲一下%的展开方法：a%b&#x3D;a-⌊a&#x2F;b⌋*b</p>
-<p>然后把得到的式子展开并重新整理：<br>y&#39;*a+(x&#39;-y&#39;*⌊a&#x2F;b⌋)*b&#x3D;&#x3D;d</p>
-<p>这个表达式表示的是gcd(b, a%b)得到的式子，也就是这一层递归的下一层递归得到的式子。</p>
-<p>而在这一层递归中，x*a+y*b&#x3D;&#x3D;d，</p>
-<p>因此x&#x3D;y&#39;, y&#x3D;x&#39;-y&#39;*⌊a&#x2F;b⌋</p>
-<p>刚递归回溯到这一层时x、y实际是x&#39;、y&#39;，那如果在传参数的时候互换一下，x、y实际就成了y&#39;、x&#39;，那么就可以得出x、y的更新代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">exgcd</span>(b, a%b, y, x);<br><span class="hljs-comment">//x不变</span><br>y=y-a/b*x<span class="hljs-comment">//鉴于运算顺序从左往右，要求先向下取整再运算，如果先乘了的话会出现误差，当然加个括号也行。</span><br></code></pre></td></tr></table></figure>
+                <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>把状态压缩成（二进制）整数表示的动态规划，通常情况下每一位上的数字表示当前状态这个位置的元素属性。</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>没错还是直接上例题了。<br><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/293/">AcWing291-蒙德里安的梦想</a></p>
+<p>至于思路，我们考虑一列一列从左到右思考。</p>
+<p>我们只要求出所有合理的<strong>横着的方块摆放情况</strong>，就可以得到答案。</p>
+<p>对于每一列，我们记录当前状态为<strong>表示整个数列每一行是否有以这一行这一列为左半部分的横方块</strong>（向右一列伸出）。</p>
+<p>对于每一列，我们都枚举所有可能的状态，再枚举上一列可能的状态，如果不冲突，就让这一列当前状态加上上一列的状态的DP值。</p>
+<p>不冲突需要满足两个条件：</p>
+<ol>
+<li>不能有方块重叠，也就是在同一行。这只要<code>a&amp;b</code>判断一下即可。</li>
+<li>不能有奇数长度的连续空隙。因为要满足竖方块的摆放。鉴于次数有点多，可进行预处理操作。</li>
+</ol>
+<p>对于最后一列，我们只要获取<em>没有摆放方块</em>（不然就超出右边界了）的DP数，就是答案了。</p>
+<p>注意的是，不能优化第一维度，因为第一维度的同一状态会多次使用，如果更新就会出错。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">12</span>,M=<span class="hljs-number">1</span>&lt;&lt;N;<br><br><span class="hljs-type">int</span> n,m;<br><span class="hljs-type">bool</span> st[M];<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> f[N][M];<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">while</span>(cin&gt;&gt;n&gt;&gt;m,n||m)&#123;<br>        <span class="hljs-built_in">memset</span>(f,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(f));<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">1</span>&lt;&lt;n;i++)&#123;<br>            st[i]=<span class="hljs-literal">true</span>;<br>            <span class="hljs-type">int</span> cnt=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>                <span class="hljs-keyword">if</span>(i&gt;&gt;j&amp;<span class="hljs-number">1</span>)&#123;<br>                    <span class="hljs-keyword">if</span>(cnt&amp;<span class="hljs-number">1</span>)st[i]=<span class="hljs-literal">false</span>;<br>                    cnt=<span class="hljs-number">0</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> cnt++;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(cnt&amp;<span class="hljs-number">1</span>)st[i]=<span class="hljs-literal">false</span>;<br>        &#125;<br>        f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">1</span>&lt;&lt;n;j++)&#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">1</span>&lt;&lt;n;k++)&#123;<br>                    <span class="hljs-keyword">if</span>((k&amp;j)==<span class="hljs-number">0</span>&amp;&amp;st[k|j])f[i][j]+=f[i<span class="hljs-number">-1</span>][k];<br>                &#125;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;f[m][<span class="hljs-number">0</span>]&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>然后啊，经过验证，裴蜀定理就成立了。</p>
-<p>说实话这个根据需要证明的定理构造过程在运用需要证明的定理方式下通过结果证明了需要证明的定理的定理证明方式还是有点不好理解的，甚至新接触数论的蒟蒻们（包括我TAT）会感受到这有一点逻辑悖论的味道。</p>
-<p>那么重点就在于程序的完成了。</p>
-<h1 id="程序"><a href="#程序" class="headerlink" title="程序"></a>程序</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">exgcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b,<span class="hljs-type">int</span> &amp;x,<span class="hljs-type">int</span> &amp;y)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>)&#123;<br>        x=<span class="hljs-number">1</span>;y=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> a;<br>    &#125;<br>    <span class="hljs-type">int</span> d=<span class="hljs-built_in">exgcd</span>(b,a%b,y,x);<br>    y-=a/b*x;<br>    <span class="hljs-keyword">return</span> d;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h1 id="通解"><a href="#通解" class="headerlink" title="通解"></a>通解</h1><p>另外，x、y是不唯一的，求通解如下：</p>
-<p>已知ax<sub>0</sub>+by<sub>0</sub>&#x3D;&#x3D;d</p>
-<p>那么ax<sub>0</sub>+by<sub>0</sub>-(a*b)&#x2F;d+(a*b)&#x2F;d&#x3D;&#x3D;d（(a*b)&#x2F;d定为整数，因为d是最大公约数。）</p>
-<p>化得a(x<sub>0</sub>-b&#x2F;d)+b(y<sub>0</sub>+a&#x2F;d)&#x3D;&#x3D;d</p>
-<p>那么就可以得到通解:<br>x&#x3D;x<sub>0</sub>-b&#x2F;d*k,(k∈Z)<br>y&#x3D;y<sub>0</sub>+a&#x2F;d*k,(k∈Z)</p>
-<h1 id="求乘法逆元"><a href="#求乘法逆元" class="headerlink" title="求乘法逆元"></a>求乘法逆元</h1><p>其实就是求解线性同余方程的特殊情况（b&#x3D;1），看线性同余方程就行了。<br><a href="https://githarlem.github.io/2024/08/06/Linear-Congruence-Equation/">[编程笔记]-Linear_Congruence_Equation线性同余方程</a></p>
-<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1><p>跟着醉酒·y总走了三遍没走明白，然后才想起来y总喝醉了Σ(っ °Д °;)っ<br>然后就在评论区里搞懂哩，以为自己学的有问题，想了好久(ノへ￣、)</p>
-
+<h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>
                 
               </div>
             
@@ -994,7 +974,7 @@
   
     <span>></span>
     
-  <a href="/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="category-chain-item">数学知识</a>
+  <a href="/categories/CodeNote/DynamicProgramming/" class="category-chain-item">动态规划</a>
   
   
 
@@ -1019,17 +999,9 @@
       
         <a href="/tags/note/" class="print-no-link">#笔记</a>
       
-        <a href="/tags/math/" class="print-no-link">#数学</a>
+        <a href="/tags/dnpg/" class="print-no-link">#动态规划</a>
       
-        <a href="/tags/mmiv/" class="print-no-link">#乘法逆元</a>
-      
-        <a href="/tags/bzlm/" class="print-no-link">#裴蜀定理</a>
-      
-        <a href="/tags/gcdv/" class="print-no-link">#最大公约数</a>
-      
-        <a href="/tags/exea/" class="print-no-link">#拓展欧几里得算法</a>
-      
-        <a href="/tags/elda/" class="print-no-link">#欧几里得算法</a>
+        <a href="/tags/bina/" class="print-no-link">#二进制</a>
       
     </div>
   
@@ -1041,8 +1013,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>[编程笔记]-Extended_Euclidean_Algorithm拓展欧几里得算法</div>
-      <div>http://githarlem.github.io/2024/08/06/Extended-Euclidean-Algorithm/</div>
+      <div>[编程笔记]-State_Compression_DP状压DP</div>
+      <div>http://githarlem.github.io/2024/08/09/State-Compression-DP/</div>
     </div>
     <div class="license-meta">
       
@@ -1054,13 +1026,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年8月6日</div>
+          <div>2024年8月9日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年8月7日</div>
+          <div>2024年8月9日</div>
         </div>
       
       
