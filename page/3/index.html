@@ -252,6 +252,92 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/" target="_self">
+          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Bipartite_Gragh_Determination(Staining_Method)二分图判定（染色法）">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/" target="_self">
+          [编程笔记]-Bipartite_Gragh_Determination(Staining_Method)二分图判定（染色法）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/08/04/Bipartite-Gragh-Determination-Staining-Method/" target="_self">
+        <div>
+          作用判定一个图是不是二分图（可以分成左右两边、边只存在于两边之间而不在某一边内部的图） 二分图正规定义：图中不含奇数环。 实现就是用DFS或BFS或其他遍历方式遍历整个图，尝试给每两个相邻点染上不同颜色，最多两色，如果成功就是二分图。 #代码染色特别好理解，所以重点实在遍历上面。[编程笔记]-DFS深度优先搜索[编程笔记]-BFS广度优先搜索（就不放代码了(～￣▽￣)～） 完结撒花o(￣︶￣)o
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-04 21:47" pubdate>
+              2024-08-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/orgn/">#原创</a>
+            
+              <a href="/tags/code/">#编程</a>
+            
+              <a href="/tags/cppl/">#c++</a>
+            
+              <a href="/tags/note/">#笔记</a>
+            
+              <a href="/tags/grph/">#图论</a>
+            
+              <a href="/tags/bgph/">#二分图</a>
+            
+              <a href="/tags/stnm/">#染色法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/08/04/Kruskal/" target="_self">
           <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Kruskal">
         </a>
@@ -1019,90 +1105,6 @@
               <a href="/tags/grph/">#图论</a>
             
               <a href="/tags/tscp/">#最短路</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/08/03/Topo-Sort/" target="_self">
-          <img src="/img/cpp1.png" srcset="/img/loading.gif" lazyload alt="[编程笔记]-Topo_Sort拓扑排序">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/08/03/Topo-Sort/" target="_self">
-          [编程笔记]-Topo_Sort拓扑排序
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/08/03/Topo-Sort/" target="_self">
-        <div>
-          概念拓扑排序，就是对图中的点进行排序。 排序方式如下： 对于每一个点，它指向的点都排在它后面，指向它的点都排在它前面。 所以，图只能是有向图，还得是有向无环图。 实现记录每一个点的入度，把入度为0的点加入队列，然后BFS一遍，每遍历一个点，就把它“删掉”，使其所有相邻点入度减一，然后再把入度为0的点加入队列。 无须用到vis数组的证明：如果重复遇到同一个点，则说明指向这个点的边不止一条，但是只有当
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-08-03 15:36" pubdate>
-              2024-08-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/CodeNote/" class="category-chain-item">编程笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/CodeNote/GraphTree/" class="category-chain-item">图论树论</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/orgn/">#原创</a>
-            
-              <a href="/tags/code/">#编程</a>
-            
-              <a href="/tags/cppl/">#c++</a>
-            
-              <a href="/tags/note/">#笔记</a>
-            
-              <a href="/tags/grph/">#图论</a>
-            
-              <a href="/tags/sort/">#排序</a>
             
           </div>
         
