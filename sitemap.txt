@@ -1,3 +1,6 @@
+http://githarlem.github.io/2024/08/09/Memory-Search/
+http://githarlem.github.io/2024/08/03/DFS/
+http://githarlem.github.io/2024/08/09/Tree-DP/
 http://githarlem.github.io/2024/08/09/State-Compression-DP/
 http://githarlem.github.io/2024/08/09/Digital-DP/
 http://githarlem.github.io/2024/08/09/Count-DP/
@@ -28,7 +31,6 @@ http://githarlem.github.io/2024/08/03/Dijkstra-HeapOptimized/
 http://githarlem.github.io/2024/08/03/Dijkstra-Plain/
 http://githarlem.github.io/2024/08/03/Shortest-Circuit-Problem-General/
 http://githarlem.github.io/2024/08/03/Topo-Sort/
-http://githarlem.github.io/2024/08/03/DFS/
 http://githarlem.github.io/2024/08/03/STLs/
 http://githarlem.github.io/2024/08/03/Storage-of-Graph/
 http://githarlem.github.io/2024/08/03/BFS/
@@ -115,6 +117,8 @@ http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
 http://githarlem.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/
 http://githarlem.github.io/tags/bina/
+http://githarlem.github.io/tags/rcsv/
+http://githarlem.github.io/tags/mmsc/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/

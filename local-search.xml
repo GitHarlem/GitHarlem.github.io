@@ -4,6 +4,88 @@
   
   
   <entry>
+    <title>[编程笔记]-Memory_Search记忆化搜索</title>
+    <link href="/2024/08/09/Memory-Search/"/>
+    <url>/2024/08/09/Memory-Search/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>说实话，这个记忆化搜索呢，硬要说的话，你可以说它是“图型DP优化”（我编的hh）</p><p>就是在图论之中搜索然后去除不必要的递归嘛，就是DFS&#x2F;BFS套个壳。</p><p>但毕竟更像是DP，所以就放这吧（树型DP都在呢不是吗）</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p><a href="https://www.acwing.com/problem/content/903/">AcWing901-滑雪</a><br>f[i][j]表示从(i,j)开始滑的最长路径。</p><p>从上下左右四个方向找就行了。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">305</span>;<br><br><span class="hljs-type">int</span> ans;<br><span class="hljs-type">int</span> r,c;<br><span class="hljs-type">int</span> a[N][N];<br><span class="hljs-type">int</span> f[N][N];<br><br><span class="hljs-type">int</span> dx[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>&#125;;<br><span class="hljs-type">int</span> dy[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">dp</span><span class="hljs-params">(<span class="hljs-type">int</span> x,<span class="hljs-type">int</span> y)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(f[x][y]!=<span class="hljs-number">0</span>)<span class="hljs-keyword">return</span> f[x][y];<br>    f[x][y]=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)&#123;<br>        <span class="hljs-type">int</span> nx=x+dx[i],ny=y+dy[i];<br>        <span class="hljs-keyword">if</span>(<span class="hljs-number">1</span>&lt;=nx&amp;&amp;nx&lt;=r&amp;&amp;<span class="hljs-number">1</span>&lt;=ny&amp;&amp;ny&lt;=c&amp;&amp;a[nx][ny]&lt;a[x][y])&#123;<br>            f[x][y]=<span class="hljs-built_in">max</span>(f[x][y],<span class="hljs-built_in">dp</span>(nx,ny)<span class="hljs-number">+1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> f[x][y];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin&gt;&gt;r&gt;&gt;c;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=r;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=c;j++)&#123;<br>            cin&gt;&gt;a[i][j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=r;i++)&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=c;j++)&#123;<br>            ans=<span class="hljs-built_in">max</span>(ans,<span class="hljs-built_in">dp</span>(i,j));<br>        &#125;<br>    &#125;<br>    cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>动态规划</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>图论</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>搜索</tag>
+      
+      <tag>动态规划</tag>
+      
+      <tag>递归</tag>
+      
+      <tag>记忆化搜索</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>[编程笔记]-Tree_DP树形DP</title>
+    <link href="/2024/08/09/Tree-DP/"/>
+    <url>/2024/08/09/Tree-DP/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>就是在树上进行DP。（是不是有点废话hhh）</p><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><p>鉴于DP的特殊性，直接上例题解释吧。<br><a href="https://www.acwing.com/problem/content/287/">AcWing285-爽得要死的舞会</a></p><p>设计状态：</p><ul><li>f[u][0]：以u为根的子树中（不含u）最大的快乐值。</li><li>f[u][1]：以u为根的子树中（含u）最大的快乐值。</li></ul><p>那么肯定是从子树转移来的嘛。</p><p>当不含u时，子节点含不含无所谓；当含u时，子节点只能不含了（倒反天罡了hhh应该改名没有下属的舞会）</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">6005</span>;<br><br><span class="hljs-type">int</span> n;<br><span class="hljs-type">int</span> l,k;<br><span class="hljs-type">int</span> h[N];<br><span class="hljs-type">int</span> f[N][<span class="hljs-number">2</span>];<br><span class="hljs-type">int</span> idk;<br><span class="hljs-type">int</span> hd[N],to[N],ne[N],fa[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    to[++idk]=b;<br>    ne[idk]=hd[a];<br>    hd[a]=idk;<br>    fa[b]=a;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> now)</span></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=hd[now];i;i=ne[i])&#123;<br>        <span class="hljs-built_in">dfs</span>(to[i]);<br>        f[now][<span class="hljs-number">0</span>]+=<span class="hljs-built_in">max</span>(f[to[i]][<span class="hljs-number">0</span>],f[to[i]][<span class="hljs-number">1</span>]);<br>        f[now][<span class="hljs-number">1</span>]+=f[to[i]][<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>    cin&gt;&gt;n;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin&gt;&gt;h[i];<br>        f[i][<span class="hljs-number">1</span>]=h[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)&#123;<br>        cin&gt;&gt;l&gt;&gt;k;<br>        <span class="hljs-built_in">merge</span>(k,l);<br>    &#125;<br>    <span class="hljs-type">int</span> root=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(fa[root])root=fa[root];<br>    <span class="hljs-built_in">dfs</span>(root);<br>    cout&lt;&lt;<span class="hljs-built_in">max</span>(f[root][<span class="hljs-number">0</span>],f[root][<span class="hljs-number">1</span>]);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="完结撒花o-￣︶￣-o"><a href="#完结撒花o-￣︶￣-o" class="headerlink" title="完结撒花o(￣︶￣)o"></a>完结撒花o(<em>￣︶￣</em>)o</h1>]]></content>
+    
+    
+    <categories>
+      
+      <category>编程笔记</category>
+      
+      <category>动态规划</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>编程</tag>
+      
+      <tag>c++</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>树论</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>[编程笔记]-State_Compression_DP状压DP</title>
     <link href="/2024/08/09/State-Compression-DP/"/>
     <url>/2024/08/09/State-Compression-DP/</url>
@@ -1221,6 +1303,8 @@
       <tag>搜索</tag>
       
       <tag>DFS</tag>
+      
+      <tag>递归</tag>
       
     </tags>
     

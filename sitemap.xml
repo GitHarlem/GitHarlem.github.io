@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://githarlem.github.io/2024/08/09/Memory-Search/</loc>
+    
+    <lastmod>2024-08-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/2024/08/03/DFS/</loc>
+    
+    <lastmod>2024-08-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/2024/08/09/Tree-DP/</loc>
+    
+    <lastmod>2024-08-09</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://githarlem.github.io/2024/08/09/State-Compression-DP/</loc>
     
     <lastmod>2024-08-09</lastmod>
@@ -264,15 +291,6 @@
   
   <url>
     <loc>http://githarlem.github.io/2024/08/03/Topo-Sort/</loc>
-    
-    <lastmod>2024-08-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://githarlem.github.io/2024/08/03/DFS/</loc>
     
     <lastmod>2024-08-03</lastmod>
     
@@ -927,6 +945,20 @@
   
   <url>
     <loc>http://githarlem.github.io/tags/bina/</loc>
+    <lastmod>2024-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/tags/rcsv/</loc>
+    <lastmod>2024-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://githarlem.github.io/tags/mmsc/</loc>
     <lastmod>2024-08-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
