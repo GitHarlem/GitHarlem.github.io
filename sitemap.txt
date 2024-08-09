@@ -1,3 +1,4 @@
+http://githarlem.github.io/2024/08/09/Digital-DP/
 http://githarlem.github.io/2024/08/09/Count-DP/
 http://githarlem.github.io/2024/08/09/Interval-DP/
 http://githarlem.github.io/2024/08/08/Linear-DP/
@@ -111,6 +112,7 @@ http://githarlem.github.io/tags/stls/
 http://githarlem.github.io/tags/trtr/
 http://githarlem.github.io/tags/tpts/
 http://githarlem.github.io/tags/ufst/
+http://githarlem.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/
 http://githarlem.github.io/categories/CodeNote/
 http://githarlem.github.io/categories/CodeNote/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/
 http://githarlem.github.io/categories/CodeNote/BasicAlgorithm/
